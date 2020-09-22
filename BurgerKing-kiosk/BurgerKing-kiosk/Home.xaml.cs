@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace BurgerKing_kiosk
 {
-    public partial class MainWindow : Window
+    public partial class Home : Window
     {
-        public MainWindow()
+        public Home()
         {
             InitializeComponent();
         }
