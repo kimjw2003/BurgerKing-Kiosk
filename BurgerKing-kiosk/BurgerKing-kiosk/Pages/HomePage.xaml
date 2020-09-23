@@ -9,6 +9,34 @@
       Title="HomePage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0">
+            <MediaElement Name="myMediaElement" Stretch="Fill" >
+                <MediaElement.Triggers>
+                    <EventTrigger RoutedEvent="MediaElement.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <MediaTimeline Source="C:\Users\user\Videos\BugerKing ad.mp4" Storyboard.TargetName="myMediaElement"  
+                 RepeatBehavior="Forever"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </MediaElement.Triggers>
+            </MediaElement>
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <Grid>
+                <Image Source="C:\Users\user\Pictures\source\버거킹 로고.png"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
