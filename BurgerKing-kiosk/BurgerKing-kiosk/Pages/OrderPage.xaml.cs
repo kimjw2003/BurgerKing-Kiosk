@@ -24,5 +24,15 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
         }
+
+        private void nextBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
