@@ -77,10 +77,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Home.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,10 +92,6 @@
     </Compile>
     <Compile Include="HowPayPage.xaml.cs">
       <DependentUpon>HowPayPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="OrderPage.xaml">
       <SubType>Designer</SubType>
