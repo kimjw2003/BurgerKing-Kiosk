@@ -15,9 +15,12 @@ using System.Windows.Shapes;
 
 namespace BurgerKing_kiosk
 {
-    public partial class Home : Window
+    /// <summary>
+    /// HomePage.xaml에 대한 상호 작용 논리
+    /// </summary>
+    public partial class HomePage : Page
     {
-        public Home()
+        public HomePage()
         {
             InitializeComponent();
         }
