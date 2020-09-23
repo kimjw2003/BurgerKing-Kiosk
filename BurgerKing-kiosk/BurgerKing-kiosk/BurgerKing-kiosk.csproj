@@ -61,9 +61,6 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StartPage.xaml.cs">
-      <DependentUpon>StartPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\TablePage.xaml.cs">
       <DependentUpon>TablePage.xaml</DependentUpon>
     </Compile>
@@ -112,10 +109,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PlacePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
