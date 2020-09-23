@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BurgerKing_kiosk
 {
@@ -22,6 +23,20 @@ namespace BurgerKing_kiosk
         public MainWindow()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Time.Text = DateTime.Now.ToString();
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }

@@ -5,27 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurgerKing_kiosk"
         mc:Ignorable="d"
+        xmlns:wookoa="clr-namespace:System;assembly=mscorlib"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="8.8*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="White"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="9.8*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+            </Grid>
+            <Grid Grid.Column="1">
+                <Border HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="White"
                     BorderBrush="DarkGray" BorderThickness="2" CornerRadius="10" 
-                    Margin="10,5" Width="774" Height="32">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock x:Name="time" HorizontalAlignment="Right" VerticalAlignment="Center"
-                           Padding="0,0,40,0" FontSize="16"/>
-                    <Button Click="Gohome" VerticalAlignment="Center" HorizontalAlignment="Right"
-                            Width="30" Height="30" Margin="0,0,10,0" Background="White" BorderBrush="White">
-                        <Image Source=""
-                    </Button>
-                </StackPanel>
-                
-            </Border>
+                    Margin="10,5,10,5" Height="60">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock x:Name="Time" HorizontalAlignment="Right" VerticalAlignment="Center"
+                           Padding="0,0,40,0" FontSize="25"/>
+                        <Button Click="btnHome_Click" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            Width="60" Height="60" Margin="0,0,10,0" Background="White" BorderBrush="White">
+                            <Image Source="/Images/Home.png"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="2">
+            </Grid>
+            
         </Grid>
 
         <Grid Grid.Row="1">
