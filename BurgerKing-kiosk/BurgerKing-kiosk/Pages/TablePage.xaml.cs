@@ -24,5 +24,17 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
         }
+        private void Click_Seat(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+        private void GoNext(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/HowPayPage.xaml", UriKind.Relative));
+        }
     }
 }

@@ -8,7 +8,78 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TablePage">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="식사 할 좌석을 선택해 주세요" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontSize="30"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Button x:Name="one" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Button x:Name="two" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="3">
+                <Button x:Name="three" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Button x:Name="four" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Button x:Name="five" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3">
+                <Button x:Name="six" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Button x:Name="seven" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <Button x:Name="eight" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3">
+                <Button x:Name="nine" Margin="10" Click="Click_Seat"></Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Click="GoBack" FontSize="20">이전</Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3">
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Click="GoNext" FontSize="20">다음</Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
