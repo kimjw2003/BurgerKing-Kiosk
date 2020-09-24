@@ -22,14 +22,14 @@
             <Grid Grid.Column="0">
             </Grid>
             <Grid Grid.Column="1">
-                <Border HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="White"
+                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White"
                     BorderBrush="DarkGray" BorderThickness="2" CornerRadius="10" 
-                    Margin="10,5,10,5" Height="60">
+                    Margin="10,5,10,5" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <TextBlock x:Name="Time" HorizontalAlignment="Right" VerticalAlignment="Center"
-                           Padding="0,0,40,0" FontSize="25"/>
-                        <Button Click="btnHome_Click" VerticalAlignment="Center" HorizontalAlignment="Right"
-                            Width="60" Height="60" Margin="0,0,10,0" Background="White" BorderBrush="White">
+                           Padding="0,0,40,0" FontSize="25" LineHeight="Auto"/>
+                        <Button Click="btnHome_Click" VerticalAlignment="Stretch" HorizontalAlignment="Right"
+                            Width="60" Margin="0,0,10,0" Background="White" BorderBrush="White">
                             <Image Source="/Images/Home.png"/>
                         </Button>
                     </StackPanel>
