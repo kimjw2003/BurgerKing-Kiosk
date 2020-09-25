@@ -17,7 +17,8 @@
 
         <Grid Grid.Row="0">
             <TextBlock Text="식사장소를 선택해 주세요." HorizontalAlignment="Center"
-                       VerticalAlignment="Center" FontSize="30"></TextBlock>
+                       VerticalAlignment="Center" FontSize="30"
+                       FontWeight="Bold"></TextBlock>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
