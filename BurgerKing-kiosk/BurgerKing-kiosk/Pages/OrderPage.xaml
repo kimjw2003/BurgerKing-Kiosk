@@ -10,38 +10,50 @@
 
     <Grid Background="White">
 
+        <ListView Margin="22,120,461,76.6" 
+                
+            />
+
         <Button
             x:Name="BeforeBtn"
             Width="80"
             Height="30"
+            Foreground="White"
+            FontSize="18"
             Content="◁ 이전" Margin="22,398,698,21.6"
+            Background="#606060"
             />
 
         <Button 
             x:Name="nextBtn"
             Width="80"
             Height="30"
-           Content="다음 ▷" Margin="185,398,535,21.6" Click="nextBtn_Click"
+            Foreground="White"
+            FontSize="18"
+           Content="다음 ▷" Margin="259,398,461,21.6" Click="nextBtn_Click"
+            Background="#F1555A"
             />
 
         <Button
             x:Name="CancleBtn"
-            Width="120"
-            Height="30"
+            Width="140"
+            Height="40"
             Foreground="White"
             FontWeight="Bold"
-            Content="주문취소" Margin="483,398,197,21.6" 
-            Background="#606060"
+            FontSize="20"
+            Content="주문취소"
+            Background="#606060" RenderTransformOrigin="2.393,1.629" Margin="490,388,170,21.6"
             />
 
         <Button 
             x:Name="OrderBtn"
-            Width="120"
-            Height="30"
+            Width="140"
+            Height="40"
             Foreground="White"
             FontWeight="Bold"
-           Content="주문하기" Click="OrderBtn_Click" Margin="620,398,60,21.6"
-            Background="#F1555A"
+            FontSize="20"
+           Content="주문하기" Click="OrderBtn_Click"
+            Background="#F1555A" Margin="630,388,30,21.6"
             />
     </Grid>
 </Page>
