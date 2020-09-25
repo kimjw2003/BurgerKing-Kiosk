@@ -47,10 +47,11 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="25" Foreground="White"></TextBlock>
+                                       FontSize="25" Foreground="White"
+                                       x:Name="oneTime"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
+                            <TextBlock HorizontalAlignment="Right" x:Name="oneOrderTime"
                                        FontSize="20" Foreground="White"></TextBlock>
                         </Grid>
                     </Grid>
@@ -66,15 +67,17 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="20" Margin="5,0">NO. 2</TextBlock>
+                            <TextBlock FontWeight="Bold" Foreground="White" Height="Auto" Width="Auto"
+                                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                       FontStretch="Medium" Margin="5,0">NO. 2</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="25" Foreground="White"></TextBlock>
+                                       FontStretch="UltraExpanded" Foreground="White"
+                                       x:Name="twoTime"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
+                            <TextBlock HorizontalAlignment="Right" x:Name="twoOrderTime"
                                        FontSize="20" Foreground="White"></TextBlock>
                         </Grid>
                     </Grid>
