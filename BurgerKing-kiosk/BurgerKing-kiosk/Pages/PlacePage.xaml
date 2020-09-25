@@ -53,13 +53,13 @@
                 <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" Grid.Column="1">
                 <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Click="GoBack" FontSize="20">이전</Button>
+                    Click="GoBack" FontSize="30">이전</Button>
             </Grid>
         </Grid>
     </Grid>
