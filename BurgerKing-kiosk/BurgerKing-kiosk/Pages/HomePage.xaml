@@ -22,7 +22,7 @@
                         <EventTrigger.Actions>
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <MediaTimeline Source="/Images/Ad.mp4" Storyboard.TargetName="myMediaElement"  
+                                    <MediaTimeline  Source="Images/Ad.mp4" Storyboard.TargetName="myMediaElement"  
                  RepeatBehavior="Forever"/>
                                 </Storyboard>
                             </BeginStoryboard>
