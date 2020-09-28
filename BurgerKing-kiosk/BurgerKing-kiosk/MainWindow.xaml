@@ -42,7 +42,7 @@
 
         <Grid Grid.Row="1">
             <Frame Name="frame_content"
-                   Source="/Pages/TablePage.xaml" 
+                   Source="/Pages/HomePage.xaml" 
                    NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>

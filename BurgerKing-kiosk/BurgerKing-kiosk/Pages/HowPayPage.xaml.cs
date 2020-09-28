@@ -24,5 +24,9 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
         }
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
