@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,32 @@ namespace BurgerKing_kiosk
         }
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Burger_Click(object sender, RoutedEventArgs e)
+        {
+            Burger.Foreground = new SolidColorBrush(Color.FromRgb(241, 85, 90));
+            Side.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            Desert.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        }
+
+        private void Side_Click(object sender, RoutedEventArgs e)
+        {
+            Burger.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            Side.Foreground = new SolidColorBrush(Color.FromRgb(241, 85, 90));
+            Desert.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        }
+
+        private void Desert_Click(object sender, RoutedEventArgs e)
+        {
+            Burger.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            Side.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            Desert.Foreground = new SolidColorBrush(Color.FromRgb(241, 85, 90));
+        }
+
+        private void CancleBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

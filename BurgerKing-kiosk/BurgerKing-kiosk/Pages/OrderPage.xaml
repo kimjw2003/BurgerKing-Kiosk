@@ -5,55 +5,70 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BurgerKing_kiosk"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920  "
       Title="OrderPage">
 
-    <Grid Background="White">
+    <Grid Background="White" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="157*"/>
+        </Grid.ColumnDefinitions>
 
-        <ListView Margin="22,120,461,76.6" 
-                
-            />
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Button
-            x:Name="BeforeBtn"
-            Width="80"
-            Height="30"
-            Foreground="White"
-            FontSize="18"
-            Content="◁ 이전" Margin="22,398,698,21.6"
-            Background="#606060"
-            />
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Button
+                        x:Name="Burger"
+                        Content="햄버거"
+                        Foreground="#F1555A"
+                        FontSize="30"
+                        Background="White"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Click="Burger_Click"
+                        />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button
+                        x:Name="Side"
+                        Content="사이드"
+                        FontSize="30"
+                        Background="White"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Click="Side_Click"
+                        />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button
+                        x:Name="Desert"
+                        Content="음료/디저트"
+                        FontSize="30"
+                        Background="White"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Click="Desert_Click"
+                        />
+                </Grid>
+            </Grid>
 
-        <Button 
-            x:Name="nextBtn"
-            Width="80"
-            Height="30"
-            Foreground="White"
-            FontSize="18"
-           Content="다음 ▷" Margin="259,398,461,21.6" Click="nextBtn_Click"
-            Background="#F1555A"
-            />
+        </Grid>
 
-        <Button
-            x:Name="CancleBtn"
-            Width="140"
-            Height="40"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="20"
-            Content="주문취소"
-            Background="#606060" RenderTransformOrigin="2.393,1.629" Margin="490,388,170,21.6"
-            />
-
-        <Button 
-            x:Name="OrderBtn"
-            Width="140"
-            Height="40"
-            Foreground="White"
-            FontWeight="Bold"
-            FontSize="20"
-           Content="주문하기" Click="OrderBtn_Click"
-            Background="#F1555A" Margin="630,388,30,21.6"
-            />
     </Grid>
 </Page>
