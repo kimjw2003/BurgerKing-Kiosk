@@ -22,7 +22,7 @@
                         <EventTrigger.Actions>
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <MediaTimeline Source="C:\Users\user\Videos\BugerKing ad.mp4" Storyboard.TargetName="myMediaElement"  
+                                    <MediaTimeline Source="/Images/Ad.mp4" Storyboard.TargetName="myMediaElement"  
                  RepeatBehavior="Forever"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -35,7 +35,7 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="150" VerticalAlignment="Top" Margin="0 20 0 0">
-                    <Image Source="C:\Users\user\Pictures\source\버거킹 로고.png" Width="150" Height="150"/>
+                    <Image Source="/Images/logo.png" Width="150" Height="150"/>
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
 
                         <TextBlock>에 방문해 주셔셔 감사합니다!</TextBlock>
