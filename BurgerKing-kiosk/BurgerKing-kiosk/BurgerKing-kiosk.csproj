@@ -55,32 +55,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pages\HomePage.xaml.cs">
+    <Compile Include="view\Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\TablePage.xaml.cs">
+    <Compile Include="view\Pages\TablePage.xaml.cs">
       <DependentUpon>TablePage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Pages\CardPage.xaml">
+    <Page Include="view\Pages\CardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CashPage.xaml">
+    <Page Include="view\Pages\CashPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\FinishPage.xaml">
+    <Page Include="view\Pages\FinishPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\HomePage.xaml">
+    <Page Include="view\Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\HowPayPage.xaml">
+    <Page Include="view\Pages\HowPayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,40 +88,40 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Pages\CardPage.xaml.cs">
+    <Compile Include="view\Pages\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CashPage.xaml.cs">
+    <Compile Include="view\Pages\CashPage.xaml.cs">
       <DependentUpon>CashPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FinishPage.xaml.cs">
+    <Compile Include="view\Pages\FinishPage.xaml.cs">
       <DependentUpon>FinishPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HowPayPage.xaml.cs">
+    <Compile Include="view\Pages\HowPayPage.xaml.cs">
       <DependentUpon>HowPayPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OrderPage.xaml">
+    <Page Include="view\Pages\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PlacePage.xaml">
+    <Page Include="view\Pages\PlacePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\TablePage.xaml">
+    <Page Include="view\Pages\TablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\OrderPage.xaml.cs">
+    <Compile Include="view\Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PlacePage.xaml.cs">
+    <Compile Include="view\Pages\PlacePage.xaml.cs">
       <DependentUpon>PlacePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -150,19 +150,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Burial_meal.png" />
+    <Resource Include="view\Images\Burial_meal.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Home.png" />
+    <Resource Include="view\Images\Home.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Packing.png" />
+    <Resource Include="view\Images\Packing.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Ad.mp4">
+    <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\logo.png" />
+    <Resource Include="view\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="model\" />
+    <Folder Include="viewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
