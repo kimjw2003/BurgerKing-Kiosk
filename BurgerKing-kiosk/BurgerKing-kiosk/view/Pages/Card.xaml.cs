@@ -23,6 +23,8 @@ namespace BurgerKing_kiosk
         public CardPage()
         {
             InitializeComponent();
+
+            this.DataContext = new viewModel.CardViewModel();
         }
     }
 }

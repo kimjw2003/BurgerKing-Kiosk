@@ -30,7 +30,7 @@
                            Padding="0,0,40,0" FontSize="25" LineHeight="Auto"/>
                         <Button Click="btnHome_Click" VerticalAlignment="Stretch" HorizontalAlignment="Right"
                             Width="80" Margin="0,0,10,0" Background="White" BorderBrush="White">
-                            <Image Source="/Images/Home.png"/>
+                            <Image Source="/view/Images/Home.png"/>
                         </Button>
                     </StackPanel>
                 </Border>
@@ -42,7 +42,7 @@
 
         <Grid Grid.Row="1">
             <Frame Name="frame_content"
-                   Source="/Pages/HomePage.xaml" 
+                   Source="/view/Pages/Home.xaml" 
                    NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>

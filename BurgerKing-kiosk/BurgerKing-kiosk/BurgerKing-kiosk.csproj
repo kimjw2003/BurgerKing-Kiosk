@@ -55,32 +55,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="view\Pages\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
+    <Compile Include="viewModel\CardViewModel.cs" />
+    <Compile Include="view\Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Pages\TablePage.xaml.cs">
-      <DependentUpon>TablePage.xaml</DependentUpon>
+    <Compile Include="view\Pages\Table.xaml.cs">
+      <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
-    <Page Include="view\Pages\CardPage.xaml">
+    <Page Include="view\Pages\Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\CashPage.xaml">
+    <Page Include="view\Pages\Cash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\FinishPage.xaml">
+    <Page Include="view\Pages\Finish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\HomePage.xaml">
+    <Page Include="view\Pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\HowPayPage.xaml">
+    <Page Include="view\Pages\HowPay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,41 +89,41 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="view\Pages\CardPage.xaml.cs">
-      <DependentUpon>CardPage.xaml</DependentUpon>
+    <Compile Include="view\Pages\Card.xaml.cs">
+      <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Pages\CashPage.xaml.cs">
-      <DependentUpon>CashPage.xaml</DependentUpon>
+    <Compile Include="view\Pages\Cash.xaml.cs">
+      <DependentUpon>Cash.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Pages\FinishPage.xaml.cs">
-      <DependentUpon>FinishPage.xaml</DependentUpon>
+    <Compile Include="view\Pages\Finish.xaml.cs">
+      <DependentUpon>Finish.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Pages\HowPayPage.xaml.cs">
-      <DependentUpon>HowPayPage.xaml</DependentUpon>
+    <Compile Include="view\Pages\HowPay.xaml.cs">
+      <DependentUpon>HowPay.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\OrderPage.xaml">
+    <Page Include="view\Pages\Order.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\PlacePage.xaml">
+    <Page Include="view\Pages\Place.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\TablePage.xaml">
+    <Page Include="view\Pages\Table.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="view\Pages\OrderPage.xaml.cs">
-      <DependentUpon>OrderPage.xaml</DependentUpon>
+    <Compile Include="view\Pages\Order.xaml.cs">
+      <DependentUpon>Order.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Pages\PlacePage.xaml.cs">
-      <DependentUpon>PlacePage.xaml</DependentUpon>
+    <Compile Include="view\Pages\Place.xaml.cs">
+      <DependentUpon>Place.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -166,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="model\" />
-    <Folder Include="viewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
