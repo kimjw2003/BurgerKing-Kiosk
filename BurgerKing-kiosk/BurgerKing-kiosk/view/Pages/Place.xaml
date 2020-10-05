@@ -36,13 +36,13 @@
             <Grid Grid.Column="1" Grid.Row="1">
                 <Button HorizontalAlignment="Stretch" Click="Packing"
                         Background="White" BorderBrush="White">
-                    <Image Source="/Images/Packing.png" Stretch="Fill"/>
+                    <Image Source="/view/Images/Packing.png" Stretch="Fill"/>
                 </Button>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="1">
                 <Button HorizontalAlignment="Stretch" Click="Burial_meal" 
                         Background="white" BorderBrush="White">
-                    <Image Source="/Images/Burial_meal.png" Stretch="Fill"/>
+                    <Image Source="/view/Images/Burial_meal.png" Stretch="Fill"/>
                 </Button>
             </Grid>
         </Grid>

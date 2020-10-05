@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="viewModel\CardViewModel.cs" />
+    <Compile Include="viewModel\HowPayViewModel.cs" />
+    <Compile Include="viewModel\PlaceViewModel.cs" />
+    <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
