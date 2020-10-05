@@ -23,7 +23,7 @@ namespace BurgerKing_kiosk
         public MainWindow()
         {
             InitializeComponent();
-
+           
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
@@ -36,7 +36,7 @@ namespace BurgerKing_kiosk
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e) {
-            frame_content.Source = new Uri("/Pages/Home.xaml", UriKind.Relative);
+            frame_content.Source = new Uri("view/Pages/Home.xaml", UriKind.Relative);
         }
     }
 }
