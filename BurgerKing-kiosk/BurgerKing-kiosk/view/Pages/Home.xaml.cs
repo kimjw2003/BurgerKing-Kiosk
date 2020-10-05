@@ -24,5 +24,10 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
         }
+
+        private void BtnOrder_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
+        }
     }
 }

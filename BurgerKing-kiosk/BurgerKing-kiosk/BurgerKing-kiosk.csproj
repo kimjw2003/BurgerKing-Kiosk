@@ -160,13 +160,15 @@
     <Resource Include="view\Images\Packing.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="view\Images\Ad.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="view\Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="model\" />
+  </ItemGroup>
+  <ItemGroup>
+     <Content Include="view\Images\Ad.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
