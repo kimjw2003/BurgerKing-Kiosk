@@ -23,6 +23,8 @@ namespace BurgerKing_kiosk
         public TablePage()
         {
             InitializeComponent();
+
+            this.DataContext = new viewModel.TableViewModel();
         }
         private void Click_Seat(object sender, RoutedEventArgs e)
         {

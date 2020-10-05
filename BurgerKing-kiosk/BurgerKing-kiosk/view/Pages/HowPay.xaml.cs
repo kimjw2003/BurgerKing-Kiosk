@@ -23,6 +23,7 @@ namespace BurgerKing_kiosk
         public HowPayPage()
         {
             InitializeComponent();
+            this.DataContext = new viewModel.HowPayViewModel();
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
