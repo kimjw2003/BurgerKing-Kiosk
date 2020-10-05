@@ -36,7 +36,7 @@ namespace BurgerKing_kiosk
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e) {
-            frame_content.Source = new Uri("/Pages/HomePage.xaml", UriKind.Relative);
+            frame_content.Source = new Uri("/Pages/Home.xaml", UriKind.Relative);
         }
     }
 }
