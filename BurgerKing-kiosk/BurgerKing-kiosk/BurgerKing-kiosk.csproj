@@ -55,13 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="model\OrderModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
-    <Compile Include="view\Pages\BurgerMenu1.xaml.cs">
-      <DependentUpon>BurgerMenu1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -74,10 +72,6 @@
     <Compile Include="view\Pages\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
-    <Page Include="view\Pages\BurgerMenu1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="view\Pages\Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -179,9 +173,7 @@
   <ItemGroup>
     <Resource Include="view\Images\logo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
