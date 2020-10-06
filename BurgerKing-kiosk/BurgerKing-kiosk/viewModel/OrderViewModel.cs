@@ -9,20 +9,25 @@ namespace BurgerKing_kiosk.model
 {
     class OrderModel
     {
-        private List<FoodModel> foods;
+        private List<FoodModel> foods = null;
         private int table = 0;
         
         public void AddFood(int id)
         {
-            
+            FoodModel food = new FoodModel();
+            food.id = id;
+            foods.Add(food);
         }
         public void DeleteAll()
         {
-            this.foods = null;
+            this.foods.Clear();
             this.table = 0;
         }
         public List<FoodModel> Delete(int id)
         {
+            int lengh = foods.Count;
+            foods.RemoveAt(lengh);
+
             return foods;
         }
         public bool CheckTable(int id)
