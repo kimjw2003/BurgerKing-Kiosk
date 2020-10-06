@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace BurgerKing_kiosk
@@ -23,13 +13,23 @@ namespace BurgerKing_kiosk
         public MainWindow()
         {
             InitializeComponent();
-           
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
 
-            this.PreviewKeyDown += new KeyEventHandler(F2_KeyDown);
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
+        }
+
+        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F2)
+            {
+                if (!frame_content.CanGoBack)
+                    frame_content.Source = new Uri("view/Pages/Statistics.xaml", UriKind.Relative);
+            }
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -37,19 +37,16 @@ namespace BurgerKing_kiosk
             Time.Text = DateTime.Now.ToString();
         }
 
-        private void btnHome_Click(object sender, RoutedEventArgs e) {
-            frame_content.Source = new Uri("view/Pages/Home.xaml", UriKind.Relative);
-        }
-
-        private void F2_KeyDown(object sender, KeyEventArgs e)
+        private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            Uri og = frame_content.Source;
-            Uri compate = new Uri("view/Pages/Home.xaml", UriKind.Relative);
-            if(og == compate)
+
+            do
             {
-                if (e.Key == Key.F2)
-                    frame_content.Source = new Uri("view/Pages/Statistics.xaml", UriKind.Relative);
-            }
+                Console.WriteLine("되는 중");
+                frame_content.RemoveBackEntry();
+            } while (frame_content.CanGoBack);
+
+                frame_content.Source = new Uri("view/Pages/Home.xaml", UriKind.Relative);
         }
     }
 }
