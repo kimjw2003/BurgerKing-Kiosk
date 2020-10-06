@@ -24,6 +24,17 @@ namespace BurgerKing_kiosk
         public OrderPage()
         {
             InitializeComponent();
+
+            Loaded += OrderPage_Loaded;
+        }
+
+        private void OrderPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            MyData.GetInstance().Add(new MyData() { dataA = "스트링 1", dataB = 1, dataC = "a" });
+        MyData.GetInstance().Add(new MyData() { dataA = "스트링 2", dataB = 2, dataC = "b" });
+        MyData.GetInstance().Add(new MyData() { dataA = "스트링 3", dataB = 3, dataC = "c"});
+        
+        burger_menu1.ItemsSource = MyData.GetInstance();
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
@@ -62,4 +73,24 @@ namespace BurgerKing_kiosk
 
         }
     }
+
+    class MyData
+    {
+        public string dataA { get; set; }
+        public int dataB { get; set; }
+        public string dataC { get; set; }
+
+        private static List<MyData> instance;
+
+        public static List<MyData> GetInstance()
+        {
+            if (instance == null)
+                instance = new List<MyData>();
+
+            return instance;
+        }
+
+
+    }
+
 }

@@ -59,9 +59,6 @@
     <Compile Include="viewModel\HowPayViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
-    <Compile Include="view\Pages\BurgerMenu1.xaml.cs">
-      <DependentUpon>BurgerMenu1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -74,10 +71,6 @@
     <Compile Include="view\Pages\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
-    <Page Include="view\Pages\BurgerMenu1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="view\Pages\Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
