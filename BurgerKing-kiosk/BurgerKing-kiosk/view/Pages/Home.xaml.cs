@@ -23,7 +23,6 @@ namespace BurgerKing_kiosk
         public HomePage()
         {
             InitializeComponent();
-            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         private void BtnOrder_Click(object sender, RoutedEventArgs e)
@@ -31,11 +30,5 @@ namespace BurgerKing_kiosk
             NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
         }
 
-        private void HandleEsc(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.F2)
-                Console.WriteLine(e.Key);
-                NavigationService.Navigate(new Uri("view/Pages/Statistics.xaml", UriKind.Relative));
-        }
     }
 }
