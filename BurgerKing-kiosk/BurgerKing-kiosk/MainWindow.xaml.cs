@@ -28,6 +28,8 @@ namespace BurgerKing_kiosk
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            this.PreviewKeyDown += new KeyEventHandler(F2_KeyDown);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -37,6 +39,17 @@ namespace BurgerKing_kiosk
 
         private void btnHome_Click(object sender, RoutedEventArgs e) {
             frame_content.Source = new Uri("view/Pages/Home.xaml", UriKind.Relative);
+        }
+
+        private void F2_KeyDown(object sender, KeyEventArgs e)
+        {
+            Uri og = frame_content.Source;
+            Uri compate = new Uri("view/Pages/Home.xaml", UriKind.Relative);
+            if(og == compate)
+            {
+                if (e.Key == Key.F2)
+                    frame_content.Source = new Uri("view/Pages/Statistics.xaml", UriKind.Relative);
+            }
         }
     }
 }

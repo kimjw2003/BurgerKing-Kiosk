@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BurgerKing_kiosk
+namespace BurgerKing_kiosk.view.Pages
 {
     /// <summary>
-    /// HomePage.xaml에 대한 상호 작용 논리
+    /// BurgerMenu1.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class HomePage : Page
+    public partial class BurgerMenu1 : Page
     {
-        public HomePage()
+        public BurgerMenu1()
         {
             InitializeComponent();
         }
-
-        private void BtnOrder_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
-        }
-
     }
 }
