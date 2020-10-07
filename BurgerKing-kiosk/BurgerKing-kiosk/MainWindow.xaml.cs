@@ -20,18 +20,25 @@ namespace BurgerKing_kiosk
             timer.Start();
 
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
+
+            frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
         }
 
         private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            Console.WriteLine("누름");
+
             if (e.Key == Key.F2)
             {
                 if (!frame_content.CanGoBack)
-                    frame_content.Source = new Uri("view/Pages/Statistics.xaml", UriKind.Relative);
+                {
+                    Statistics statistics = new Statistics();
+                    statistics.Show();
+                    Close();
+                } 
             }
 
         }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             Time.Text = DateTime.Now.ToString();
@@ -39,14 +46,13 @@ namespace BurgerKing_kiosk
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-
-            do
+            while (frame_content.CanGoBack == true)
             {
-                Console.WriteLine("되는 중");
-                frame_content.RemoveBackEntry();
-            } while (frame_content.CanGoBack);
+                frame_content.GoBack();
+            }
 
-                frame_content.Source = new Uri("view/Pages/Home.xaml", UriKind.Relative);
+            //frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
+
         }
     }
 }

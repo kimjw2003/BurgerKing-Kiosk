@@ -69,19 +69,21 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                <ListView x:Name="burger_menu1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListView.ItemTemplate>
+                <ListBox x:Name="burger_List" Margin="150,0,0,0" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <StackPanel Height="100" Width="100" Background="gray">
-                                    <TextBlock 
-                                    Text="{Binding dataA}"
-                                    />
-                                </StackPanel>
-                            </Grid>
+                            <StackPanel Width="150" Height="150">
+                                <Image Source="{Binding imageData}"/>
+                                <TextBlock Text="{Binding title}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>

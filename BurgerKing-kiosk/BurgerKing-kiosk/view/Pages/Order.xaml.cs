@@ -1,4 +1,5 @@
 ﻿
+using BurgerKing_kiosk.view.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,17 +26,22 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
 
-            Loaded += OrderPage_Loaded;
+            burger_List.ItemsSource = Food.Where(x => x.category == Category.BURGER).ToList();
         }
 
-        private void OrderPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            MyData.GetInstance().Add(new MyData() { dataA = "스트링 1", dataB = 1, dataC = "a" });
-        MyData.GetInstance().Add(new MyData() { dataA = "스트링 2", dataB = 2, dataC = "b" });
-        MyData.GetInstance().Add(new MyData() { dataA = "스트링 3", dataB = 3, dataC = "c"});
-        
-        burger_menu1.ItemsSource = MyData.GetInstance();
-        }
+        private List<Food> Food = new List<Food>() {
+            new Food() { category = Category.BURGER, title = "기네스머쉬룸와퍼", imageData = "/view/Images/burger.png" },
+            new Food() { category = Category.BURGER, title = "기네스와퍼", imageData = "/view/Images/burger.png" },
+            new Food() { category = Category.BURGER, title = "콰트로치즈와퍼", imageData = "/view/Images/burger.png" },
+            new Food() { category = Category.BURGER, title = "기네스와퍼팩1", imageData = "/view/Images/burger.png" }, 
+            new Food() { category = Category.BURGER, title = "기네스와퍼팩2", imageData = "/view/Images/burger.png" },
+            new Food() { category = Category.BURGER, title = "기네스와퍼팩3", imageData = "/view/Images/burger.png" }, 
+            new Food() { category = Category.BURGER, title = "와퍼", imageData = "/view/Images/burger.png" }, 
+            new Food() { category = Category.BURGER, title = "불고기와퍼", imageData = "/view/Images/burger.png" },
+            new Food() { category = Category.BURGER, title = "치즈와퍼", imageData = "/view/Images/burger.png" }, 
+        };
+
+
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -72,25 +78,6 @@ namespace BurgerKing_kiosk
         {
 
         }
-    }
-
-    class MyData
-    {
-        public string dataA { get; set; }
-        public int dataB { get; set; }
-        public string dataC { get; set; }
-
-        private static List<MyData> instance;
-
-        public static List<MyData> GetInstance()
-        {
-            if (instance == null)
-                instance = new List<MyData>();
-
-            return instance;
-        }
-
-
     }
 
 }
