@@ -56,7 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\FoodModel.cs" />
-    <Compile Include="viewModel\OrderViewModel.cs" />
+    <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
