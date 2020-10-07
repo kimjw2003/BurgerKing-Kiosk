@@ -26,7 +26,10 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
 
-            burger_List.ItemsSource = Food.Where(x => x.category == Category.BURGER).ToList();
+            this.Loaded += OrderPage_Loaded;
+
+            List.ItemsSource = Food.Where(x => x.category == Category.BURGER).ToList();
+            List.ItemsSource = Food.Where(x => x.category == Category.SIDE).ToList();
         }
 
         private List<Food> Food = new List<Food>() {
@@ -39,9 +42,12 @@ namespace BurgerKing_kiosk
             new Food() { category = Category.BURGER, title = "와퍼", imageData = "/view/Images/burger.png" }, 
             new Food() { category = Category.BURGER, title = "불고기와퍼", imageData = "/view/Images/burger.png" },
             new Food() { category = Category.BURGER, title = "치즈와퍼", imageData = "/view/Images/burger.png" }, 
+            new Food() { category = Category.SIDE,   title = "치킨", imageData="/view/Images/side.png"}
         };
 
-
+        private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
+            
+        }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -51,27 +57,6 @@ namespace BurgerKing_kiosk
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Burger_Click(object sender, RoutedEventArgs e)
-        {
-            Burger.Foreground = new SolidColorBrush(Color.FromRgb(241, 85, 90));
-            Side.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-            Desert.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-        }
-
-        private void Side_Click(object sender, RoutedEventArgs e)
-        {
-            Burger.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-            Side.Foreground = new SolidColorBrush(Color.FromRgb(241, 85, 90));
-            Desert.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-        }
-
-        private void Desert_Click(object sender, RoutedEventArgs e)
-        {
-            Burger.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-            Side.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-            Desert.Foreground = new SolidColorBrush(Color.FromRgb(241, 85, 90));
         }
 
         private void CancleBtn_Click(object sender, RoutedEventArgs e)
