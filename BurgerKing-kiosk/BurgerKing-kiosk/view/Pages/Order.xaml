@@ -23,7 +23,15 @@
 
             <Grid Grid.Row="0">
 
-                <ListBox x:Name="lbCategory" FontSize="24" VerticalAlignment="Center" BorderBrush="Black">
+                <ListBox x:Name="lbCategory"
+                     Margin="150,0,0,0"
+                     FontSize="24"
+                     FontWeight="SemiBold"
+                     VerticalAlignment="Center"
+                     BorderBrush="Transparent"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     SelectionChanged="lbCategory_SelectionChanged">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
