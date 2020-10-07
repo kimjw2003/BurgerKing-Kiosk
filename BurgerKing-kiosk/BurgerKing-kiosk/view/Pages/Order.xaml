@@ -82,8 +82,8 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="150" Height="150">
-                                <Image Source="{Binding imageData}"/>
-                                <TextBlock Text="{Binding title}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Image Source="{Binding picture}"/>
+                                <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

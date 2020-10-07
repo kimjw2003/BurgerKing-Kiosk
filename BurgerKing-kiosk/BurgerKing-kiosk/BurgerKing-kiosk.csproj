@@ -116,7 +116,6 @@
     <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
-    <Compile Include="view\Pages\Food.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>

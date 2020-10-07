@@ -1,5 +1,5 @@
 ﻿
-using BurgerKing_kiosk.view.Pages;
+using BurgerKing_kiosk.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static BurgerKing_kiosk.model.FoodModel;
 
 namespace BurgerKing_kiosk
 {
@@ -32,18 +33,18 @@ namespace BurgerKing_kiosk
             List.ItemsSource = Food.Where(x => x.category == Category.SIDE).ToList();
         }
 
-        private List<Food> Food = new List<Food>() {
-            new Food() { category = Category.BURGER, title = "기네스머쉬룸와퍼", imageData = "/view/Images/burger.png" },
-            new Food() { category = Category.BURGER, title = "기네스와퍼", imageData = "/view/Images/burger.png" },
-            new Food() { category = Category.BURGER, title = "콰트로치즈와퍼", imageData = "/view/Images/burger.png" },
-            new Food() { category = Category.BURGER, title = "기네스와퍼팩1", imageData = "/view/Images/burger.png" }, 
-            new Food() { category = Category.BURGER, title = "기네스와퍼팩2", imageData = "/view/Images/burger.png" },
-            new Food() { category = Category.BURGER, title = "기네스와퍼팩3", imageData = "/view/Images/burger.png" }, 
-            new Food() { category = Category.BURGER, title = "와퍼", imageData = "/view/Images/burger.png" }, 
-            new Food() { category = Category.BURGER, title = "불고기와퍼", imageData = "/view/Images/burger.png" },
-            new Food() { category = Category.BURGER, title = "치즈와퍼", imageData = "/view/Images/burger.png" },
+        private List<FoodModel> Food = new List<FoodModel>() {
+            new FoodModel() { category = Category.BURGER, name = "기네스머쉬룸와퍼", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "기네스와퍼", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "콰트로치즈와퍼", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩1", picture = "/view/Images/burger.png" }, 
+            new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩2", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩3", picture = "/view/Images/burger.png" }, 
+            new FoodModel() { category = Category.BURGER, name = "와퍼", picture = "/view/Images/burger.png" }, 
+            new FoodModel() { category = Category.BURGER, name = "불고기와퍼", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "치즈와퍼", picture = "/view/Images/burger.png" },
 
-            new Food() { category = Category.SIDE,   title = "치킨", imageData="/view/Images/side.png"}
+            new FoodModel() { category = Category.SIDE,   name = "치킨", picture="/view/Images/side.png"}
         };
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,6 +53,7 @@ namespace BurgerKing_kiosk
 
             Category category = (Category)lbCategory.SelectedIndex;
             List.ItemsSource = Food.Where(x => x.category == category).ToList();
+            List.Items.Refresh();
         }
 
         private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
