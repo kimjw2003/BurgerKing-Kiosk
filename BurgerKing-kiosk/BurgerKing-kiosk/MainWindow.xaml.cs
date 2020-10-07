@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace BurgerKing_kiosk
 {
@@ -19,6 +20,8 @@ namespace BurgerKing_kiosk
             timer.Tick += Timer_Tick;
             timer.Start();
 
+            timer.Tick += Stopwatch;
+
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
@@ -26,8 +29,6 @@ namespace BurgerKing_kiosk
 
         private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("누름");
-
             if (e.Key == Key.F2)
             {
                 if (!frame_content.CanGoBack)
@@ -39,6 +40,13 @@ namespace BurgerKing_kiosk
             }
 
         }
+
+        private void Stopwatch(object sender, EventArgs e)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             Time.Text = DateTime.Now.ToString();
