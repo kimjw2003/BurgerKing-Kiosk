@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BurgerKing_kiosk.model
 {
-    class OrderModel
+    class MenuViewModel
     {
         private List<FoodModel> foods = null;
         private int table = 0;

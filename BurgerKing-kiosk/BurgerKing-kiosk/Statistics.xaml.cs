@@ -10,15 +10,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BurgerKing_kiosk.view.Pages
+namespace BurgerKing_kiosk
 {
     /// <summary>
     /// Statistics.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Statistics : Page
+    public partial class Statistics : Window
     {
         public Statistics()
         {
