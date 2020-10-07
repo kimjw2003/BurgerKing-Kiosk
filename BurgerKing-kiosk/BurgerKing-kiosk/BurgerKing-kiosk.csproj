@@ -56,7 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\FoodModel.cs" />
-    <Compile Include="viewModel\OrderViewModel.cs" />
+    <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
@@ -67,9 +67,6 @@
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\Pages\Statistics.xaml.cs">
-      <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Pages\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
@@ -119,10 +116,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\Pages\Place.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\Pages\Statistics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
