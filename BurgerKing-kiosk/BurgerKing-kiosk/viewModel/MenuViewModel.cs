@@ -11,7 +11,11 @@ namespace BurgerKing_kiosk.model
     {
         private List<FoodModel> foods = null;
         private int table = 0;
-        
+
+        public List<FoodModel> Show()
+        {
+            return foods;
+        }
         public void AddFood(int id)
         {
             FoodModel food = new FoodModel();
