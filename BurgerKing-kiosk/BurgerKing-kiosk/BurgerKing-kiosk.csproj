@@ -108,9 +108,12 @@
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="viewModel\DB\connectDB.cs" />
+    <Compile Include="viewModel\DB\OrderDB.cs" />
+    <Compile Include="viewModel\DB\TableDB.cs" />
     <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
+    <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="view\Pages\Food.cs" />
