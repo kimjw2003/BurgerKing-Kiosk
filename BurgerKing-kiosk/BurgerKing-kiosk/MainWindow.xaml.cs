@@ -44,7 +44,6 @@ namespace BurgerKing_kiosk
         private void Stopwatch(object sender, EventArgs e)
         {
             Stopwatch stopWatch = new Stopwatch();
-            stopWatch.
         }
 
         private void Timer_Tick(object sender, EventArgs e)
