@@ -272,6 +272,6 @@
                     Click="GoNext" FontSize="30" Background="#F1555A"
                         Foreground="White" FontWeight="Bold">다음</Button>
             </Grid>
-        </Grid>
+        </Grid> 
     </Grid>
 </Page>

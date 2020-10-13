@@ -31,6 +31,7 @@ namespace BurgerKing_kiosk
         {
             NavigationService.GoBack();
         }
+
         private List<FoodModel> listFood = new List<FoodModel>()
         {
             new FoodModel(){name="뭐시기",price=1000,amount=1},
