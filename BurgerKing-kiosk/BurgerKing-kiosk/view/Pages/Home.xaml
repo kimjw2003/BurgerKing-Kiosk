@@ -43,10 +43,27 @@
                     </StackPanel>
                 </StackPanel>
 
+                
                 <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                    Foreground="White" Background="#F0494F"  Width="150" Height="50" FontSize="25" Margin="0 25 0 0" Click="BtnOrder_Click">주문하기</Button>
 
             </StackPanel>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Right" >
+                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                   Foreground="White" Background="#084B8A"  Width="100" Height="40" FontSize="20" Margin="0 0 25 10" Click="BtnAdmin_Click">관리</Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+           
+            
         </Grid>
     </Grid>
 </Page>
