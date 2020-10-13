@@ -71,7 +71,7 @@ namespace BurgerKing_kiosk
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Pages/Table.xaml", UriKind.Relative));
         }
 
         private void CancleBtn_Click(object sender, RoutedEventArgs e)

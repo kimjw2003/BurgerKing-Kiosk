@@ -234,7 +234,6 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-
     <Resource Include="view\Images\card.png" />
     <Resource Include="view\Images\carmera.png" />
     <Resource Include="view\Images\check.png" />
@@ -243,6 +242,12 @@
     <Resource Include="view\Images\desert.png" />
     <Resource Include="view\Images\side.png" />
     <Resource Include="view\Images\burger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="view\Images\Burger\" />
+    <Folder Include="view\Images\Desert\" />
+    <Folder Include="view\Images\etc\" />
+    <Folder Include="view\Images\Side\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
