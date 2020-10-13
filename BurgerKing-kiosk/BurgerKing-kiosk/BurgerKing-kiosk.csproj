@@ -234,6 +234,7 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="view\Images\desert.png" />
     <Resource Include="view\Images\side.png" />
     <Resource Include="view\Images\burger.png" />
   </ItemGroup>
