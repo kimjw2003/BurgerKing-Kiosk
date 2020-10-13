@@ -239,6 +239,7 @@
     <Resource Include="view\Images\check.png" />
     <Resource Include="view\Images\money.png" />
     <Resource Include="view\Images\user.png" />
+    <Resource Include="view\Images\desert.png" />
     <Resource Include="view\Images\side.png" />
     <Resource Include="view\Images\burger.png" />
   </ItemGroup>
