@@ -31,7 +31,6 @@ namespace BurgerKing_kiosk
 
             List.ItemsSource = Food.Where(x => x.category == Category.BURGER).ToList();
             List.ItemsSource = Food.Where(x => x.category == Category.SIDE).ToList();
-            List.ItemsSource = Food.Where(x => x.category == Category.DESERT).ToList();
         }
 
         private List<FoodModel> Food = new List<FoodModel>() {
@@ -45,9 +44,7 @@ namespace BurgerKing_kiosk
             new FoodModel() { category = Category.BURGER, name = "불고기와퍼", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "치즈와퍼", picture = "/view/Images/burger.png" },
 
-            new FoodModel() { category = Category.SIDE,   name = "치킨", picture="/view/Images/side.png"},
-
-            new FoodModel() { category = Category.DESERT, name = "디저트1", picture="/view/images/desert.png"}
+            new FoodModel() { category = Category.SIDE,   name = "치킨", picture="/view/Images/side.png"}
         };
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
