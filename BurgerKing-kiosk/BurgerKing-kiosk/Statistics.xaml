@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurgerKing_kiosk"
         mc:Ignorable="d"
-        Title="Statistics" Height="450" Width="800">
+        Title="Statistics" Height="1080" Width="1800">
+    
+    <Window.Resources>
+        <Style x:Key="SaleBtnStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0B4C5F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <StackPanel Margin="0 0 12 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Style="{StaticResource SaleBtnStyle}">전체 매출액</Button>
+                        <Button Style="{StaticResource SaleBtnStyle}">카드 매출액</Button>
+                        <Button Style="{StaticResource SaleBtnStyle}">현금 매출액</Button>
+                    </StackPanel>
+                </Grid>
+               
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

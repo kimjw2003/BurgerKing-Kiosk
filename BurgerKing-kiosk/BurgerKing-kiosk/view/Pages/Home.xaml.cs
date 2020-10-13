@@ -38,5 +38,17 @@ namespace BurgerKing_kiosk
             }
         }
 
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
+            }
+        }
+
     }
 }

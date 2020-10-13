@@ -11,6 +11,10 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer timer2 = new DispatcherTimer();
+        Stopwatch sw = new Stopwatch();
+        string currentTime;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,8 +24,12 @@ namespace BurgerKing_kiosk
             timer.Tick += Timer_Tick;
             timer.Start();
 
-            timer.Tick += Stopwatch;
+            timer2.Interval = new TimeSpan(0, 0, 1);
+            timer2.Tick += Stopwatch;
+            timer2.Start();
 
+            sw.Start();
+            
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
@@ -33,9 +41,9 @@ namespace BurgerKing_kiosk
             {
                 if (!frame_content.CanGoBack)
                 {
-                    Statistics statistics = new Statistics();
+                    Statistics statistics = new Statistics(sw.Elapsed);
                     statistics.Show();
-                    Close();
+                    
                 } 
             }
 
@@ -43,7 +51,10 @@ namespace BurgerKing_kiosk
 
         private void Stopwatch(object sender, EventArgs e)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            TimeSpan ts = sw.Elapsed; 
+            currentTime = String.Format("{0:00}:{1:00}:{2:00}",
+            ts.Hours, ts.Minutes, ts.Seconds);
+            Console.WriteLine(currentTime);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -57,9 +68,6 @@ namespace BurgerKing_kiosk
             {
                 frame_content.GoBack();
             }
-
-            //frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
-
         }
     }
 }
