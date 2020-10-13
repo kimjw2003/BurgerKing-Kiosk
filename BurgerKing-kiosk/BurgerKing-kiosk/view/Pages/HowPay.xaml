@@ -33,7 +33,56 @@
                     <ColumnDefinition Width="0.2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1" Background="#F3F3F3 ">
-
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                            <TextBlock FontSize="45" VerticalAlignment="Center"
+                                       Margin="20">주문내역</TextBlock>
+                            <Border VerticalAlignment="Center" Background="#F1555A" 
+                                    Height="50" Width="100" Margin="10"
+                                    BorderBrush="#F1555A" BorderThickness="2" CornerRadius="20">
+                                <TextBlock FontSize="30" HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" Foreground="White">6</TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ListBox x:Name="Order" Margin="150,0,0,0"
+                                 FontSize="16" FontWeight="SemiBold"
+                                 VerticalAlignment="Top"
+                                 BorderBrush="Transparent"
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Width="400" Height="200">
+                                        <TextBlock Text="{Binding name}" Margin="0,24,0,0" HorizontalAlignment="Left"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding price}" Margin="0,24,0,0" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding amount}" Margin="0,24,0,0" HorizontalAlignment="Right"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <StackPanel Orientation="Horizontal" 
+                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <TextBlock FontSize="40">총 주문금액</TextBlock>
+                            <TextBlock Margin="20,0" FontSize="40" Foreground="#ED1C23">27,000원</TextBlock>
+                        </StackPanel>
+                    </Grid> 
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
@@ -46,13 +95,13 @@
                 <Grid Grid.Row="0">
                     <Button HorizontalAlignment="Stretch"
                         Background="white" BorderBrush="White">
-                        <Image Source="/view/Images/Burial_meal.png" Stretch="Fill"/>
+                        <Image Source="/view/Images/money.png" Stretch="Fill"/>
                     </Button>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Button HorizontalAlignment="Stretch"
                         Background="white" BorderBrush="White">
-                        <Image Source="/view/Images/Burial_meal.png" Stretch="Fill"/>
+                        <Image Source="/view/Images/card.png" Stretch="Fill"/>
                     </Button>
                 </Grid>
             </Grid>
@@ -70,7 +119,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" Grid.Column="1">
                 <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Click="GoBack" FontSize="30">이전</Button>
+                    Click="GoBack" FontSize="30" FontWeight="Bold">이전</Button>
             </Grid>
         </Grid>
     </Grid>
