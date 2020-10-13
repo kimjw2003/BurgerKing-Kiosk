@@ -23,7 +23,6 @@ namespace BurgerKing_kiosk
         public TablePage()
         {
             InitializeComponent();
-
             this.DataContext = new viewModel.TableViewModel();
         }
         private void Click_Seat(object sender, RoutedEventArgs e)
@@ -36,7 +35,7 @@ namespace BurgerKing_kiosk
         }
         private void GoNext(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Pages/HowPayPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("view/Pages/HowPay.xaml", UriKind.Relative));
         }
     }
 }

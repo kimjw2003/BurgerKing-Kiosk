@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BurgerKing_kiosk.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,19 @@ namespace BurgerKing_kiosk
         public HowPayPage()
         {
             InitializeComponent();
+            Order.ItemsSource = listFood.ToList();
             this.DataContext = new viewModel.HowPayViewModel();
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
+        private List<FoodModel> listFood = new List<FoodModel>()
+        {
+            new FoodModel(){name="뭐시기",price=1000,amount=1},
+            new FoodModel(){name="뭐시기",price=1000,amount=1},
+            new FoodModel(){name="뭐시기",price=1000,amount=1},
+            new FoodModel(){name="뭐시기",price=1000,amount=1},
+        };
     }
 }
