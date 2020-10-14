@@ -29,9 +29,13 @@ namespace BurgerKing_kiosk
 
             this.Loaded += OrderPage_Loaded;
 
-            List.ItemsSource = Food.Where(x => x.category == Category.BURGER).ToList();
-            List.ItemsSource = Food.Where(x => x.category == Category.SIDE).ToList();
-            List.ItemsSource = Food.Where(x => x.category == Category.DESERT).ToList();
+            lbFood.ItemsSource = Food.Where(x => x.category == Category.BURGER).ToList();
+            lbFood.ItemsSource = Food.Where(x => x.category == Category.SIDE).ToList();
+            lbFood.ItemsSource = Food.Where(x => x.category == Category.DESERT).ToList();
+
+            OrderData.GetInstance().Add(new OrderData() {menuName = "샘플데이터", menuCount = 1, menuPrice = 10000});
+
+            menu_List.ItemsSource = OrderData.GetInstance();
         }
 
         private List<FoodModel> Food = new List<FoodModel>() {
@@ -41,7 +45,7 @@ namespace BurgerKing_kiosk
             new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩1", picture = "/view/Images/burger.png" }, 
             new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩2", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩3", picture = "/view/Images/burger.png" }, 
-            new FoodModel() { category = Category.BURGER, name = "와퍼", picture = "/view/Images/burger.png" }, 
+            new FoodModel() { category = Category.BURGER, name = "와퍼", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "불고기와퍼", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "치즈와퍼", picture = "/view/Images/burger.png" },
 
@@ -56,8 +60,8 @@ namespace BurgerKing_kiosk
             if (lbCategory.SelectedIndex == -1) return;
 
             Category category = (Category)lbCategory.SelectedIndex;
-            List.ItemsSource = Food.Where(x => x.category == category).ToList();
-            List.Items.Refresh();
+            lbFood.ItemsSource = Food.Where(x => x.category == category).ToList();
+            lbFood.Items.Refresh();
         }
 
         private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
@@ -73,6 +77,33 @@ namespace BurgerKing_kiosk
         {
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
         }
+
+        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbFood.SelectedIndex == -1) 
+                return; 
+
+            FoodModel food = (FoodModel)lbFood.SelectedItem;
+
+        }
     }
+
+    class OrderData
+    {
+        public string menuName { get; set; }
+        public int menuCount { get; set; }
+        public int menuPrice { get; set; }
+
+        private static List<OrderData> instance;
+
+        public static List<OrderData> GetInstance()
+        {
+            if (instance == null)
+                instance = new List<OrderData>();
+
+            return instance;
+        }
+    }
+
 
 }
