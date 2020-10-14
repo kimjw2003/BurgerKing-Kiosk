@@ -309,7 +309,7 @@
     <Resource Include="view\Images\Burger\할라피뇨와퍼.png" />
     <Resource Include="view\Images\Burger\할라피뇨와퍼주니어.png" />
     <Resource Include="view\Images\card.png" />
-    <Resource Include="view\Images\carmera.png" />
+    <Resource Include="view\Images\camera.png" />
     <Resource Include="view\Images\check.png" />
     <Resource Include="view\Images\money.png" />
     <Resource Include="view\Images\user.png" />

@@ -31,6 +31,14 @@ namespace BurgerKing_kiosk
         {
             NavigationService.GoBack();
         }
+        private void Money(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("view/Pages/Money.xaml", UriKind.Relative));
+        }
+        private void Card(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("view/Pages/Card.xaml", UriKind.Relative));
+        }
 
         private List<FoodModel> listFood = new List<FoodModel>()
         {

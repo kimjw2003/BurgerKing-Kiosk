@@ -66,11 +66,18 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Width="300" Height="100" Background="White" Margin="5">
-                                        <TextBlock Text="{Binding name}" Margin="10,0" HorizontalAlignment="Left"/>
+                                    <StackPanel Width="340" Height="80" Background="White" Margin="5">
+                                        <TextBlock Text="{Binding name}" FontSize="25"
+                                                   Margin="10,0,0,15" HorizontalAlignment="Left"/>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                                            <TextBlock Text="{Binding price}" Margin="10,0" HorizontalAlignment="Left"/>
-                                            <TextBlock Text="{Binding amount}" Margin="10,0" HorizontalAlignment="Right"/>
+                                            <TextBlock Text="{Binding price}" FontSize="20"
+                                                       Margin="10,0,0,0" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="원" FontSize="20"
+                                                       HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding amount}" FontSize="20"
+                                                       Margin="210,0,0,0" HorizontalAlignment="Right"/>
+                                            <TextBlock Text="개" FontSize="20"
+                                                       HorizontalAlignment="Right"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
@@ -83,7 +90,7 @@
                             <TextBlock FontSize="40">총 주문금액</TextBlock>
                             <TextBlock Margin="20,0" FontSize="40" Foreground="#ED1C23">27,000원</TextBlock>
                         </StackPanel>
-                    </Grid> 
+                    </Grid>
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
@@ -94,13 +101,13 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <Button HorizontalAlignment="Stretch"
+                    <Button HorizontalAlignment="Stretch" Click="Money"
                         Background="white" BorderBrush="White">
                         <Image Source="/view/Images/money.png" Stretch="Fill"/>
                     </Button>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <Button HorizontalAlignment="Stretch"
+                    <Button HorizontalAlignment="Stretch" Click="Card"
                         Background="white" BorderBrush="White">
                         <Image Source="/view/Images/card.png" Stretch="Fill"/>
                     </Button>

@@ -26,5 +26,9 @@ namespace BurgerKing_kiosk
 
             this.DataContext = new viewModel.CardViewModel();
         }
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
