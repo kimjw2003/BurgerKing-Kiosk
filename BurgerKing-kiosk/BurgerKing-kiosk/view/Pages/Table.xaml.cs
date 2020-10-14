@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BurgerKing_kiosk.model;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class TablePage : Page
     {
+        MenuViewModel menu = new MenuViewModel();
         public TablePage()
         {
             InitializeComponent();
@@ -27,7 +30,33 @@ namespace BurgerKing_kiosk
         }
         private void Click_Seat(object sender, RoutedEventArgs e)
         {
-
+            var button = (Button)sender;
+            Debug.WriteLine(button.Name);
+            if (!menu.CheckTable())
+            {
+                return;
+            }
+            switch (button.Name)
+            {
+                case "one":
+                    break;
+                case "two":
+                    break;
+                case "three":
+                    break;
+                case "four":
+                    break;
+                case "five":
+                    break;
+                case "six":
+                    break;
+                case "seven":
+                    break;
+                case "eight":
+                    break;
+                case "nine":
+                    break;
+            }
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {

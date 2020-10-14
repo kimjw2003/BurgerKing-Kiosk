@@ -34,7 +34,7 @@ namespace BurgerKing_kiosk.model
 
             return foods;
         }
-        public bool CheckTable(int id)
+        public bool CheckTable()
         {
             if (table != 0)
             {

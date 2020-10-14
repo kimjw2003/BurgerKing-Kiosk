@@ -58,8 +58,8 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" Grid.Column="1">
-                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Click="GoBack" FontSize="30" FontWeight="Bold">이전</Button>
+                <Button Style="{StaticResource Back}" 
+                    Click="GoBack">이전</Button>
             </Grid>
         </Grid>
     </Grid>

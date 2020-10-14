@@ -8,6 +8,29 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="TablePage">
 
+    <Page.Resources>
+        <Style x:Key="Table" TargetType="Button">
+            <Setter Property="Background" Value="#939393"/>
+        </Style>
+        <Style x:Key="Number" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Margin" Value="5,0"/>
+        </Style>
+        <Style x:Key="Time" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="55"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="GetTime" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
@@ -42,16 +65,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 1</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 1</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -66,17 +86,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" VerticalAlignment="Stretch">
-                            <TextBlock FontWeight="Bold" Foreground="White" 
-                                       VerticalAlignment="Stretch"
-                                       FontSize="40" Margin="10,0,0,0">NO. 2</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 2</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1" VerticalAlignment="Stretch">
-                            <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -91,16 +107,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 3</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 3</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -115,16 +128,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 4</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 4</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -139,16 +149,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 5</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 5</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -163,16 +170,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 6</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 6</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -187,16 +191,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 7</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 7</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -211,16 +212,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 8</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 8</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -235,16 +233,13 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Foreground="White"
-                                       FontSize="40" Margin="5,0">NO. 9</TextBlock>
+                            <TextBlock Style="{StaticResource Number}">NO. 9</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       FontSize="55" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource Time}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBlock HorizontalAlignment="Right"
-                                       FontSize="40" Foreground="White"></TextBlock>
+                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
                         </Grid>
                     </Grid>
                 </Button>
@@ -264,13 +259,12 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" Grid.Column="1">
-                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Click="GoBack" FontSize="30" FontWeight="Bold">이전</Button>
+                <Button Style="{StaticResource Back}" 
+                    Click="GoBack">이전</Button>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="3">
-                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Click="GoNext" FontSize="30" Background="#F1555A"
-                        Foreground="White" FontWeight="Bold">다음</Button>
+                <Button Style="{StaticResource Next}"
+                        Click="GoNext">다음</Button>
             </Grid>
         </Grid> 
     </Grid>
