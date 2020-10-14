@@ -11,9 +11,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer2 = new DispatcherTimer();
-        Stopwatch sw = new Stopwatch();
-        string currentTime;
+ 
 
         public MainWindow()
         {
@@ -23,12 +21,6 @@ namespace BurgerKing_kiosk
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
-
-            timer2.Interval = new TimeSpan(0, 0, 1);
-            timer2.Tick += Stopwatch;
-            timer2.Start();
-
-            sw.Start();
             
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
@@ -41,20 +33,12 @@ namespace BurgerKing_kiosk
             {
                 if (!frame_content.CanGoBack)
                 {
-                    Statistics statistics = new Statistics(sw.Elapsed);
+                    Statistics statistics = new Statistics();
                     statistics.Show();
                     
                 } 
             }
 
-        }
-
-        private void Stopwatch(object sender, EventArgs e)
-        {
-            TimeSpan ts = sw.Elapsed; 
-            currentTime = String.Format("{0:00}:{1:00}:{2:00}",
-            ts.Hours, ts.Minutes, ts.Seconds);
-            Console.WriteLine(currentTime);
         }
 
         private void Timer_Tick(object sender, EventArgs e)

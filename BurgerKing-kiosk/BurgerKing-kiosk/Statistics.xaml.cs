@@ -21,30 +21,19 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class Statistics : Window
     {
-        DispatcherTimer timer2 = new DispatcherTimer();
-        Stopwatch sw = new Stopwatch();
-        String currentTime;
-        TimeSpan tts;
-
-        public Statistics(TimeSpan ts)
+        public Statistics()
         {
             InitializeComponent();
-
-            tts = ts;
-
-            timer2.Interval = new TimeSpan(0, 0, 1);
-            timer2.Tick += Stopwatch;
-            timer2.Start();
-
-            sw.Start();
         }
 
-        private void Stopwatch(object sender, EventArgs e)
+
+        /* private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TimeSpan ts = sw.Elapsed;
-            currentTime = String.Format("통계 {0:00}:{1:00}:{2:00}",
-            ts.Hours+tts.Hours, ts.Minutes+tts.Minutes, ts.Seconds+tts.Seconds);
-            Console.WriteLine(currentTime);
-        }
+            if (lbCategory.SelectedIndex == -1) return;
+
+            Category category = (Category)lbCategory.SelectedIndex;
+            List.ItemsSource = Food.Where(x => x.category == category).ToList();
+            List.Items.Refresh();
+        }*/
     }
 }
