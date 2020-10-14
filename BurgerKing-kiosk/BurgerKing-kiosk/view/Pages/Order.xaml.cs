@@ -48,6 +48,8 @@ namespace BurgerKing_kiosk
             new FoodModel() { category = Category.BURGER, name = "와퍼", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "불고기와퍼", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "치즈와퍼", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "치즈와퍼2", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "치즈와퍼3", picture = "/view/Images/burger.png" },
 
             new FoodModel() { category = Category.SIDE,   name = "치킨", picture="/view/Images/side.png"},
 
