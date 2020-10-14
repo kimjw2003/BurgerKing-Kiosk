@@ -241,6 +241,8 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="view\Images\Side\시즈닝.png" />
+    <Resource Include="view\Images\Side\스위트칠리.png" />
     <Resource Include="view\Images\Side\21치즈스틱.png" />
     <Resource Include="view\Images\Side\너겟킹.png" />
     <Resource Include="view\Images\Side\바삭킹.png" />

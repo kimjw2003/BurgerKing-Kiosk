@@ -35,9 +35,9 @@ namespace BurgerKing_kiosk
         }
 
         private List<FoodModel> Food = new List<FoodModel>() {
-            new FoodModel() { category = Category.BURGER, name = "기네스머쉬룸와퍼", picture = "/view/Images/burger.png" },
-            new FoodModel() { category = Category.BURGER, name = "기네스와퍼", picture = "/view/Images/burger.png" },
-            new FoodModel() { category = Category.BURGER, name = "콰트로치즈와퍼", picture = "/view/Images/burger.png" },
+            new FoodModel() { category = Category.BURGER, name = "기네스머쉬룸와퍼", picture = "/view/Images/Burger/기네스머쉬룸와퍼.png" },
+            new FoodModel() { category = Category.BURGER, name = "기네스와퍼", picture = "/view/Images/Burger/기네스와퍼.png" },
+            new FoodModel() { category = Category.BURGER, name = "콰트로치즈와퍼", picture = "/view/Images/Burger/콰트로치즈와퍼.png" },
             new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩1", picture = "/view/Images/burger.png" }, 
             new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩2", picture = "/view/Images/burger.png" },
             new FoodModel() { category = Category.BURGER, name = "기네스와퍼팩3", picture = "/view/Images/burger.png" }, 
