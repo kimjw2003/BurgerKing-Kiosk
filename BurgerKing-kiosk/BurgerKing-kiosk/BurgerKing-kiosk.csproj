@@ -234,6 +234,20 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="view\Images\Side\21치즈스틱.png" />
+    <Resource Include="view\Images\Side\너겟킹.png" />
+    <Resource Include="view\Images\Side\바삭킹.png" />
+    <Resource Include="view\Images\Side\쉐이킹프라이.png" />
+    <Resource Include="view\Images\Side\어니언링.png" />
+    <Resource Include="view\Images\Side\치즈프라이%28스낵킹%29.png" />
+    <Resource Include="view\Images\Side\칠리크랩치즈프라이.png" />
+    <Resource Include="view\Images\Side\코울슬로%28스낵킹%29.png" />
+    <Resource Include="view\Images\Side\코코넛쉬림프 칠리소스.png" />
+    <Resource Include="view\Images\Side\콘샐러드%28스낵킹%29.png" />
+    <Resource Include="view\Images\Side\크리미치즈볼.png" />
+    <Resource Include="view\Images\Side\트러플프라이%28스낵킹%29.png" />
+    <Resource Include="view\Images\Side\트러플프라이.png" />
+    <Resource Include="view\Images\Side\프랜치프라이.png" />
     <Resource Include="view\Images\Desert\미닛메이드오렌지.png" />
     <Resource Include="view\Images\Desert\생수.png" />
     <Resource Include="view\Images\Desert\스프라이트.png" />
@@ -298,7 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="view\Images\etc\" />
-    <Folder Include="view\Images\Side\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
