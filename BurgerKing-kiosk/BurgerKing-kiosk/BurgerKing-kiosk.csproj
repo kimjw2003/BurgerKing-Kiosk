@@ -234,6 +234,59 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="view\Images\Desert\미닛메이드오렌지.png" />
+    <Resource Include="view\Images\Desert\생수.png" />
+    <Resource Include="view\Images\Desert\스프라이트.png" />
+    <Resource Include="view\Images\Desert\씨그램.png" />
+    <Resource Include="view\Images\Desert\아메리카노.png" />
+    <Resource Include="view\Images\Desert\제로톡톡.png" />
+    <Resource Include="view\Images\Desert\컵아이스크림.png" />
+    <Resource Include="view\Images\Desert\코카콜라.png" />
+    <Resource Include="view\Images\Desert\코카콜라제로.png" />
+    <Resource Include="view\Images\Desert\콘아이스크림.png" />
+    <Resource Include="view\Images\Desert\핫 아이스초코.png" />
+    <Resource Include="view\Images\Burger\BLT뉴올리언스치킨버거.png" />
+    <Resource Include="view\Images\Burger\기네스머쉬룸와퍼.png" />
+    <Resource Include="view\Images\Burger\기네스와퍼.png" />
+    <Resource Include="view\Images\Burger\기네스콰트로치즈와퍼.png" />
+    <Resource Include="view\Images\Burger\뉴올리언스치킨버거.png" />
+    <Resource Include="view\Images\Burger\더블롱킹.png" />
+    <Resource Include="view\Images\Burger\더블와퍼.png" />
+    <Resource Include="view\Images\Burger\더블해쉬불고기버거.png" />
+    <Resource Include="view\Images\Burger\롱치킨버거.png" />
+    <Resource Include="view\Images\Burger\몬스터X.png" />
+    <Resource Include="view\Images\Burger\몬스터와퍼.png" />
+    <Resource Include="view\Images\Burger\바베큐킹치킨버거.png" />
+    <Resource Include="view\Images\Burger\베이컨치즈와퍼.png" />
+    <Resource Include="view\Images\Burger\불고기롱치킨버거.png" />
+    <Resource Include="view\Images\Burger\불고기몬스터.png" />
+    <Resource Include="view\Images\Burger\불고기버거.png" />
+    <Resource Include="view\Images\Burger\불고기와퍼.png" />
+    <Resource Include="view\Images\Burger\불고기와퍼주니어.png" />
+    <Resource Include="view\Images\Burger\붉은대게X.png" />
+    <Resource Include="view\Images\Burger\붉은대게와퍼.png" />
+    <Resource Include="view\Images\Burger\스윗마요킹치킨버거.png" />
+    <Resource Include="view\Images\Burger\와퍼.png" />
+    <Resource Include="view\Images\Burger\와퍼주니어.png" />
+    <Resource Include="view\Images\Burger\치즈버거.png" />
+    <Resource Include="view\Images\Burger\치즈와퍼.png" />
+    <Resource Include="view\Images\Burger\치즈와퍼주니어.png" />
+    <Resource Include="view\Images\Burger\칠리세우게버거.png" />
+    <Resource Include="view\Images\Burger\칠리크랩버거.png" />
+    <Resource Include="view\Images\Burger\칠리크랩통새우.png" />
+    <Resource Include="view\Images\Burger\콰트로치즈X.png" />
+    <Resource Include="view\Images\Burger\콰트로치즈와퍼.png" />
+    <Resource Include="view\Images\Burger\콰트로치즈와퍼주니어.png" />
+    <Resource Include="view\Images\Burger\킹치킨버거.png" />
+    <Resource Include="view\Images\Burger\통새우스테이크버거.png" />
+    <Resource Include="view\Images\Burger\통새우와퍼.png" />
+    <Resource Include="view\Images\Burger\통새우와퍼주니어.png" />
+    <Resource Include="view\Images\Burger\트러플머쉬룸X.png" />
+    <Resource Include="view\Images\Burger\트러플머쉬룸와퍼.png" />
+    <Resource Include="view\Images\Burger\트리플머쉬룸와퍼주니어.png" />
+    <Resource Include="view\Images\Burger\할라피뇨불고기버거.png" />
+    <Resource Include="view\Images\Burger\할라피뇨와퍼.png" />
+    <Resource Include="view\Images\Burger\할라피뇨와퍼주니어.png" />
     <Resource Include="view\Images\card.png" />
     <Resource Include="view\Images\carmera.png" />
     <Resource Include="view\Images\check.png" />
@@ -244,8 +297,6 @@
     <Resource Include="view\Images\burger.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="view\Images\Burger\" />
-    <Folder Include="view\Images\Desert\" />
     <Folder Include="view\Images\etc\" />
     <Folder Include="view\Images\Side\" />
   </ItemGroup>
