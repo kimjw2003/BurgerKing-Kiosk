@@ -73,7 +73,8 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="1">
-                <ListBox x:Name="List" Margin="150,0,0,0" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox x:Name="lbFood" Margin="150,0,0,0" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         SelectionChanged="List_SelectionChanged">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -134,10 +135,15 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock 
-                    Margin="162,0,162,0" 
-                    Background="#f3f3f3"       
-                    />
+                <ListView x:Name="menu_List" Margin="100,0,100,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding menuName}"/>
+                            <GridViewColumn Header="수량" Width="170" DisplayMemberBinding="{Binding menuCount}"/>
+                            <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding menuPrice}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid Grid.Column="2">

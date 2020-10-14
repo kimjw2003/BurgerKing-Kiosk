@@ -103,7 +103,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\FoodModel.cs" />
+    <Compile Include="model\SaleModel.cs" />
     <Compile Include="Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
