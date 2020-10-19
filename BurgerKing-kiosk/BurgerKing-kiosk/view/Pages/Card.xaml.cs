@@ -25,10 +25,17 @@ namespace BurgerKing_kiosk
             InitializeComponent();
 
             this.DataContext = new viewModel.CardViewModel();
+
+            webcam.CameraIndex = 0;
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
+
+        private void webcam_QrDecoded(object sender, string e) {
+            tdRecog.Text = e; 
+        }
+
     }
 }
