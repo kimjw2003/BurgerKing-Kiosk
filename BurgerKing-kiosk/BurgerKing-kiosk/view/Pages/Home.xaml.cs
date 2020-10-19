@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,39 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class HomePage : Page
     {
+        private BackgroundWorker loadingThread;
+
         public HomePage()
         {
             InitializeComponent();
+            InitBW();
+            loadingThread.RunWorkerAsync();
         }
 
+        private void InitBW()
+        {
+            loadingThread = new BackgroundWorker()
+            {
+                WorkerReportsProgress = true,
+                WorkerSupportsCancellation = true
+            };
 
+            loadingThread.DoWork += Thread_DoWork;
+            loadingThread.RunWorkerCompleted += Thread_RunWorkerCompleted;
+        }
+
+        private void Thread_DoWork(object sender, DoWorkEventArgs e)
+        {
+           for(int i =  0; i<1000; i++)
+            {
+
+            }
+        }
+
+        private void Thread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Console.WriteLine("로딩끝");
+        }
         private void BtnOrder_Click(object sender, RoutedEventArgs e)
         {
             if(NavigationService.CanGoForward)

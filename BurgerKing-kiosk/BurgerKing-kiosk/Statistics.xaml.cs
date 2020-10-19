@@ -24,8 +24,8 @@ namespace BurgerKing_kiosk
         public Statistics()
         {
             InitializeComponent();
+            
         }
-
 
         /* private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
