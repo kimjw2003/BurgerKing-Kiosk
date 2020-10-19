@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.viewModel.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,78 +10,16 @@ using System.Windows.Input;
 
 namespace BurgerKing_kiosk.viewModel
 {
-    class TableViewModel : INotifyPropertyChanged
+    class TableViewModel
     {
-        private int iNum;
-        public int Number
-        {
-            get
-            { return iNum; }
-            set
-            {
-                iNum = value;
-                OnPropertyChanged("Number");
+        private List<SaleModel> menus = new List<SaleModel>();
 
-                OnPropertyChanged("PlusEnable");
-                OnPropertyChanged("MinusEnable");
+        public List<SaleModel> GetFood(String cartegory)
+        {
+            TableDB order = new TableDB();
+            menus = order.Insert(cartegory);
 
-                PageContents = string.Format("{0} 페이지를 보고 있어요.", iNum);
-            }
-        }
-
-        public TableViewModel()
-        {
-            Number = 1;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        private ICommand minusCommand;
-        public ICommand MinusCommand
-        {
-            get { return (this.minusCommand) ?? (this.minusCommand = new DelegateCommand(Minus)); }
-        }
-        private void Minus()
-        {
-            Number--;
-        }
-
-        public bool MinusEnable
-        {
-            get { return Number > 1 ? true : false; }
-        }
-
-        private ICommand plusCommand;
-        public ICommand PlusCommand
-        {
-            get { return (this.plusCommand) ?? (this.plusCommand = new DelegateCommand(Plus)); }
-        }
-        private void Plus()
-        {
-            Number++;
-        }
-        public bool PlusEnable
-        {
-            get { return Number < 10 ? true : false; }
-        }
-
-        private string pageContent;
-        public string PageContents
-        {
-            get { return pageContent; }
-            set
-            {
-                pageContent = value;
-                OnPropertyChanged("PageContents");
-            }
+            return menus;
         }
     }
 }

@@ -17,7 +17,6 @@ namespace BurgerKing_kiosk.viewModel
             OrderDB order = new OrderDB();
             menus = order.Select(cartegory);
 
-            Console.WriteLine(menus);
             return menus;
         }
 

@@ -31,10 +31,6 @@ namespace BurgerKing_kiosk
 
             this.Loaded += OrderPage_Loaded;
 
-            lbFood.ItemsSource = (viewModel.GetFood("kiosk.burger")).Where(x => x.category == Category.burger).ToList();
-            lbFood.ItemsSource = (viewModel.GetFood("kiosk.side")).Where(x => x.category == Category.side).ToList();
-            lbFood.ItemsSource = (viewModel.GetFood("kiosk.desert")).Where(x => x.category == Category.desert).ToList();
-
             OrderData.GetInstance().Add(new OrderData() {menuName = "샘플데이터", menuCount = 1, menuPrice = 10000});
 
             menu_List.ItemsSource = OrderData.GetInstance();
@@ -42,18 +38,16 @@ namespace BurgerKing_kiosk
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             if (lbCategory.SelectedIndex == -1) return;
 
             Category category = (Category)lbCategory.SelectedIndex;
-            Console.WriteLine("0000000000000000000");
-            Console.WriteLine(category.ToString());
-            Console.WriteLine("00000000000000000000");
-            lbFood.ItemsSource = (viewModel.GetFood(category.ToString())).Where(x => x.category == category).ToList();
+            lbFood.ItemsSource = (viewModel.GetFood(category.ToString())).ToList();
             lbFood.Items.Refresh();
         }
 
         private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
-            
+            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록 
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
