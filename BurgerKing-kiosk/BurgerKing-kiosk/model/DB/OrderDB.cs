@@ -11,36 +11,47 @@ namespace BurgerKing_kiosk.viewModel.DB
 {
     class OrderDB
     {
-        private connectDB conn = new connectDB();
-        private List<FoodModel> menus = null;
+        private connectDB conDB = new connectDB();
+        private List<FoodModel> menus = new List<FoodModel>();
 
         public List<FoodModel> Select(String tablename)
         {
-            if (conn.OpenConnection() == true)
+            MySqlConnection conn = conDB.OpenConnection();
+            try
             {
+                conn.Open();
+                Console.WriteLine("DataBase연동 성공");
                 FoodModel menu;
-                try
+                string sql = "select * from " + tablename;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    string sql = "select * from " + tablename;
-                    MySqlCommand cmd = new MySqlCommand(sql, conn.conn);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        menu = new FoodModel();
-                        menu.id = (int)reader["id"]; //todo - object형식이 int형으로 바뀌었는지 확인 안되면 밑에것도 함께 고침
-                        menu.name = (string)reader["name"];
-                        menu.picture = (string)reader["picture"];
-                        menu.price = (int)reader["price"];
-                        menu.sale = (int)reader["sale"];
+                    menu = new FoodModel();
+                    menu.id = (int)reader["id"]; //todo - object형식이 int형으로 바뀌었는지 확인 안되면 밑에것도 함께 고침
+                    Console.WriteLine(menu.id);
+                    menu.name = (string)reader["name"];
+                    menu.picture = (string)reader["picture"];
+                    menu.price = (int)reader["price"];
+                    menu.sale = (int)reader["sale"];
 
-                        menus.Add(menu);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
+                    menus.Add(menu);
                 }
             }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0:
+                        Console.WriteLine("데이터베이스 서버에 연결할 수 없습니다.");
+                        break;
+
+                    case 1045:
+                        Console.WriteLine("유저 ID 또는 Password를 확인해주세요.");
+                        break;
+                }
+            }
+            Console.WriteLine(menus);
             return menus;
         }
     }

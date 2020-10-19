@@ -19,8 +19,8 @@ namespace BurgerKing_kiosk.model
     }
     public enum Category
     {
-        BURGER,
-        SIDE,
-        DESERT,
+        burger,
+        side,
+        desert,
     }
 }

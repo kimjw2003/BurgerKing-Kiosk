@@ -11,33 +11,16 @@ namespace BurgerKing_kiosk.viewModel.DB
     class connectDB
     {
         private String ip = "10.80.162.51";
+        private String port = "3306";
         private String pwd = "1q2w3e4r!";
         public MySqlConnection conn;
  
-        public bool OpenConnection()
+        public MySqlConnection OpenConnection()
         {
-            String connStr = "Server=" + ip + ";Database=kiosk;Uid=root;Pwd=" + pwd;
+            String connStr = "Server=" + ip + ";Port=" + port + ";Database=kiosk;Uid=user1;Pwd=" + pwd;
+            Console.WriteLine(connStr);
             conn = new MySqlConnection(connStr);
-            try
-            {
-                conn.Open();
-                Console.WriteLine("DataBase연동 성공");
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        Console.WriteLine("데이터베이스 서버에 연결할 수 없습니다.");
-                        break;
-
-                    case 1045:
-                        Console.WriteLine("유저 ID 또는 Password를 확인해주세요.");
-                        break;
-                }
-                return false;
-            }
+            return conn;
         }
         public bool CloseConnection()
         {
