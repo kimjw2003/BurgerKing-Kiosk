@@ -14,7 +14,6 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
 
-
         <Grid Grid.Row="0">
             <MediaElement Name="myMediaElement" Stretch="Fill" >
                 <MediaElement.Triggers>
