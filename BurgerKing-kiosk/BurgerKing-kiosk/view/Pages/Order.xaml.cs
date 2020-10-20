@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static BurgerKing_kiosk.model.FoodModel;
+using static BurgerKing_kiosk.model.MenuModel;
 
 namespace BurgerKing_kiosk
 {
@@ -25,7 +25,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
-        private List<FoodModel> foods = new List<FoodModel>()
+        private List<MenuModel> foods = new List<MenuModel>()
         {
 
         };
@@ -47,7 +47,7 @@ namespace BurgerKing_kiosk
             if (lbCategory.SelectedIndex == -1) return;
 
             Category category = (Category)lbCategory.SelectedIndex;
-            lbFood.ItemsSource = (viewModel.GetFood(category.ToString())).ToList();
+            lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
             lbFood.Items.Refresh();
         }
 
@@ -70,8 +70,8 @@ namespace BurgerKing_kiosk
             //    if (lbFood.SelectedIndex == -1) 
             //        return;
 
-            //    FoodModel food = (FoodModel)lbFood.SelectedItem;
-            FoodModel orderList = (FoodModel)lbFood.SelectedItem;
+            //    MenuModel food = (MenuModel)lbFood.SelectedItem;
+            MenuModel orderList = (MenuModel)lbFood.SelectedItem;
             //foods.Add(asdf);
             if(orderList != null)
             {
