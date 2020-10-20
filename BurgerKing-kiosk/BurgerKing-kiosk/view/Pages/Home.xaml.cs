@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BurgerKing_kiosk.view;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -22,14 +23,16 @@ namespace BurgerKing_kiosk
     public partial class HomePage : Page
     {
         private BackgroundWorker loadingThread;
+        LoadingWindow lw;
 
         public HomePage()
         {
-            
-            InitBW();
-            loadingThread.RunWorkerAsync();
+            InitializeComponent();
+            //InitBW();
+            //InitLoadWindow();
         }
 
+        /*
         private void InitBW()
         {
             loadingThread = new BackgroundWorker()
@@ -39,19 +42,37 @@ namespace BurgerKing_kiosk
             };
 
             loadingThread.DoWork += Thread_DoWork;
+            loadingThread.ProgressChanged += Thread_ProgressChanged;
             loadingThread.RunWorkerCompleted += Thread_RunWorkerCompleted;
         }
 
         private void Thread_DoWork(object sender, DoWorkEventArgs e)
         {
             InitializeComponent();
+            for (int i = 0; i < 5000000; i++) ;
+        }
+
+        private void Thread_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int per = e.ProgressPercentage;
+            lw.progressBar.Value = per;
         }
 
         private void Thread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Console.WriteLine("로딩끝");
+            lw.Close();
         }
-        private void BtnOrder_Click(object sender, RoutedEventArgs e)
+
+        private void InitLoadWindow()
+        {
+            lw = new LoadingWindow();
+            lw.Show();
+            loadingThread.RunWorkerAsync();
+        }
+        */
+
+            private void BtnOrder_Click(object sender, RoutedEventArgs e)
         {
             if(NavigationService.CanGoForward)
             {
@@ -65,19 +86,17 @@ namespace BurgerKing_kiosk
 
         private void BtnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService.CanGoForward)
+            /*if (NavigationService.CanGoForward)
             {
                 NavigationService.GoForward();
             }
             else
             {
                 NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
-            }
-        }
+            }*/
 
-        private void InitLoadWindow()
-        {
-
+            Statistics statistics = new Statistics();
+            statistics.Show();
         }
 
     }
