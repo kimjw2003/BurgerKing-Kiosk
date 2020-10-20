@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using System.Diagnostics;
+using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.viewModel;
+using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace BurgerKing_kiosk
 {
@@ -18,6 +22,9 @@ namespace BurgerKing_kiosk
 
     public partial class App : Application
     {
+        public static viewModel.MenuViewModel menuVM = new viewModel.MenuViewModel();
+        public static viewModel.OrderViewModel orderVM = new viewModel.OrderViewModel();
+        public static int price = 0;
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
         

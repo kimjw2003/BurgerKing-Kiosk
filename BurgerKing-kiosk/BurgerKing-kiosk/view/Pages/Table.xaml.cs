@@ -1,4 +1,5 @@
 ﻿using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,7 +23,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class TablePage : Page
     {
-        MenuViewModel menu = new MenuViewModel();
+        OrderViewModel menu = new OrderViewModel();
         public TablePage()
         {
             InitializeComponent();

@@ -40,12 +40,12 @@ namespace BurgerKing_kiosk
             NavigationService.Navigate(new Uri("view/Pages/Card.xaml", UriKind.Relative));
         }
 
-        private List<FoodModel> listFood = new List<FoodModel>()
+        private List<OrderModel> listFood = new List<OrderModel>()
         {
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
+            new OrderModel(){name="뭐시기",price=1000,amount=1},
+            new OrderModel(){name="뭐시기",price=1000,amount=1},
+            new OrderModel(){name="뭐시기",price=1000,amount=1},
+            new OrderModel(){name="뭐시기",price=1000,amount=1},
         };
     }
 }

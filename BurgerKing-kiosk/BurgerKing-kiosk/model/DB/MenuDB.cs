@@ -9,25 +9,25 @@ using MySql.Data.MySqlClient;
 
 namespace BurgerKing_kiosk.viewModel.DB
 {
-    class OrderDB
+    class MenuDB
     {
         private connectDB conDB = new connectDB();
-        private List<FoodModel> menus = new List<FoodModel>();
+        private List<MenuModel> menus = new List<MenuModel>();
 
-        public List<FoodModel> Select(String tablename)
+        public List<MenuModel> GetMenu(String tablename)
         {
             MySqlConnection conn = conDB.OpenConnection();
             try
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
-                FoodModel menu;
+                MenuModel menu;
                 string sql = "select * from " + tablename;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    menu = new FoodModel();
+                    menu = new MenuModel();
                     menu.id = (int)reader["id"]; //todo - object형식이 int형으로 바뀌었는지 확인 안되면 밑에것도 함께 고침
                     Console.WriteLine(menu.id);
                     menu.name = (string)reader["name"];

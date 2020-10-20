@@ -104,18 +104,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\DB\SaleDB.cs" />
-    <Compile Include="model\FoodModel.cs" />
+    <Compile Include="model\OrderModel.cs" />
+    <Compile Include="model\MenuModel.cs" />
     <Compile Include="model\SaleModel.cs" />
     <Compile Include="Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\DB\connectDB.cs" />
-    <Compile Include="model\DB\OrderDB.cs" />
+    <Compile Include="model\DB\MenuDB.cs" />
     <Compile Include="model\DB\TableDB.cs" />
-    <Compile Include="viewModel\MenuViewModel.cs" />
+    <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
-    <Compile Include="viewModel\OrderViewModel.cs" />
+    <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
