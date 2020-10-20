@@ -25,11 +25,6 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
-        private List<MenuModel> foods = new List<MenuModel>()
-        {
-
-        };
-        private OrderViewModel viewModel = new OrderViewModel();
         public OrderPage()
         {
             InitializeComponent();
