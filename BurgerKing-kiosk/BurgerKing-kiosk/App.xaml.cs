@@ -20,7 +20,7 @@ namespace BurgerKing_kiosk
     {
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
-        
+                
         public App()
         {
   

@@ -121,6 +121,9 @@
     <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
+    <Compile Include="view\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Page Include="Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
