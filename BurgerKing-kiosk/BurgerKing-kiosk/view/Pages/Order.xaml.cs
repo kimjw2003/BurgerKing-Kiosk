@@ -4,6 +4,7 @@ using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static BurgerKing_kiosk.model.OrderModel;
+using static BurgerKing_kiosk.model.FoodModel;
 
 namespace BurgerKing_kiosk
 {
@@ -24,13 +25,18 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
+        private List<FoodModel> foods = new List<FoodModel>()
+        {
+
+        };
+        private OrderViewModel viewModel = new OrderViewModel();
         public OrderPage()
         {
             InitializeComponent();
 
             this.Loaded += OrderPage_Loaded;
 
-            OrderData.GetInstance().Add(new OrderData() {menuName = "샘플데이터", menuCount = 1, menuPrice = 10000});
+            
 
             menu_List.ItemsSource = OrderData.GetInstance();
         }
@@ -41,12 +47,12 @@ namespace BurgerKing_kiosk
             if (lbCategory.SelectedIndex == -1) return;
 
             Category category = (Category)lbCategory.SelectedIndex;
-            lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
+            lbFood.ItemsSource = (viewModel.GetFood(category.ToString())).ToList();
             lbFood.Items.Refresh();
         }
 
         private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
-            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록 
+            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
@@ -61,11 +67,28 @@ namespace BurgerKing_kiosk
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lbFood.SelectedIndex == -1) 
-                return; 
+            //    if (lbFood.SelectedIndex == -1) 
+            //        return;
 
-            OrderModel food = (OrderModel)lbFood.SelectedItem;
+            //    FoodModel food = (FoodModel)lbFood.SelectedItem;
+            FoodModel orderList = (FoodModel)lbFood.SelectedItem;
+            //foods.Add(asdf);
+            if(orderList != null)
+            {
+                OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
+                menu_List.Items.Refresh();
+            }
+            else
+            {
+                return;
+            }
 
+
+        }
+
+        private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
         }
     }
 

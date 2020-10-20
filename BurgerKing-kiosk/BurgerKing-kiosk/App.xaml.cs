@@ -27,7 +27,7 @@ namespace BurgerKing_kiosk
         public static int price = 0;
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
-        
+                
         public App()
         {
   

@@ -94,6 +94,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfGif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfGif.1.0.0.1\lib\net461\WpfGif.dll</HintPath>
+    </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\Zstandard.Net.dll</HintPath>
     </Reference>
@@ -119,6 +122,9 @@
     <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
+    <Compile Include="view\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -132,6 +138,10 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Page Include="Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +254,8 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="view\Images\Desert\컵아이스크림.png" />
+    <Resource Include="view\Images\Desert\코카콜라.png" />
     <Resource Include="view\Images\Side\시즈닝.png" />
     <Resource Include="view\Images\Side\스위트칠리.png" />
     <Resource Include="view\Images\Side\21치즈스틱.png" />
@@ -266,8 +278,6 @@
     <Resource Include="view\Images\Desert\씨그램.png" />
     <Resource Include="view\Images\Desert\아메리카노.png" />
     <Resource Include="view\Images\Desert\제로톡톡.png" />
-    <Resource Include="view\Images\Desert\컵아이스크림.png" />
-    <Resource Include="view\Images\Desert\코카콜라.png" />
     <Resource Include="view\Images\Desert\코카콜라제로.png" />
     <Resource Include="view\Images\Desert\콘아이스크림.png" />
     <Resource Include="view\Images\Desert\핫아이스초코.png" />
