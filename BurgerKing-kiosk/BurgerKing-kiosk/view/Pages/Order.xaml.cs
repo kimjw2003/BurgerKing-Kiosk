@@ -4,6 +4,7 @@ using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +25,10 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
+        private List<FoodModel> foods = new List<FoodModel>()
+        {
+
+        };
         private OrderViewModel viewModel = new OrderViewModel();
         public OrderPage()
         {
@@ -31,7 +36,7 @@ namespace BurgerKing_kiosk
 
             this.Loaded += OrderPage_Loaded;
 
-            OrderData.GetInstance().Add(new OrderData() {menuName = "샘플데이터", menuCount = 1, menuPrice = 10000});
+            
 
             menu_List.ItemsSource = OrderData.GetInstance();
         }
@@ -62,11 +67,21 @@ namespace BurgerKing_kiosk
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lbFood.SelectedIndex == -1) 
+            //    if (lbFood.SelectedIndex == -1) 
+            //        return;
+
+            //    FoodModel food = (FoodModel)lbFood.SelectedItem;
+            FoodModel asdf = (FoodModel)lbFood.SelectedItem;
+            //foods.Add(asdf);
+            if(asdf != null)
+            {
+                OrderData.GetInstance().Add(new OrderData() { menuName = asdf.name, menuCount = 1, menuPrice = asdf.price });
+                menu_List.Items.Refresh();
+            }
+            else
+            {
                 return;
-
-            FoodModel food = (FoodModel)lbFood.SelectedItem;
-
+            }
 
 
         }
