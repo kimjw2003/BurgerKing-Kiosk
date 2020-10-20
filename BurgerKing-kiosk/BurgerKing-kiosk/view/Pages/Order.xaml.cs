@@ -47,7 +47,7 @@ namespace BurgerKing_kiosk
         }
 
         private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
-            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록 
+            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
@@ -63,10 +63,17 @@ namespace BurgerKing_kiosk
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbFood.SelectedIndex == -1) 
-                return; 
+                return;
 
             FoodModel food = (FoodModel)lbFood.SelectedItem;
 
+
+
+        }
+
+        private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
         }
     }
 

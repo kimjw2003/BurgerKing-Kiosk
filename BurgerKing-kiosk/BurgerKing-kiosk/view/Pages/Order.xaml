@@ -84,9 +84,10 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="150" Height="150">
+                            <StackPanel Width="150" Height="150" >
                                 <Image Source="{Binding picture}"/>
-                                <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <TextBlock Text="{Binding name}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <TextBlock Text="{Binding price}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -166,7 +167,7 @@
                         BorderThickness="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch" 
-                            Margin="163,0,0,35"
+                            Margin="163,0,0,35" Click="order_cancle_Btn_Click"
 
                             />
                     </Grid>

@@ -243,6 +243,8 @@
     <Content Include="view\Images\Ad.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="view\Images\Desert\컵아이스크림.png" />
+    <Resource Include="view\Images\Desert\코카콜라.png" />
     <Resource Include="view\Images\Side\시즈닝.png" />
     <Resource Include="view\Images\Side\스위트칠리.png" />
     <Resource Include="view\Images\Side\21치즈스틱.png" />
@@ -265,8 +267,6 @@
     <Resource Include="view\Images\Desert\씨그램.png" />
     <Resource Include="view\Images\Desert\아메리카노.png" />
     <Resource Include="view\Images\Desert\제로톡톡.png" />
-    <Resource Include="view\Images\Desert\컵아이스크림.png" />
-    <Resource Include="view\Images\Desert\코카콜라.png" />
     <Resource Include="view\Images\Desert\코카콜라제로.png" />
     <Resource Include="view\Images\Desert\콘아이스크림.png" />
     <Resource Include="view\Images\Desert\핫아이스초코.png" />
