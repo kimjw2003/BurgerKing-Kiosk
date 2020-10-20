@@ -71,11 +71,11 @@ namespace BurgerKing_kiosk
             //        return;
 
             //    FoodModel food = (FoodModel)lbFood.SelectedItem;
-            FoodModel asdf = (FoodModel)lbFood.SelectedItem;
+            FoodModel orderList = (FoodModel)lbFood.SelectedItem;
             //foods.Add(asdf);
-            if(asdf != null)
+            if(orderList != null)
             {
-                OrderData.GetInstance().Add(new OrderData() { menuName = asdf.name, menuCount = 1, menuPrice = asdf.price });
+                OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
                 menu_List.Items.Refresh();
             }
             else
