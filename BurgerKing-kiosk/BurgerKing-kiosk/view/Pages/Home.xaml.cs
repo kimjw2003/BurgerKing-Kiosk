@@ -25,7 +25,7 @@ namespace BurgerKing_kiosk
 
         public HomePage()
         {
-            InitializeComponent();
+            
             InitBW();
             loadingThread.RunWorkerAsync();
         }
@@ -44,10 +44,7 @@ namespace BurgerKing_kiosk
 
         private void Thread_DoWork(object sender, DoWorkEventArgs e)
         {
-           for(int i =  0; i<1000; i++)
-            {
-
-            }
+            InitializeComponent();
         }
 
         private void Thread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -76,6 +73,11 @@ namespace BurgerKing_kiosk
             {
                 NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
             }
+        }
+
+        private void InitLoadWindow()
+        {
+
         }
 
     }
