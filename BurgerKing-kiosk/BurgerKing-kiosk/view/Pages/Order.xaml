@@ -35,7 +35,7 @@
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
-                           
+
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.ItemContainerStyle>
@@ -79,7 +79,7 @@
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="3" Rows="3"/>
-                           
+
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
@@ -147,6 +147,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button x:Name="del_Btn" Width="80" Height="50" Margin="0,0,0,0" FontSize="30" RenderTransformOrigin="0.888,0.732" Click="del_Btn_Click" Content="삭제" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid Grid.Column="2">

@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using static BurgerKing_kiosk.model.MenuModel;
 
 namespace BurgerKing_kiosk
@@ -82,6 +83,12 @@ namespace BurgerKing_kiosk
         {
             NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
             
+        }
+
+        private void del_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            OrderData.GetInstance().Clear();
+            menu_List.Items.Refresh();
         }
     }
 
