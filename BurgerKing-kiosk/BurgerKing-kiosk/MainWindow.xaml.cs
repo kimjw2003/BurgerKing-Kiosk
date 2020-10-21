@@ -12,7 +12,6 @@ namespace BurgerKing_kiosk
     public partial class MainWindow : Window
     {
  
-
         public MainWindow()
         {
             InitializeComponent();
@@ -36,10 +35,8 @@ namespace BurgerKing_kiosk
                 {
                     Statistics statistics = new Statistics();
                     statistics.Show();
-                    
                 } 
             }
-
         }
 
         private void Timer_Tick(object sender, EventArgs e)

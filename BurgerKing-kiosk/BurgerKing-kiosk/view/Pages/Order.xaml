@@ -138,7 +138,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <ListView x:Name="menu_List" Margin="100,0,100,0">
+                <ListView x:Name="ordered_Menu_List" Margin="100,0,100,0">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding menuName}"/>
