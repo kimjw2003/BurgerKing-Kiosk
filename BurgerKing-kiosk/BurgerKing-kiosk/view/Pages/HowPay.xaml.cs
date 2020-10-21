@@ -25,17 +25,12 @@ namespace BurgerKing_kiosk
         {
             InitializeComponent();
             Order.ItemsSource = listFood.ToList();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             this.DataContext = new viewModel.HowPayViewModel();
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
-<<<<<<< Updated upstream
         private void Money(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("view/Pages/Money.xaml", UriKind.Relative));
@@ -51,14 +46,6 @@ namespace BurgerKing_kiosk
             new OrderModel(){name="뭐시기",price=1000,amount=1},
             new OrderModel(){name="뭐시기",price=1000,amount=1},
             new OrderModel(){name="뭐시기",price=1000,amount=1},
-=======
-        private List<FoodModel> listFood = new List<FoodModel>()
-        {
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
-            new FoodModel(){name="뭐시기",price=1000,amount=1},
->>>>>>> Stashed changes
         };
     }
 }
