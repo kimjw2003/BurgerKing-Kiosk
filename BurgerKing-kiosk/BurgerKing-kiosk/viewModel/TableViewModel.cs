@@ -3,6 +3,7 @@ using BurgerKing_kiosk.viewModel.DB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +13,12 @@ namespace BurgerKing_kiosk.viewModel
 {
     class TableViewModel
     {
-        private List<SaleModel> menus = new List<SaleModel>();
 
-        public List<SaleModel> GetFood(String cartegory)
+        public List<TableModel> GetSeat()
         {
-            TableDB order = new TableDB();
-            menus = order.Insert(cartegory);
-
-            return menus;
+            TableDB db = new TableDB();
+            App.tableList = db.GetTable();
+            return App.tableList;
         }
     }
 }

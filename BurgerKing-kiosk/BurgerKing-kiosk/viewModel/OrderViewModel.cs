@@ -10,34 +10,41 @@ namespace BurgerKing_kiosk.viewModel
 {
     public class OrderViewModel
     {
-        public List<OrderModel> order = new List<OrderModel>();
-        private int table = 0;
-
-        public List<OrderModel> Show()
+        public List<OrderModel> GetOrderList()
         {
-            return order;
+            return App.userData.order;
         }
-        public void AddFood(int id)
+        public void AddOrder(int id)
         {
             OrderModel food = new OrderModel();
             food.id = id;
-            order.Add(food);
+            App.userData.order.Add(food);
         }
         public void DeleteAll()
         {
-            this.order.Clear();
-            this.table = 0;
+            App.userData.order.Clear();
+            App.userData.seat = 0;
+            App.userData.price = 0;
         }
-        public List<OrderModel> Delete(int id)
+        public List<OrderModel> DeleteOrder(int id)
         {
-            int lengh = order.Count;
-            order.RemoveAt(lengh);
+            int lengh = App.userData.order.Count;
+            int i = 0;
+            foreach (var list in App.userData.order)
+            {
+                if (i == lengh)
+                {
+                    App.userData.price -= list.price;
+                }
+                i++;
+            }
+            App.userData.order.RemoveAt(lengh);
 
-            return order;
+            return App.userData.order;
         }
         public bool CheckTable()
         {
-            if (table != 0)
+            if (App.userData.seat != 0)
             {
                 return true;
             }
@@ -48,7 +55,7 @@ namespace BurgerKing_kiosk.viewModel
         }
         public void Table(int id)
         {
-            this.table = id;
+            App.userData.seat = id;
         }
     }
 }

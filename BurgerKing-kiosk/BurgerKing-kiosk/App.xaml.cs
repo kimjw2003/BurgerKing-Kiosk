@@ -24,9 +24,9 @@ namespace BurgerKing_kiosk
         public static List<MenuModel> menuList = new List<MenuModel>();
 
         public static OrderViewModel orderVM = new OrderViewModel();
-        public static List<OrderModel> orderList = new List<OrderModel>();
-        public static int table = 0;
-        public static int price = 0;
+        public static UserModel userData = new UserModel();
+
+        public static List<TableModel> tableList = new List<TableModel>();
 
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
