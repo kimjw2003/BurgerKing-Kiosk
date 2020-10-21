@@ -32,7 +32,11 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="0.2*"/>
                 </Grid.ColumnDefinitions>
+<<<<<<< Updated upstream
                 <Grid Grid.Column="1" Background="#F3F3F3">
+=======
+                <Grid Grid.Column="1" Background="#F3F3F3 ">
+>>>>>>> Stashed changes
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="5*"/>
@@ -41,21 +45,36 @@
                     <Grid Grid.Row="0">
                         <StackPanel VerticalAlignment="Center"
                                     Orientation="Horizontal">
+<<<<<<< Updated upstream
                             <TextBlock FontSize="35" VerticalAlignment="Center"
                                        Margin="20">주문내역</TextBlock>
                             <Border VerticalAlignment="Center" Background="#F1555A" 
                                     Height="40" Width="100" Margin="10"
                                     BorderBrush="#F1555A" BorderThickness="2" CornerRadius="20">
                                 <TextBlock FontSize="25" HorizontalAlignment="Center"
+=======
+                            <TextBlock FontSize="45" VerticalAlignment="Center"
+                                       Margin="20">주문내역</TextBlock>
+                            <Border VerticalAlignment="Center" Background="#F1555A" 
+                                    Height="50" Width="100" Margin="10"
+                                    BorderBrush="#F1555A" BorderThickness="2" CornerRadius="20">
+                                <TextBlock FontSize="30" HorizontalAlignment="Center"
+>>>>>>> Stashed changes
                                            VerticalAlignment="Center" Foreground="White">6</TextBlock>
                             </Border>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">
+<<<<<<< Updated upstream
                         <ListBox x:Name="Order" Margin="0,0,0,0"
                                  FontSize="16" FontWeight="SemiBold"
                                  VerticalAlignment="Top"
                                  Background="#F3F3F3"
+=======
+                        <ListBox x:Name="Order" Margin="150,0,0,0"
+                                 FontSize="16" FontWeight="SemiBold"
+                                 VerticalAlignment="Top"
+>>>>>>> Stashed changes
                                  BorderBrush="Transparent"
                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -66,6 +85,7 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
+<<<<<<< Updated upstream
                                     <StackPanel Width="340" Height="80" Background="White" Margin="5">
                                         <TextBlock Text="{Binding name}" FontSize="25"
                                                    Margin="10,0,0,15" HorizontalAlignment="Left"/>
@@ -78,6 +98,13 @@
                                                        Margin="210,0,0,0" HorizontalAlignment="Right"/>
                                             <TextBlock Text="개" FontSize="20"
                                                        HorizontalAlignment="Right"/>
+=======
+                                    <StackPanel Width="400" Height="200">
+                                        <TextBlock Text="{Binding name}" Margin="0,24,0,0" HorizontalAlignment="Left"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding price}" Margin="0,24,0,0" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding amount}" Margin="0,24,0,0" HorizontalAlignment="Right"/>
+>>>>>>> Stashed changes
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
@@ -126,8 +153,13 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" Grid.Column="1">
+<<<<<<< Updated upstream
                 <Button Style="{StaticResource Back}" 
                     Click="GoBack">이전</Button>
+=======
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Click="GoBack" FontSize="30" FontWeight="Bold">이전</Button>
+>>>>>>> Stashed changes
             </Grid>
         </Grid>
     </Grid>
