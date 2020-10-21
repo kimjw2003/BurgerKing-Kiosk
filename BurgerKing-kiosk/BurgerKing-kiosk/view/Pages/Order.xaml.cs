@@ -62,12 +62,9 @@ namespace BurgerKing_kiosk
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //    if (lbFood.SelectedIndex == -1) 
-            //        return;
-
-            //    MenuModel food = (MenuModel)lbFood.SelectedItem;
+            
             MenuModel orderList = (MenuModel)lbFood.SelectedItem;
-            //foods.Add(asdf);
+            
             if(orderList != null)
             {
                 OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
@@ -84,6 +81,7 @@ namespace BurgerKing_kiosk
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
+            
         }
     }
 
