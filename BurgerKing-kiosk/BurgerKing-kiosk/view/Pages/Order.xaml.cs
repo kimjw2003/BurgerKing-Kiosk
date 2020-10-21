@@ -34,7 +34,7 @@ namespace BurgerKing_kiosk
 
             
 
-            menu_List.ItemsSource = OrderData.GetInstance();
+            ordered_Menu_List.ItemsSource = OrderData.GetInstance();
         }
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,7 +69,7 @@ namespace BurgerKing_kiosk
             if(orderList != null)
             {
                 OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
-                menu_List.Items.Refresh();
+                ordered_Menu_List.Items.Refresh();
             }
             else
             {
@@ -88,7 +88,7 @@ namespace BurgerKing_kiosk
         private void del_Btn_Click(object sender, RoutedEventArgs e)
         {
             OrderData.GetInstance().Clear();
-            menu_List.Items.Refresh();
+            ordered_Menu_List.Items.Refresh();
         }
     }
 
