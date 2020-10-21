@@ -25,6 +25,7 @@ namespace BurgerKing_kiosk
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
+            App.menuVM.GetDBMenus();
         }
 
         private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
