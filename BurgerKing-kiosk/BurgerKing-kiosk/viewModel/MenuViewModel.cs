@@ -10,13 +10,28 @@ namespace BurgerKing_kiosk.viewModel
 {
     public class MenuViewModel
     {
-        MenuDB menu = new MenuDB();
-        public List<MenuModel> GetMenus(String cartegory)
+        MenuDB db = new MenuDB();
+        public List<MenuModel> GetMenus(string cartegory)
         {
-            List<MenuModel> item = new List<MenuModel>();
-            item = menu.GetMenu(cartegory);
+            List<MenuModel> menu = new List<MenuModel>();
+            foreach (var list in App.menuList)
+            {
+                if(list.category.ToString() == cartegory)
+                {
+                    menu.Add(list);
+                }
+            }
+            return menu;
+        }
 
-            return item;
+        public void GetDBMenus()
+        {
+            Category category = (Category)0;
+            App.menuList.AddRange(db.GetMenu(category));
+            category = (Category)1;
+            App.menuList.AddRange(db.GetMenu(category));
+            category = (Category)2;
+            App.menuList.AddRange(db.GetMenu(category));
         }
 
     }

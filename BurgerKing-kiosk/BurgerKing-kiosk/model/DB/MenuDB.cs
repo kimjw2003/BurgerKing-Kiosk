@@ -14,7 +14,7 @@ namespace BurgerKing_kiosk.viewModel.DB
         private connectDB conDB = new connectDB();
         private List<MenuModel> menus = new List<MenuModel>();
 
-        public List<MenuModel> GetMenu(String tablename)
+        public List<MenuModel> GetMenu(Category tablename)
         {
             MySqlConnection conn = conDB.OpenConnection();
             try
@@ -22,18 +22,18 @@ namespace BurgerKing_kiosk.viewModel.DB
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
                 MenuModel menu;
-                string sql = "select * from " + tablename;
+                string sql = "select * from " + tablename.ToString();
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     menu = new MenuModel();
                     menu.id = (int)reader["id"]; //todo - object형식이 int형으로 바뀌었는지 확인 안되면 밑에것도 함께 고침
-                    Console.WriteLine(menu.id);
                     menu.name = (string)reader["name"];
                     menu.picture = (string)reader["picture"];
                     menu.price = (int)reader["price"];
                     menu.sale = (int)reader["sale"];
+                    menu.category = tablename;
 
                     menus.Add(menu);
                 }
