@@ -93,13 +93,17 @@ namespace BurgerKing_kiosk
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
-            
+
+            OrderData.GetInstance().Clear();
+            ordered_Menu_List.Items.Refresh();
         }
 
         private void del_Btn_Click(object sender, RoutedEventArgs e)
         {
             OrderData.GetInstance().Clear();
             ordered_Menu_List.Items.Refresh();
+
+            allPrice.Text = "0";
         }
 
     }
