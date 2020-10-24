@@ -26,13 +26,16 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
+
+        int totalPrice = 0;
+
         public OrderPage()
         {
             InitializeComponent();
 
             this.Loaded += OrderPage_Loaded;
 
-            
+            allPrice.Text = totalPrice + "";
 
             ordered_Menu_List.ItemsSource = OrderData.GetInstance();
         }
@@ -69,6 +72,14 @@ namespace BurgerKing_kiosk
             if(orderList != null)
             {
                 OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
+
+                int selectedPrice = 0;
+                for(int i = 0; i<OrderData.GetInstance().Count; i++)
+                {
+                    selectedPrice = OrderData.GetInstance()[i].menuPrice;
+                }
+                int beforeTotalPrice = int.Parse(allPrice.Text);
+                allPrice.Text = beforeTotalPrice + selectedPrice + "";
                 ordered_Menu_List.Items.Refresh();
             }
             else
@@ -90,6 +101,7 @@ namespace BurgerKing_kiosk
             OrderData.GetInstance().Clear();
             ordered_Menu_List.Items.Refresh();
         }
+
     }
 
     class OrderData
