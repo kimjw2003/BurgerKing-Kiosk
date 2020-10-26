@@ -1,4 +1,5 @@
 ﻿using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,14 +31,15 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void MemberPage_Loaded(object sender, RoutedEventArgs e)
         {
-            List<UserListModel> items = new List<UserListModel>();
-
-            for(int i = 0; i<100; i++)
-            {
-                items.Add(new UserListModel() { name = "name" + i, barcode = i });
-            }
-
+            UserListViewModel userVM = new UserListViewModel();
+            List<UserListModel> items = userVM.GetUser();
+       
             Users.ItemsSource = items;
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }
