@@ -58,7 +58,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         }
         private void Member_List_Btn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("view/Pages/Statistics/Member_List.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("view/Pages/Statistics/UserList.xaml", UriKind.Relative));
         }
         private void Discount_Apply_Btn_Click(object sender, RoutedEventArgs e)
         {

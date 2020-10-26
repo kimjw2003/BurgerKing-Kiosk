@@ -37,7 +37,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
                 items.Add(new UserListModel() { name = "name" + i, barcode = i });
             }
 
-            Members.ItemsSource = items;
+            Users.ItemsSource = items;
         }
     }
 }

@@ -9,7 +9,7 @@
       Title="Member_List">
 
     <Grid>
-        <ListView Name="Members">
+        <ListView Name="Users">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}"/>
