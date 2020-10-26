@@ -110,6 +110,7 @@
     <Compile Include="model\OrderModel.cs" />
     <Compile Include="model\MenuModel.cs" />
     <Compile Include="model\SaleModel.cs" />
+    <Compile Include="model\TableModel.cs" />
     <Compile Include="model\UserModel.cs" />
     <Compile Include="Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
