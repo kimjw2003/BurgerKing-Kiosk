@@ -56,7 +56,10 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             payment_method = "where payment_method = \"cash\"";
             SetSaleText();
         }
-
+        private void Member_List_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("view/Pages/Statistics/Member_List.xaml", UriKind.Relative));
+        }
         private void Discount_Apply_Btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("view/Pages/Statistics/Apply_Discount.xaml", UriKind.Relative));
