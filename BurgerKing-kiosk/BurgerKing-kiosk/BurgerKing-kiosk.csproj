@@ -137,6 +137,9 @@
     <Compile Include="view\Pages\Money.xaml.cs">
       <DependentUpon>Money.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\Pages\Statistics\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\Pages\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\Pages\Place.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\Pages\Statistics\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

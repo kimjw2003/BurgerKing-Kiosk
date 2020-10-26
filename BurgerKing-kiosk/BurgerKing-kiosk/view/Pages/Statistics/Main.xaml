@@ -1,0 +1,87 @@
+﻿<Page x:Class="BurgerKing_kiosk.view.Pages.Statistics.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BurgerKing_kiosk.view.Pages.Statistics"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Main">
+
+    <Page.Resources>
+        <Style x:Key="SaleBtnStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0B4C5F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+
+        <Style x:Key="SaleTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Margin" Value="10 0 0 3 "/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock x:Name="RunTime" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center"> 프로그램 구동 시간</TextBlock>
+            </Grid>
+
+            <Grid Grid.Row="1">
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <StackPanel Margin="0 0 12 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Click="All_Btn_Click" Style="{StaticResource SaleBtnStyle}">전체 매출액</Button>
+                        <Button Click="Card_Btn_Click" Style="{StaticResource SaleBtnStyle}">카드 매출액</Button>
+                        <Button Click="Cash_Btn_Click" Style="{StaticResource SaleBtnStyle}">현금 매출액</Button>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBlock  x:Name="WholeSaleText" Style="{StaticResource SaleTextStyle}">총 매출액:</TextBlock>
+                        <TextBlock x:Name="PureSaleText" Style="{StaticResource SaleTextStyle}">순수 매출액:</TextBlock>
+                        <TextBlock x:Name="DiscountText" Style="{StaticResource SaleTextStyle}">할인 금액:</TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Button Width="400" Height="300" FontSize="35" Background="#F0494F" Foreground="White">회원 리스트 표시</Button>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Button Width="400" Height="200" FontSize="35" Background="#F0494F" Foreground="White">메뉴 할인 적용하기</Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
