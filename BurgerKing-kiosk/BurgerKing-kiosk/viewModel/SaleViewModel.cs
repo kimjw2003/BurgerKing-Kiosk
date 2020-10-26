@@ -24,14 +24,14 @@ namespace BurgerKing_kiosk.viewModel
             float PurePrice = 0;
             float SalePrice = 0;
 
-            foreach(SaleModel Sale in sales)
+            foreach (SaleModel Sale in sales)
             {
                 float price = Sale.price;
                 float saleAmount = Sale.sale;
                 float percent = saleAmount / 100;
 
                 WholePrice += price;
-                PurePrice += price * (1-percent);
+                PurePrice += price * (1 - percent);
                 SalePrice += price * percent;
             }
 

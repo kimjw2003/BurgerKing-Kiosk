@@ -111,9 +111,9 @@
 
                 <Grid Grid.Row="0">
                     <StackPanel Margin="0 0 12 0" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Style="{StaticResource SaleBtnStyle}">전체 매출액</Button>
-                        <Button Style="{StaticResource SaleBtnStyle}">카드 매출액</Button>
-                        <Button Style="{StaticResource SaleBtnStyle}">현금 매출액</Button>
+                        <Button Click="All_Btn_Click" Style="{StaticResource SaleBtnStyle}">전체 매출액</Button>
+                        <Button Click="Card_Btn_Click" Style="{StaticResource SaleBtnStyle}">카드 매출액</Button>
+                        <Button Click="Cash_Btn_Click" Style="{StaticResource SaleBtnStyle}">현금 매출액</Button>
                     </StackPanel>
                 </Grid>
 
