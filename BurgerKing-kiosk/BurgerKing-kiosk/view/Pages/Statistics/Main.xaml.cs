@@ -59,7 +59,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void Discount_Apply_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("view/Pages/Statistics/Apply_Discount.xaml", UriKind.Relative));
         }
 
         /* private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
