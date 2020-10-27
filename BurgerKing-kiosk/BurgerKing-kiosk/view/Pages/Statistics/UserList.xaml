@@ -5,17 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BurgerKing_kiosk.view.Pages.Statistics"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920 "
       Title="Member_List">
 
     <Grid>
-        <ListView Name="Users">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}"/>
-                    <GridViewColumn Header="BarCode" Width="120" DisplayMemberBinding="{Binding barcode}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <ListView Name="Users">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="BarCode" Width="300" DisplayMemberBinding="{Binding barcode}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Button Style="{StaticResource Back}" 
+                    Click="GoBack">이전</Button>
+        </Grid> 
+        
     </Grid>
 </Page>

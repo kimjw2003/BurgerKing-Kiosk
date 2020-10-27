@@ -14,7 +14,7 @@ namespace BurgerKing_kiosk.model.DB
         private connectDB conDB = new connectDB();
         private List<UserListModel> users = new List<UserListModel>();
 
-        public List<UserListModel> GetMember()
+        public List<UserListModel> GetUser()
         {
             MySqlConnection conn = conDB.OpenConnection();
             try
