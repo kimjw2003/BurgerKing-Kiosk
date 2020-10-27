@@ -53,7 +53,11 @@ namespace BurgerKing_kiosk.viewModel
                 return false;
             }
         }
-        public void Table(int id)
+        public int GetTable(int tableId)
+        {
+            return App.userData.seat;
+        }
+        public void SetTable(int id)
         {
             App.userData.seat = id;
         }

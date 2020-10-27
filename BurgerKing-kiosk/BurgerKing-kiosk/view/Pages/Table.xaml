@@ -13,6 +13,8 @@
             <Setter Property="Background" Value="#939393"/>
         </Style>
         <Style x:Key="Number" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="40"/>
@@ -58,7 +60,7 @@
             <Grid Grid.Row="0" Grid.Column="1">
                 <Button x:Name="one" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -79,7 +81,7 @@
             <Grid Grid.Row="0" Grid.Column="2">
                 <Button x:Name="two" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -100,7 +102,7 @@
             <Grid Grid.Row="0" Grid.Column="3">
                 <Button x:Name="three" Margin="10" Click="Click_Seat" 
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -121,7 +123,7 @@
             <Grid Grid.Row="1" Grid.Column="1">
                 <Button x:Name="four" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -142,7 +144,7 @@
             <Grid Grid.Row="1" Grid.Column="2">
                 <Button x:Name="five" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -163,7 +165,7 @@
             <Grid Grid.Row="1" Grid.Column="3">
                 <Button x:Name="six" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -184,7 +186,7 @@
             <Grid Grid.Row="2" Grid.Column="1">
                 <Button x:Name="seven" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -205,7 +207,7 @@
             <Grid Grid.Row="2" Grid.Column="2">
                 <Button x:Name="eight" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
@@ -226,7 +228,7 @@
             <Grid Grid.Row="2" Grid.Column="3">
                 <Button x:Name="nine" Margin="10" Click="Click_Seat"
                         Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="3*"/>
