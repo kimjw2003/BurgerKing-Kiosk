@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:BurgerKing_kiosk"
         mc:Ignorable="d"
         xmlns:wookoa="clr-namespace:System;assembly=mscorlib"
+        WindowState="Maximized"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
