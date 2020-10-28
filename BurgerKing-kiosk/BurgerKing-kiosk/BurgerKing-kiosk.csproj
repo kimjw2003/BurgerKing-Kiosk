@@ -131,6 +131,7 @@
     <Compile Include="view\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\Pages\BackgroundConverter.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
