@@ -10,5 +10,7 @@ namespace BurgerKing_kiosk.model
     {
         public int id { get; set; }
         public String time { get; set; }
+
+        public bool isUse { get; set; }
     }
 }
