@@ -106,6 +106,10 @@ namespace BurgerKing_kiosk
             allPrice.Text = "0";
         }
 
+        private void ordered_Menu_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     class OrderData
