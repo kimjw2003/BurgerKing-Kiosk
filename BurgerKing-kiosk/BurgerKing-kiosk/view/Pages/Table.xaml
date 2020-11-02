@@ -53,28 +53,25 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <ListView x:Name="lvTableList" Margin="5"
+                <ListBox x:Name="lvTableList" Margin="5"
                   SelectionChanged="lvTableList_SelectionChanged"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListView.ItemsPanel>
+                    <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel />
+                            <UniformGrid Columns="3" Rows="3"/>
                         </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
+                    </ListBox.ItemsPanel>
 
-                    <ListView.ItemTemplate>
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <Border BorderBrush="Gray" BorderThickness="1" Margin="10">
-                                    <TextBlock TextAlignment="Center"
-                                       Height="100" Width="190"
-                                       Text="{Binding id, StringFormat={}{0}번 테이블}"
-                                       Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}"/>
-                                </Border>
+                            <StackPanel Width="500" Height="160" Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}">
+                                <TextBlock TextAlignment="Left" FontSize="20"
+                                       HorizontalAlignment="Left"  VerticalAlignment="Top"
+                                       Text="{Binding id, StringFormat={}   NO. {0}}"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
