@@ -89,7 +89,7 @@
                                 <TextBlock Text="{Binding name}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                                 <TextBlock Text="{Binding price}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
                             </StackPanel>
-                        </DataTemplate>
+                        </DataTemplate> 
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
@@ -136,16 +136,31 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            
+
             <Grid Grid.Row="0">
 
+                <StackPanel Width="500" Height="500" >
+                    <Image Name="Select_Img" Source="{Binding menuImg, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Name="Select_Name" Text="{Binding menuName}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <TextBlock Name="Select_Price" Text="{Binding menuPrice}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
+                </StackPanel>
+            </Grid>
 
-                <TextBlock>할인적용</TextBlock>
-
+            <Grid Grid.Row="1">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock x:Name="Sale_Price">할인가:</TextBlock>
+                    <TextBlock x:Name="Select_Sale">할인율</TextBlock >
+                    <StackPanel>
+                        <Button x:Name="Up" Content="+" Click="Up_Click"></Button>
+                        <Button x:Name="Down" Content="-" Click="Down_Click"></Button>
+                    </StackPanel>
+                    
+                </StackPanel>
             </Grid>
     
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2">
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
