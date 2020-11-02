@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Diagnostics;
+using BurgerKing_kiosk.model;
 
 namespace BurgerKing_kiosk
 {
@@ -25,6 +26,51 @@ namespace BurgerKing_kiosk
 
             frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
             App.menuVM.GetDBMenus();
+            App.tableList.Add(new TableModel()
+            {
+                id = 1,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 2,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 3,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 4,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 5,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 6,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 7,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 8,
+                IsUsed = false
+            });
+            App.tableList.Add(new TableModel()
+            {
+                id = 9,
+                IsUsed = false
+            });
         }
 
         private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)

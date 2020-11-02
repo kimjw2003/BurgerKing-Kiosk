@@ -11,14 +11,8 @@ using System.Windows.Input;
 
 namespace BurgerKing_kiosk.viewModel
 {
-    class TableViewModel
+    public class TableViewModel
     {
 
-        public List<TableModel> GetSeat()
-        {
-            TableDB db = new TableDB();
-            App.tableList = db.GetTable();
-            return App.tableList;
-        }
     }
 }
