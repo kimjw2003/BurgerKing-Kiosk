@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BurgerKing_kiosk.model
 {
-    public class TableModel
+    public class TableModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)
@@ -17,6 +17,7 @@ namespace BurgerKing_kiosk.model
 
         public int id { get; set; }
         public String time { get; set; }
+
         private bool _isUsed = false;
         public bool IsUsed
         {

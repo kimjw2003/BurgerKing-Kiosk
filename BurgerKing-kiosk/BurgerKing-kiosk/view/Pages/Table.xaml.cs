@@ -23,19 +23,14 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class TablePage : Page
     {
-        OrderViewModel menu = new OrderViewModel();
         public TablePage()
         {
             InitializeComponent();
-            this.DataContext = new viewModel.TableViewModel();
+            Loaded += MainWindow_Loaded;
         }
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            List<TableModel> tableItems = new List<TableModel>();
-
-            tableItems = App.tableList;
-
-            lvTableList.ItemsSource = tableItems;
+            lvTableList.ItemsSource = App.tableList;
         }
         private void lvTableList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -51,52 +46,13 @@ namespace BurgerKing_kiosk
                 selectedTable.IsUsed = true;
             }
         }
-        private void Click_Seat(object sender, RoutedEventArgs e)
-        {
-            var btn = (Button)sender;
-            Debug.WriteLine(btn.Name);
-            if (!menu.CheckTable())
-            {
-                return;
-            }
-            switch (btn.Name)
-            {
-                case "one":
-                    menu.SetTable(1);
-                    break;
-                case "two":
-                    menu.SetTable(2);
-                    break;
-                case "three":
-                    menu.SetTable(3);
-                    break;
-                case "four":
-                    menu.SetTable(4);
-                    break;
-                case "five":
-                    menu.SetTable(5);
-                    break;
-                case "six":
-                    menu.SetTable(6);
-                    break;
-                case "seven":
-                    menu.SetTable(7);
-                    break;
-                case "eight":
-                    menu.SetTable(8);
-                    break;
-                case "nine":
-                    menu.SetTable(9);
-                    break;
-            }
-        }
         private void GoBack(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
         private void GoNext(object sender, RoutedEventArgs e)
         {
-            if (!menu.CheckTable())
+            if (!App.orderVM.CheckTable())
             {
                 return;
             }
