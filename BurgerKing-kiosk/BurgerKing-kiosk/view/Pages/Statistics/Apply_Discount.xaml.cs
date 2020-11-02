@@ -23,11 +23,16 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     {
 
         int totalPrice = 0;
+        private static OrderData instance;
+
+
         public Apply_Discount()
         {
             InitializeComponent();
 
             this.Loaded += OrderPage_Loaded;
+
+            this.DataContext = new OrderData();
 
             //allPrice.Text = totalPrice + "";
 
@@ -56,6 +61,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e)
         {
+
             MessageBox.Show("할인이 적용되었습니다");
         }
 
@@ -66,16 +72,16 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
             if (orderList != null)
             {
-                OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
+                instance = new OrderData() { menuName = orderList.name, menuPrice = orderList.price, menuImg = orderList.picture, SalePercent = orderList.sale, Category = orderList.category.ToString() };
+                
+                Uri imageUri = new Uri(instance.menuImg, UriKind.Relative);
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
 
-                int selectedPrice = 0;
-                for (int i = 0; i < OrderData.GetInstance().Count; i++)
-                {
-                    selectedPrice = OrderData.GetInstance()[i].menuPrice;
-                }
-                //int beforeTotalPrice = int.Parse(allPrice.Text);
-                //allPrice.Text = beforeTotalPrice + selectedPrice + "";
-                //ordered_Menu_List.Items.Refresh();
+                Select_Img.Source = imageBitmap;
+                Select_Name.Text = instance.menuName;
+                Select_Price.Text = instance.menuPrice.ToString()+"원";
+                SetSalePercent();
+                SetSalePrice();
             }
             else
             {
@@ -85,31 +91,50 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         }
 
+        private void SetSalePercent()
+        {
+            Select_Sale.Text = instance.SalePercent.ToString();
+        }
+
+        private void SetSalePrice()
+        {
+            int Original_Price = instance.menuPrice;
+            int Sale_Percent = instance.SalePercent;
+            Sale_Price.Text = (Original_Price - ((Original_Price / 100) * Sale_Percent)).ToString();
+        }
+
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private void del_Btn_Click(object sender, RoutedEventArgs e)
+        private void Up_Click(object sender, RoutedEventArgs e)
         {
-            OrderData.GetInstance().Clear();
-           // ordered_Menu_List.Items.Refresh();
+            instance.SalePercent += 1;
+            SetSalePrice();
+            SetSalePercent();
         }
 
+        private void Down_Click(object sender, RoutedEventArgs e)
+        {
+            instance.SalePercent -= 1;
+            SetSalePrice();
+            SetSalePercent();
+        }
     }
 
     class OrderData
     {
         public string menuName { get; set; }
-        public int menuCount { get; set; }
+        public String menuImg { get; set; }
         public int menuPrice { get; set; }
+        public int SalePercent { get; set; }
+        public string Category { get; set; }
 
-        private static List<OrderData> instance;
+        private static OrderData instance = new OrderData();
 
-        public static List<OrderData> GetInstance()
+        public static OrderData GetInstance()
         {
-            if (instance == null)
-                instance = new List<OrderData>();
 
             return instance;
         }
