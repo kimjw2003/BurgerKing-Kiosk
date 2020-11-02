@@ -119,7 +119,6 @@
     </Compile>
     <Compile Include="model\DB\connectDB.cs" />
     <Compile Include="model\DB\MenuDB.cs" />
-    <Compile Include="model\DB\TableDB.cs" />
     <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />

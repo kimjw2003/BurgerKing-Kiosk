@@ -9,7 +9,7 @@ namespace BurgerKing_kiosk.view.Pages
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((bool)value) ? Brushes.Red : Brushes.White;
+            return ((bool)value) ? Brushes.Red : Brushes.Gray;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

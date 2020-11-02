@@ -29,6 +29,28 @@ namespace BurgerKing_kiosk
             InitializeComponent();
             this.DataContext = new viewModel.TableViewModel();
         }
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<TableModel> tableItems = new List<TableModel>();
+
+            tableItems = App.tableList;
+
+            lvTableList.ItemsSource = tableItems;
+        }
+        private void lvTableList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedTable = (TableModel)lvTableList.SelectedItem;
+            if (selectedTable.IsUsed)
+            {
+                MessageBox.Show("사용중인 테이블 입니다.");
+                return;
+                //selectedTable.IsUsed = false;
+            }
+            else
+            {
+                selectedTable.IsUsed = true;
+            }
+        }
         private void Click_Seat(object sender, RoutedEventArgs e)
         {
             var btn = (Button)sender;

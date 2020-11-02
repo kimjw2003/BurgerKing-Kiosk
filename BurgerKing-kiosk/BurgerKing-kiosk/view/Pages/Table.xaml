@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BurgerKing_kiosk"
+      xmlns:converter="clr-namespace:BurgerKing_kiosk.view.Pages"
+      xmlns:local = "clr-namespace:BurgerKing_kiosk"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="TablePage">
@@ -31,6 +32,7 @@
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <converter:BackgroundConverter x:Key="BackgroundConverter" />
     </Page.Resources>
 
     <Grid Background="White">
@@ -47,204 +49,32 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Grid.Column="1">
-                <Button x:Name="one" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 1</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="0" Grid.Column="2">
-                <Button x:Name="two" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" VerticalAlignment="Stretch">
-                            <TextBlock Style="{StaticResource Number}">NO. 2</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1" VerticalAlignment="Stretch">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="0" Grid.Column="3">
-                <Button x:Name="three" Margin="10" Click="Click_Seat" 
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 3</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="1">
-                <Button x:Name="four" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 4</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="2">
-                <Button x:Name="five" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 5</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="3">
-                <Button x:Name="six" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 6</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="2" Grid.Column="1">
-                <Button x:Name="seven" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 7</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="2" Grid.Column="2">
-                <Button x:Name="eight" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 8</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="2" Grid.Column="3">
-                <Button x:Name="nine" Margin="10" Click="Click_Seat"
-                        Style="{StaticResource TablenButton}">
-                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="430">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Style="{StaticResource Number}">NO. 9</TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <TextBlock Style="{StaticResource Time}"></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock Style="{StaticResource GetTime}"></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Button>
+            <Grid Grid.Column="1">
+                <ListView x:Name="lvTableList" Margin="5"
+                  SelectionChanged="lvTableList_SelectionChanged"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Border BorderBrush="Gray" BorderThickness="1" Margin="10">
+                                    <TextBlock TextAlignment="Center"
+                                       Height="100" Width="190"
+                                       Text="{Binding id, StringFormat={}{0}번 테이블}"
+                                       Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}"/>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
