@@ -50,7 +50,8 @@ namespace BurgerKing_kiosk
             lbFood.Items.Refresh();
         }
 
-        private void OrderPage_Loaded(object sender, RoutedEventArgs e) { //주문페이지가 시작되면 실행되는 함수
+        private void OrderPage_Loaded(object sender, RoutedEventArgs e)
+        { //주문페이지가 시작되면 실행되는 함수
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
         }
 
@@ -66,15 +67,15 @@ namespace BurgerKing_kiosk
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) // 메뉴 리스트가 눌러지면 실행
         {
-            
+
             MenuModel orderList = (MenuModel)lbFood.SelectedItem;
-            
-            if(orderList != null)
+
+            if (orderList != null)
             {
                 OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
 
                 int selectedPrice = 0;
-                for(int i = 0; i<OrderData.GetInstance().Count; i++)
+                for (int i = 0; i < OrderData.GetInstance().Count; i++)
                 {
                     selectedPrice = OrderData.GetInstance()[i].menuPrice;
                 }
@@ -86,8 +87,6 @@ namespace BurgerKing_kiosk
             {
                 return;
             }
-
-
         }
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
@@ -125,14 +124,14 @@ namespace BurgerKing_kiosk
                 allPrice.Text = allPrice_Int.ToString();
             }
 
-                ordered_Menu_List.Items.Refresh();
+            ordered_Menu_List.Items.Refresh();
         }
         private void downBtn_Click(object sender, RoutedEventArgs e) // -버튼누르면 실행
         {
             OrderData data = (sender as Button).DataContext as OrderData;
-            
+
             data.menuCount -= 1;
-            if(data.menuCount < 1)
+            if (data.menuCount < 1)
             {
                 if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
                 {
@@ -142,9 +141,7 @@ namespace BurgerKing_kiosk
                     allPrice.Text = allPrice_Int.ToString();
 
                     OrderData.GetInstance().Remove(data);
-
                 }
-
             }
 
             if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
@@ -153,14 +150,27 @@ namespace BurgerKing_kiosk
                 allPrice_Int -= data.menuPrice;
 
                 allPrice.Text = allPrice_Int.ToString();
+            }
+
+            ordered_Menu_List.Items.Refresh();
+        }
+
+        private void delete_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            OrderData data = (sender as Button).DataContext as OrderData;
+
+            if(OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            {
+                OrderData.GetInstance().Remove(data);
+
+                var allPrice_Int = int.Parse(allPrice.Text);
+                allPrice_Int -= data.menuPrice;
+
+                allPrice.Text = allPrice_Int.ToString();
 
             }
 
             ordered_Menu_List.Items.Refresh();
-            
-
-            
-
         }
     }
 

@@ -145,13 +145,13 @@
                             <GridViewColumn Width="80" Header="">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="삭제"/>
+                                        <Button x:Name="delete_Btn" Content="삭제" Click="delete_Btn_Click"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            
+
                             <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding menuName}"/>
-                            
+
                             <GridViewColumn Width="35" Header="">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -159,9 +159,9 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            
+
                             <GridViewColumn Header="수량" Width="100" DisplayMemberBinding="{Binding menuCount}"/>
-                            
+
                             <GridViewColumn Width="35" Header="">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -169,12 +169,12 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            
+
                             <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding menuPrice}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
-                
+
             </Grid>
             <Grid Grid.Row="1">
                 <TextBlock x:Name="chongAk" Width="100" Height="60" FontSize="25" Margin="0,0,400,0"  Text="총액 :" />
