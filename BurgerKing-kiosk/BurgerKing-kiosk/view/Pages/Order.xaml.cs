@@ -114,43 +114,50 @@ namespace BurgerKing_kiosk
         private void upBtn_Click(object sender, RoutedEventArgs e) // +버튼 누르면 실행
         {
             OrderData data = (sender as Button).DataContext as OrderData;
-            data.menuCount += 1;
+            
 
             if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
             {
                 var allPrice_Int = int.Parse(allPrice.Text);
                 allPrice_Int += data.menuPrice;
-
                 allPrice.Text = allPrice_Int.ToString();
-            }
 
+                data.menuPrice += (data.menuPrice / data.menuCount);
+            }
+            data.menuCount += 1;
+            
             ordered_Menu_List.Items.Refresh();
         }
         private void downBtn_Click(object sender, RoutedEventArgs e) // -버튼누르면 실행
         {
             OrderData data = (sender as Button).DataContext as OrderData;
 
+            if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            {
+
+                data.menuPrice -= (data.menuPrice / data.menuCount);
+
+
+                var allPrice_Int = int.Parse(allPrice.Text);
+                allPrice_Int -= data.menuPrice;
+                allPrice.Text = allPrice_Int.ToString();
+            }
+
             data.menuCount -= 1;
+
             if (data.menuCount < 1)
             {
                 if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
                 {
                     var allPrice_Int = int.Parse(allPrice.Text);
                     allPrice_Int -= data.menuPrice;
-
                     allPrice.Text = allPrice_Int.ToString();
 
                     OrderData.GetInstance().Remove(data);
                 }
             }
 
-            if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
-            {
-                var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= data.menuPrice;
-
-                allPrice.Text = allPrice_Int.ToString();
-            }
+            
 
             ordered_Menu_List.Items.Refresh();
         }
