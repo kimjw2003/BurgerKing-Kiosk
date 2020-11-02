@@ -149,8 +149,27 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
+                            
                             <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding menuName}"/>
-                            <GridViewColumn Header="수량" Width="170" DisplayMemberBinding="{Binding menuCount}"/>
+                            
+                            <GridViewColumn Width="35" Header="">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="upBtn" Content="-" Click="downBtn_Click" Width="20" Height="20"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            
+                            <GridViewColumn Header="수량" Width="100" DisplayMemberBinding="{Binding menuCount}"/>
+                            
+                            <GridViewColumn Width="35" Header="">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="downBtn" Content="+" Click="upBtn_Click" Width="20" Height="20"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            
                             <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding menuPrice}"/>
                         </GridView>
                     </ListView.View>
@@ -161,7 +180,7 @@
                 <TextBlock x:Name="chongAk" Width="100" Height="60" FontSize="25" Margin="0,0,400,0"  Text="총액 :" />
                 <TextBlock x:Name="allPrice" Width="100" Height="60" FontSize="25" Margin="0,0,200,0" Text="{Binding totalPrice}"/>
 
-                <Button x:Name="del_Btn" Width="50" Height="30" Margin="0,40,600,0" FontSize="20" Click="del_Btn_Click" Content="삭제"/>
+                <Button x:Name="allDel_Btn" Width="50" Height="30" Margin="0,40,600,0" FontSize="20" Click="allDel_Btn_Click" Content="삭제"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid Grid.Column="2">

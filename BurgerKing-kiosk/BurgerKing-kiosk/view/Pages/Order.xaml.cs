@@ -50,21 +50,21 @@ namespace BurgerKing_kiosk
             lbFood.Items.Refresh();
         }
 
-        private void OrderPage_Loaded(object sender, RoutedEventArgs e) {
+        private void OrderPage_Loaded(object sender, RoutedEventArgs e) { //주문페이지가 시작되면 실행되는 함수
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
         }
 
-        private void nextBtn_Click(object sender, RoutedEventArgs e)
+        private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
 
         }
 
-        private void order_order_Btn_Click(object sender, RoutedEventArgs e)
+        private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
         }
 
-        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) // 메뉴 리스트가 눌러지면 실행
         {
             
             MenuModel orderList = (MenuModel)lbFood.SelectedItem;
@@ -90,7 +90,7 @@ namespace BurgerKing_kiosk
 
         }
 
-        private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
+        private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
         {
             NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
 
@@ -98,16 +98,68 @@ namespace BurgerKing_kiosk
             ordered_Menu_List.Items.Refresh();
         }
 
-        private void del_Btn_Click(object sender, RoutedEventArgs e)
+        private void allDel_Btn_Click(object sender, RoutedEventArgs e) //모두삭제 버튼
         {
             OrderData.GetInstance().Clear();
             ordered_Menu_List.Items.Refresh();
 
-            allPrice.Text = "0";
+            totalPrice = 0;
+            allPrice.Text = totalPrice.ToString();
         }
 
         private void ordered_Menu_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void upBtn_Click(object sender, RoutedEventArgs e) // +버튼 누르면 실행
+        {
+            OrderData data = (sender as Button).DataContext as OrderData;
+            data.menuCount += 1;
+
+            if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            {
+                var allPrice_Int = int.Parse(allPrice.Text);
+                allPrice_Int += data.menuPrice;
+
+                allPrice.Text = allPrice_Int.ToString();
+            }
+
+                ordered_Menu_List.Items.Refresh();
+        }
+        private void downBtn_Click(object sender, RoutedEventArgs e) // -버튼누르면 실행
+        {
+            OrderData data = (sender as Button).DataContext as OrderData;
+            
+            data.menuCount -= 1;
+            if(data.menuCount < 1)
+            {
+                if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+                {
+                    var allPrice_Int = int.Parse(allPrice.Text);
+                    allPrice_Int -= data.menuPrice;
+
+                    allPrice.Text = allPrice_Int.ToString();
+
+                    OrderData.GetInstance().Remove(data);
+
+                }
+
+            }
+
+            if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            {
+                var allPrice_Int = int.Parse(allPrice.Text);
+                allPrice_Int -= data.menuPrice;
+
+                allPrice.Text = allPrice_Int.ToString();
+
+            }
+
+            ordered_Menu_List.Items.Refresh();
+            
+
+            
 
         }
     }
