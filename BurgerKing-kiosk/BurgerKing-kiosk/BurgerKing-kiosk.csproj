@@ -149,6 +149,9 @@
     <Compile Include="view\Pages\Statistics\Apply_Discount.xaml.cs">
       <DependentUpon>Apply_Discount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\Pages\Statistics\Chart.xaml.cs">
+      <DependentUpon>Chart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\Pages\Statistics\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -219,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\Pages\Statistics\Apply_Discount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\Pages\Statistics\Chart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

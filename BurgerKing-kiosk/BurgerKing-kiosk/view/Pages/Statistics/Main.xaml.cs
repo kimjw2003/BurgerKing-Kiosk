@@ -27,6 +27,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         public Main()
         {
             InitializeComponent();
+            frame_content.Navigate(new Uri("view/Pages/Statistics/Chart.xaml", UriKind.Relative));
         }
 
         private void SetSaleText() //db에서 할인율 불러와서 계산해야함
