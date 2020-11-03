@@ -42,10 +42,10 @@ namespace BurgerKing_kiosk
 
         private List<OrderModel> listFood = new List<OrderModel>()
         {
-            new OrderModel(){name="뭐시기",price=1000,amount=1},
-            new OrderModel(){name="뭐시기",price=1000,amount=1},
-            new OrderModel(){name="뭐시기",price=1000,amount=1},
-            new OrderModel(){name="뭐시기",price=1000,amount=1},
+            new OrderModel(){name="뭐시기",price=1000,count=1},
+            new OrderModel(){name="뭐시기",price=1000,count=1},
+            new OrderModel(){name="뭐시기",price=1000,count=1},
+            new OrderModel(){name="뭐시기",price=1000,count=1},
         };
     }
 }
