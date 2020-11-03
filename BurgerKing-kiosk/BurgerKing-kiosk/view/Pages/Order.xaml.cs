@@ -119,7 +119,7 @@ namespace BurgerKing_kiosk
             if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
             {
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int += data.menuPrice;
+                allPrice_Int += (data.menuPrice / data.menuCount);
                 allPrice.Text = allPrice_Int.ToString();
 
                 data.menuPrice += (data.menuPrice / data.menuCount);
@@ -135,12 +135,12 @@ namespace BurgerKing_kiosk
             if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
             {
 
-                data.menuPrice -= (data.menuPrice / data.menuCount);
-
 
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= data.menuPrice;
+                allPrice_Int -= (data.menuPrice / data.menuCount);
                 allPrice.Text = allPrice_Int.ToString();
+
+                data.menuPrice -= (data.menuPrice / data.menuCount);
             }
 
             data.menuCount -= 1;
@@ -150,7 +150,7 @@ namespace BurgerKing_kiosk
                 if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
                 {
                     var allPrice_Int = int.Parse(allPrice.Text);
-                    allPrice_Int -= data.menuPrice;
+                    allPrice_Int -= data.menuCount;
                     allPrice.Text = allPrice_Int.ToString();
 
                     OrderData.GetInstance().Remove(data);
@@ -172,7 +172,6 @@ namespace BurgerKing_kiosk
 
                 var allPrice_Int = int.Parse(allPrice.Text);
                 allPrice_Int -= data.menuPrice;
-
                 allPrice.Text = allPrice_Int.ToString();
 
             }
