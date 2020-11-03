@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BurgerKing_kiosk.view.Pages.Statistics
 {
@@ -24,10 +25,22 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private SaleViewModel viewModel = new SaleViewModel();
         private String payment_method = null;
+
+        DispatcherTimer timer = new DispatcherTimer();
+
         public Main()
         {
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
             InitializeComponent();
             frame_content.Navigate(new Uri("view/Pages/Statistics/Chart.xaml", UriKind.Relative));
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            RunTime.Text = "프로그램 구동 시간: " + App.CurrentTime;
         }
 
         private void SetSaleText() //db에서 할인율 불러와서 계산해야함

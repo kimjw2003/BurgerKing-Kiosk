@@ -28,6 +28,8 @@ namespace BurgerKing_kiosk
 
         public static List<TableModel> tableList = new List<TableModel>();
 
+        public static String CurrentTime;
+
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
                 
@@ -44,8 +46,13 @@ namespace BurgerKing_kiosk
         private void Timer_Tick(object sender, EventArgs e)
         {
             TimeSpan ts = stopWatch.Elapsed;
-           String currentTime = String.Format("{0:00}:{1:00}:{2:00}",
-            ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            CurrentTime = String.Format("{0:00}:{1:00}:{2:00}",
+            ts.Hours, ts.Minutes, ts.Seconds);
+        }
+
+        void App_Exit(object sender, ExitEventArgs e)
+        {
+            
         }
     }
 }

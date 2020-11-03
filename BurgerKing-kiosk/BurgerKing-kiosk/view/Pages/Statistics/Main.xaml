@@ -37,7 +37,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock x:Name="RunTime" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center"> 프로그램 구동 시간</TextBlock>
+                <TextBlock x:Name="RunTime" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center"></TextBlock>
             </Grid>
 
             <Grid Grid.Row="1">
