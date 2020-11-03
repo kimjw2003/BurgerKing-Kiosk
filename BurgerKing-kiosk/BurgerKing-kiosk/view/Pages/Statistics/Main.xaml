@@ -41,7 +41,8 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                
+                <Frame Name="frame_content"
+                   NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
 

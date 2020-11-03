@@ -1,20 +1,8 @@
 ﻿using BurgerKing_kiosk.model;
-using BurgerKing_kiosk.viewModel;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BurgerKing_kiosk
 {
@@ -23,27 +11,41 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class TablePage : Page
     {
+        int table = 0;
         public TablePage()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
+            Loaded += Table_Loaded;
         }
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Table_Loaded(object sender, RoutedEventArgs e)
         {
-            lvTableList.ItemsSource = App.tableList;
+            lvTable.ItemsSource = App.tableList;
         }
-        private void lvTableList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lvTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedTable = (TableModel)lvTableList.SelectedItem;
+            if (App.orderVM.GetTable() != 0)
+            {
+                table = App.orderVM.GetTable();
+                App.orderVM.SetTable(0);
+                return;
+            }
+            var selectedTable = (TableModel)lvTable.SelectedItem;
             if (selectedTable.IsUsed)
             {
                 MessageBox.Show("사용중인 테이블 입니다.");
                 return;
                 //selectedTable.IsUsed = false;
             }
+            else if (table != 0)
+            {
+                App.tableList[table - 1].IsUsed = false;
+                selectedTable.IsUsed = true;
+                table = selectedTable.id;
+            }
             else
             {
                 selectedTable.IsUsed = true;
+                table = selectedTable.id;
             }
         }
         private void GoBack(object sender, RoutedEventArgs e)
@@ -52,10 +54,11 @@ namespace BurgerKing_kiosk
         }
         private void GoNext(object sender, RoutedEventArgs e)
         {
-            if (!App.orderVM.CheckTable())
+            if (table == 0)
             {
                 return;
             }
+            App.orderVM.SetTable(table);
             NavigationService.Navigate(new Uri("view/Pages/HowPay.xaml", UriKind.Relative));
         }
     }

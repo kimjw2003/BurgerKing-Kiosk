@@ -16,7 +16,7 @@ namespace BurgerKing_kiosk.model
         }
 
         public int id { get; set; }
-        public String time { get; set; }
+        public String time { get; set; } = "";
 
         private bool _isUsed = false;
         public bool IsUsed

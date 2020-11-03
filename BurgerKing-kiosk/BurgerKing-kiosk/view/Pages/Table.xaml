@@ -53,8 +53,8 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <ListBox x:Name="lvTableList" Margin="5"
-                  SelectionChanged="lvTableList_SelectionChanged"
+                <ListBox x:Name="lvTable" Margin="5"
+                  SelectionChanged="lvTable_SelectionChanged"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -67,6 +67,12 @@
                             <StackPanel Width="500" Height="160" Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}">
                                 <TextBlock TextAlignment="Left" FontSize="20"
                                        HorizontalAlignment="Left"  VerticalAlignment="Top"
+                                       Text="{Binding id, StringFormat={}   NO. {0}}"/>
+                                <TextBlock TextAlignment="Left" FontSize="20"
+                                       HorizontalAlignment="Left"  VerticalAlignment="Center"
+                                       Text="{Binding time, StringFormat={}{''}}"/>
+                                <TextBlock TextAlignment="Right" FontSize="20"
+                                       HorizontalAlignment="Right"  VerticalAlignment="Bottom"
                                        Text="{Binding id, StringFormat={}   NO. {0}}"/>
                             </StackPanel>
                         </DataTemplate>
