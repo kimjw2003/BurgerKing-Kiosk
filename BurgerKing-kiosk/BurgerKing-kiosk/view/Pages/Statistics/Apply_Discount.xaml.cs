@@ -117,6 +117,11 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void Down_Click(object sender, RoutedEventArgs e)
         {
+            if(instance.SalePercent == 0)
+            {
+                return;
+            }
+
             instance.SalePercent -= 1;
             SetSalePrice();
             SetSalePercent();
