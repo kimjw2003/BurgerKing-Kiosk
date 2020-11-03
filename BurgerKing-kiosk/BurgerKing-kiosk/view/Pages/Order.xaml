@@ -150,7 +150,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding menuName}"/>
+                            <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding name}"/>
 
                             <GridViewColumn Width="35" Header="">
                                 <GridViewColumn.CellTemplate>
@@ -160,7 +160,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="수량" Width="100" DisplayMemberBinding="{Binding menuCount}"/>
+                            <GridViewColumn Header="수량" Width="100" DisplayMemberBinding="{Binding count}"/>
 
                             <GridViewColumn Width="35" Header="">
                                 <GridViewColumn.CellTemplate>
@@ -170,7 +170,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding menuPrice}"/>
+                            <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding price}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
