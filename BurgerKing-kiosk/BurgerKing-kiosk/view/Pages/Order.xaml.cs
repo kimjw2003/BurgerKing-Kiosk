@@ -37,7 +37,7 @@ namespace BurgerKing_kiosk
 
             allPrice.Text = totalPrice + "";
 
-            ordered_Menu_List.ItemsSource = OrderData.GetInstance();
+            ordered_Menu_List.ItemsSource = OrderModel.GetInstance();
         }
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -62,6 +62,7 @@ namespace BurgerKing_kiosk
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
+           //App.orderVM.AddOrder(OrderModel);
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
         }
 
@@ -72,34 +73,38 @@ namespace BurgerKing_kiosk
 
             if (orderList != null)
             {
-                OrderData.GetInstance().Add(new OrderData() { menuName = orderList.name, menuCount = 1, menuPrice = orderList.price });
+                OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
 
                 int selectedPrice = 0;
-                for (int i = 0; i < OrderData.GetInstance().Count; i++)
-                {
-                    selectedPrice = OrderData.GetInstance()[i].menuPrice;
+                for (int i = 0; i < OrderModel.GetInstance().Count; i++) {
+                    selectedPrice = OrderModel.GetInstance()[i].price;
                 }
                 int beforeTotalPrice = int.Parse(allPrice.Text);
-                allPrice.Text = beforeTotalPrice + selectedPrice + "";
+                allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
+
+                lbFood.SelectedItem = null;
+
+
+
                 ordered_Menu_List.Items.Refresh();
-            }
-            else
-            {
+            }else{
                 return;
             }
+
         }
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
         {
+            //MessageBox
             NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
 
-            OrderData.GetInstance().Clear();
+            OrderModel.GetInstance().Clear();
             ordered_Menu_List.Items.Refresh();
         }
 
         private void allDel_Btn_Click(object sender, RoutedEventArgs e) //모두삭제 버튼
         {
-            OrderData.GetInstance().Clear();
+            OrderModel.GetInstance().Clear();
             ordered_Menu_List.Items.Refresh();
 
             totalPrice = 0;
@@ -113,47 +118,47 @@ namespace BurgerKing_kiosk
 
         private void upBtn_Click(object sender, RoutedEventArgs e) // +버튼 누르면 실행
         {
-            OrderData data = (sender as Button).DataContext as OrderData;
+            OrderModel data = (sender as Button).DataContext as OrderModel;
             
 
-            if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            if (OrderModel.GetInstance().Exists(x => x.name == data.name))
             {
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int += (data.menuPrice / data.menuCount);
+                allPrice_Int += (data.price / data.count);
                 allPrice.Text = allPrice_Int.ToString();
 
-                data.menuPrice += (data.menuPrice / data.menuCount);
+                data.price += (data.price / data.count);
             }
-            data.menuCount += 1;
+            data.count += 1;
             
             ordered_Menu_List.Items.Refresh();
         }
         private void downBtn_Click(object sender, RoutedEventArgs e) // -버튼누르면 실행
         {
-            OrderData data = (sender as Button).DataContext as OrderData;
+            OrderModel data = (sender as Button).DataContext as OrderModel;
 
-            if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            if (OrderModel.GetInstance().Exists(x => x.name == data.name))
             {
 
 
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= (data.menuPrice / data.menuCount);
+                allPrice_Int -= (data.price / data.count);
                 allPrice.Text = allPrice_Int.ToString();
 
-                data.menuPrice -= (data.menuPrice / data.menuCount);
+                data.price -= (data.price / data.count);
             }
 
-            data.menuCount -= 1;
+            data.count -= 1;
 
-            if (data.menuCount < 1)
+            if (data.count < 1)
             {
-                if (OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+                if (OrderModel.GetInstance().Exists(x => x.name == data.name))
                 {
                     var allPrice_Int = int.Parse(allPrice.Text);
-                    allPrice_Int -= data.menuCount;
+                    allPrice_Int -= data.count;
                     allPrice.Text = allPrice_Int.ToString();
 
-                    OrderData.GetInstance().Remove(data);
+                    OrderModel.GetInstance().Remove(data);
                 }
             }
 
@@ -162,16 +167,16 @@ namespace BurgerKing_kiosk
             ordered_Menu_List.Items.Refresh();
         }
 
-        private void delete_Btn_Click(object sender, RoutedEventArgs e)
+        private void delete_Btn_Click(object sender, RoutedEventArgs e) //개별삭제 버튼 누를시 실행
         {
-            OrderData data = (sender as Button).DataContext as OrderData;
+            OrderModel data = (sender as Button).DataContext as OrderModel;
 
-            if(OrderData.GetInstance().Exists(x => x.menuName == data.menuName))
+            if(OrderModel.GetInstance().Exists(x => x.name == data.name))
             {
-                OrderData.GetInstance().Remove(data);
+                OrderModel.GetInstance().Remove(data);
 
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= data.menuPrice;
+                allPrice_Int -= data.price;
                 allPrice.Text = allPrice_Int.ToString();
 
             }
@@ -179,23 +184,4 @@ namespace BurgerKing_kiosk
             ordered_Menu_List.Items.Refresh();
         }
     }
-
-    class OrderData
-    {
-        public string menuName { get; set; }
-        public int menuCount { get; set; }
-        public int menuPrice { get; set; }
-
-        private static List<OrderData> instance;
-
-        public static List<OrderData> GetInstance()
-        {
-            if (instance == null)
-                instance = new List<OrderData>();
-
-            return instance;
-        }
-    }
-
-
 }

@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace BurgerKing_kiosk.model
 {
+
     public class OrderModel
     {
         public int id { get; set; }
-        public String name { get; set; }
+        public string name { get; set; }
+        public int count { get; set; }
         public int price { get; set; }
         public int sale { get; set; }
-        public int amount { get; set; }
 
+        private static List<OrderModel> instance;
+
+        public static List<OrderModel> GetInstance()
+        {
+            if (instance == null)
+                instance = new List<OrderModel>();
+
+            return instance;
+        }
     }
 }
