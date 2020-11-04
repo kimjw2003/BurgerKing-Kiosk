@@ -64,7 +64,7 @@ namespace BurgerKing_kiosk
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
            App.orderVM.AddOrder(OrderModel.GetInstance());
-            App.totalPrice = totalPrice;
+            App.totalPrice = Int32.Parse(allPrice.Text);
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
         }
 
@@ -81,25 +81,28 @@ namespace BurgerKing_kiosk
                     var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);
                     item.price += (item.price / item.count);
                     item.count++;
+
+                }
+                else { 
+                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
+
+                    lbFood.SelectedItem = null;
+
+                    int selectedPrice = 0;
+                    for (int i = 0; i < OrderModel.GetInstance().Count; i++)
+                    {
+                        selectedPrice = OrderModel.GetInstance()[i].price;
+                    }
+                    int beforeTotalPrice = int.Parse(allPrice.Text);
+                    allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
                     
                 }
+               
 
-                OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
 
-                lbFood.SelectedItem = null;
-
-                int selectedPrice = 0;
-                for (int i = 0; i < OrderModel.GetInstance().Count; i++)
-                {
-                    selectedPrice = OrderModel.GetInstance()[i].price;
-                }
-                int beforeTotalPrice = int.Parse(allPrice.Text);
-                allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
-
-                
-
-                    ordered_Menu_List.Items.Refresh();
-            }else{
+                ordered_Menu_List.Items.Refresh();
+            }
+            else{
                 return;
             }
 
