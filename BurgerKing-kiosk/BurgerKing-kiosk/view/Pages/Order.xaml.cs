@@ -51,7 +51,6 @@ namespace BurgerKing_kiosk
             lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
             lbFood.Items.Refresh();
         }
-
         private void OrderPage_Loaded(object sender, RoutedEventArgs e)
         { //주문페이지가 시작되면 실행되는 함수
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
@@ -65,6 +64,7 @@ namespace BurgerKing_kiosk
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
            App.orderVM.AddOrder(OrderModel.GetInstance());
+            App.totalPrice = totalPrice;
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
         }
 
@@ -72,9 +72,18 @@ namespace BurgerKing_kiosk
         {
 
             MenuModel orderList = (MenuModel)lbFood.SelectedItem;
+            
 
             if (orderList != null)
             {
+                if (OrderModel.GetInstance().Exists(x => x.name == orderList.name))
+                {
+                    var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);
+                    item.price += (item.price / item.count);
+                    item.count++;
+                    
+                }
+
                 OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
 
                 lbFood.SelectedItem = null;
@@ -86,6 +95,8 @@ namespace BurgerKing_kiosk
                 }
                 int beforeTotalPrice = int.Parse(allPrice.Text);
                 allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
+
+                
 
                     ordered_Menu_List.Items.Refresh();
             }else{
