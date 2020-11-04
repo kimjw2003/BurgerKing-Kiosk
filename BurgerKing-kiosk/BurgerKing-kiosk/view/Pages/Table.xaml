@@ -70,7 +70,7 @@
                                        Text="{Binding id, StringFormat={}   NO. {0}}"/>
                                 <TextBlock TextAlignment="Left" FontSize="20"
                                        HorizontalAlignment="Left"  VerticalAlignment="Center"
-                                       Text="{Binding time, StringFormat={}{''}}"/>
+                                       Text="{Binding id, StringFormat={}   NO. {0}}"/>
                                 <TextBlock TextAlignment="Right" FontSize="20"
                                        HorizontalAlignment="Right"  VerticalAlignment="Bottom"
                                        Text="{Binding id, StringFormat={}   NO. {0}}"/>

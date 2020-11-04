@@ -27,6 +27,7 @@ namespace BurgerKing_kiosk
             this.DataContext = new viewModel.CardViewModel();
 
             webcam.CameraIndex = 0;
+            totalPrice.Text = App.totalPrice + "";
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {

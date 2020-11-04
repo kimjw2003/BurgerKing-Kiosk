@@ -50,6 +50,8 @@ namespace BurgerKing_kiosk
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
+            App.tableList[table - 1].IsUsed = false;
+            table = 0;
             NavigationService.GoBack();
         }
         private void GoNext(object sender, RoutedEventArgs e)
