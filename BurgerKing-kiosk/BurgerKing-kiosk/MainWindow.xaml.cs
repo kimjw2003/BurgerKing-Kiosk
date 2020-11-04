@@ -4,6 +4,8 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using System.Diagnostics;
 using BurgerKing_kiosk.model;
+using System.Windows.Forms;
+using BurgerKing_kiosk.view.Pages;
 
 namespace BurgerKing_kiosk
 {
@@ -24,7 +26,6 @@ namespace BurgerKing_kiosk
             
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
-            frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
             App.menuVM.GetDBMenus();
             App.tableList.Add(new TableModel()
             {
@@ -71,9 +72,30 @@ namespace BurgerKing_kiosk
                 id = 9,
                 IsUsed = false
             });
+
+            this.Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginCheck();
+        }
+
+        private void LoginCheck()
+        {
+            //frame_content.Navigate(new Uri("view/Pages/Login.xaml", UriKind.Relative));
+
+            LoginWin login = new LoginWin();
+            login.Owner = this;
+
+            bool? result = login.ShowDialog();
+            if (result == true)
+            {
+                frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
+            }
+        }
+
+        private void MainWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.F2)
             {

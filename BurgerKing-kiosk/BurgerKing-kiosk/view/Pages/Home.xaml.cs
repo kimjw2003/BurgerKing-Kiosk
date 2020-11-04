@@ -22,57 +22,34 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class HomePage : Page
     {
-        private BackgroundWorker loadingThread;
-        LoadingWindow lw;
+        NavigationWindow win;
 
         public HomePage()
         {
+            
             InitializeComponent();
-            //InitBW();
-            //InitLoadWindow();
+            this.Loaded += HomePage_Loaded;
+            //MainWindow.KeyDown += new KeyEventHandler(Window_KeyDown);
         }
 
-        /*
-        private void InitBW()
+        private void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
-            loadingThread = new BackgroundWorker()
+            this.KeyDown += new KeyEventHandler(Window_KeyDown);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F2)
             {
-                WorkerReportsProgress = true,
-                WorkerSupportsCancellation = true
-            };
-
-            loadingThread.DoWork += Thread_DoWork;
-            loadingThread.ProgressChanged += Thread_ProgressChanged;
-            loadingThread.RunWorkerCompleted += Thread_RunWorkerCompleted;
+                //if (!frame_content.CanGoBack)
+                
+                    Statistics statistics = new Statistics();
+                    statistics.Show();
+                
+            }
         }
 
-        private void Thread_DoWork(object sender, DoWorkEventArgs e)
-        {
-            InitializeComponent();
-            for (int i = 0; i < 5000000; i++) ;
-        }
-
-        private void Thread_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            int per = e.ProgressPercentage;
-            lw.progressBar.Value = per;
-        }
-
-        private void Thread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Console.WriteLine("로딩끝");
-            lw.Close();
-        }
-
-        private void InitLoadWindow()
-        {
-            lw = new LoadingWindow();
-            lw.Show();
-            loadingThread.RunWorkerAsync();
-        }
-        */
-
-            private void BtnOrder_Click(object sender, RoutedEventArgs e)
+        private void BtnOrder_Click(object sender, RoutedEventArgs e)
         {
             if(NavigationService.CanGoForward)
             {
@@ -86,18 +63,8 @@ namespace BurgerKing_kiosk
 
         private void BtnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            /*if (NavigationService.CanGoForward)
-            {
-                NavigationService.GoForward();
-            }
-            else
-            {
-                NavigationService.Navigate(new Uri("view/Pages/Order.xaml", UriKind.Relative));
-            }*/
-
             Statistics statistics = new Statistics();
             statistics.Show();
         }
-
     }
 }
