@@ -78,7 +78,15 @@ namespace BurgerKing_kiosk
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            LoginCheck();
+            if (true)
+            {
+                frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
+            }
+            else
+            {
+                LoginCheck();
+            }
+            
         }
 
         private void LoginCheck()
