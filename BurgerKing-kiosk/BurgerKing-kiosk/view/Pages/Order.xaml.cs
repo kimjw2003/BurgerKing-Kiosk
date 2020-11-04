@@ -4,6 +4,7 @@ using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using static BurgerKing_kiosk.model.MenuModel;
+using static BurgerKing_kiosk.model.OrderModel;
 
 namespace BurgerKing_kiosk
 {
@@ -62,7 +64,7 @@ namespace BurgerKing_kiosk
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
-           //App.orderVM.AddOrder(OrderModel);
+           App.orderVM.AddOrder(OrderModel.GetInstance());
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
         }
 
@@ -75,18 +77,17 @@ namespace BurgerKing_kiosk
             {
                 OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
 
+                lbFood.SelectedItem = null;
+
                 int selectedPrice = 0;
-                for (int i = 0; i < OrderModel.GetInstance().Count; i++) {
+                for (int i = 0; i < OrderModel.GetInstance().Count; i++)
+                {
                     selectedPrice = OrderModel.GetInstance()[i].price;
                 }
                 int beforeTotalPrice = int.Parse(allPrice.Text);
                 allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
 
-                lbFood.SelectedItem = null;
-
-
-
-                ordered_Menu_List.Items.Refresh();
+                    ordered_Menu_List.Items.Refresh();
             }else{
                 return;
             }

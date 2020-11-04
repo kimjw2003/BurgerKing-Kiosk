@@ -14,11 +14,9 @@ namespace BurgerKing_kiosk.viewModel
         {
             return App.userData.order;
         }
-        public void AddOrder(int id)
+        public void AddOrder(List<OrderModel> list)
         {
-            OrderModel food = new OrderModel();
-            food.id = id;
-            App.userData.order.Add(food);
+            App.userData.order = list;
         }
         public void DeleteAll()
         {
