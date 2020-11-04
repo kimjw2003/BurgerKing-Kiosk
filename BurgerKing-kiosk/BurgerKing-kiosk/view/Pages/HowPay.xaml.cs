@@ -2,17 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BurgerKing_kiosk
 {
@@ -24,7 +16,9 @@ namespace BurgerKing_kiosk
         public HowPayPage()
         {
             InitializeComponent();
-            Order.ItemsSource = listFood.ToList();
+            orderCount.Text = App.orderVM.GetOrderList().Count.ToString();
+            Order.ItemsSource = App.orderVM.GetOrderList();
+            totalPrice.Text = App.totalPrice + "";
             this.DataContext = new viewModel.HowPayViewModel();
         }
         private void GoBack(object sender, RoutedEventArgs e)
@@ -39,13 +33,5 @@ namespace BurgerKing_kiosk
         {
             NavigationService.Navigate(new Uri("view/Pages/Card.xaml", UriKind.Relative));
         }
-
-        private List<OrderModel> listFood = new List<OrderModel>()
-        {
-            new OrderModel(){name="뭐시기",price=1000,count=1},
-            new OrderModel(){name="뭐시기",price=1000,count=1},
-            new OrderModel(){name="뭐시기",price=1000,count=1},
-            new OrderModel(){name="뭐시기",price=1000,count=1},
-        };
     }
 }
