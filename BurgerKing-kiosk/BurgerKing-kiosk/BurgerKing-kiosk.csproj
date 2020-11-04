@@ -134,18 +134,12 @@
     <Compile Include="viewModel\SaleViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="viewModel\UserListViewModel.cs" />
-    <Compile Include="view\LoadingWindow.xaml.cs">
-      <DependentUpon>LoadingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="view\Pages\BackgroundConverter.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\Pages\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Pages\LoginWin.xaml.cs">
       <DependentUpon>LoginWin.xaml</DependentUpon>
@@ -169,10 +163,6 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Page Include="Statistics.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,10 +203,6 @@
       <DependentUpon>HowPay.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
