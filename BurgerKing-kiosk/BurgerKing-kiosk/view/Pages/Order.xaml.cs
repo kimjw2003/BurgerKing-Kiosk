@@ -72,8 +72,8 @@ namespace BurgerKing_kiosk
         {
 
             MenuModel orderList = (MenuModel)lbFood.SelectedItem;
-            
 
+            
             if (orderList != null)
             {
                 if (OrderModel.GetInstance().Exists(x => x.name == orderList.name))
@@ -81,9 +81,10 @@ namespace BurgerKing_kiosk
                     var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);
                     item.price += (item.price / item.count);
                     item.count++;
-
+                    
+                    
                 }
-                else { 
+                else {
                     OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
 
                     lbFood.SelectedItem = null;
@@ -95,17 +96,24 @@ namespace BurgerKing_kiosk
                     }
                     int beforeTotalPrice = int.Parse(allPrice.Text);
                     allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
+
                     
                 }
-               
-
 
                 ordered_Menu_List.Items.Refresh();
-            }
-            else{
+            }else {
                 return;
             }
 
+            var item2 = OrderModel.GetInstance().Find(x => x.name == orderList.name);
+            var allPrice_Int = int.Parse(allPrice.Text);
+
+            if (item2.count > 1)
+            {
+                allPrice_Int += (item2.price / item2.count);
+                allPrice.Text = allPrice_Int.ToString();
+            }
+            lbFood.SelectedItem = null;
         }
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
