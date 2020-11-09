@@ -12,7 +12,6 @@ namespace BurgerKing_kiosk.viewModel.DB
     class MenuDB
     {
         private connectDB conDB = new connectDB();
-        private List<MenuModel> menus = new List<MenuModel>();
 
         public List<MenuModel> GetMenu(Category tablename)
         {
@@ -25,6 +24,11 @@ namespace BurgerKing_kiosk.viewModel.DB
                 string sql = "select * from " + tablename.ToString();
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
+
+                int i = 0;
+                int categoryIndex = 1;
+                List<MenuModel> menus = new List<MenuModel>();
+
                 while (reader.Read())
                 {
                     menu = new MenuModel();
@@ -35,8 +39,19 @@ namespace BurgerKing_kiosk.viewModel.DB
                     menu.sale = (int)reader["sale"];
                     menu.category = tablename;
 
+                    if (categoryIndex != (int)menu.category)
+                    {
+                        categoryIndex = (int)menu.category;
+                        i = 0;
+                    }
+
+                    menu.page = i++ / 9 + 1;
+                    
+
                     menus.Add(menu);
                 }
+
+                return menus;
             }
             catch (MySqlException ex)
             {
@@ -51,8 +66,8 @@ namespace BurgerKing_kiosk.viewModel.DB
                         break;
                 }
             }
-            Console.WriteLine(menus);
-            return menus;
+
+            return null;
         }
     }
 }

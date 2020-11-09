@@ -59,7 +59,7 @@ namespace BurgerKing_kiosk
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-
+             
         }
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
@@ -86,6 +86,7 @@ namespace BurgerKing_kiosk
             
             if (orderList != null)
             {
+                MessageBox.Show(orderList.page.ToString());
                 if (OrderModel.GetInstance().Exists(x => x.name == orderList.name))
                 {
                     var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);

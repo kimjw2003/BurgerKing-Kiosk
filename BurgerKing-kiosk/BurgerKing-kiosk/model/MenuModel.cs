@@ -15,8 +15,10 @@ namespace BurgerKing_kiosk.model
         public String picture { get; set; }
         public int sale { get; set; }
         public int amount { get; set; }
+        public int page { get; set; }
 
     }
+
     public enum Category
     {
         burger,
