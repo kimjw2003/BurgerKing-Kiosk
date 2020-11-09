@@ -113,6 +113,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="model\DB\AutoLoginDB.cs" />
     <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\DB\UserListDB.cs" />
     <Compile Include="model\OrderModel.cs" />
@@ -126,6 +127,7 @@
     </Compile>
     <Compile Include="model\DB\connectDB.cs" />
     <Compile Include="model\DB\MenuDB.cs" />
+    <Compile Include="viewModel\AutoLoginViewModel.cs" />
     <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
@@ -170,10 +172,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Pages\Cash.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="view\Pages\Finish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,9 +190,6 @@
     </Compile>
     <Compile Include="view\Pages\Card.xaml.cs">
       <DependentUpon>Card.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\Pages\Cash.xaml.cs">
-      <DependentUpon>Cash.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Pages\Finish.xaml.cs">
       <DependentUpon>Finish.xaml</DependentUpon>
