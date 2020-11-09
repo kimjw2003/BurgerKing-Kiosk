@@ -34,7 +34,7 @@
                     VerticalContentAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox/>
+                    <CheckBox x:Name="CheckBox"/>
                     <TextBlock><Run Text="로그인 유지"/></TextBlock>
                 </StackPanel>
                 

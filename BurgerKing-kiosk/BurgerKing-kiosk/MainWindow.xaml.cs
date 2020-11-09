@@ -7,6 +7,7 @@ using BurgerKing_kiosk.model;
 using System.Windows.Forms;
 using BurgerKing_kiosk.view.Pages;
 using BurgerKing_kiosk.model.DB;
+using BurgerKing_kiosk.viewModel;
 
 namespace BurgerKing_kiosk
 {
@@ -15,7 +16,9 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
- 
+
+        AutoLoginViewModel loginVM = new AutoLoginViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -79,10 +82,9 @@ namespace BurgerKing_kiosk
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            if (true)
+
+            if (loginVM.GetBool())
             {
-                AutoLoginDB test = new AutoLoginDB();
-                //test.GetBool();
                 frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
             }
             else
@@ -101,6 +103,11 @@ namespace BurgerKing_kiosk
             if (result == true)
             {
                 frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
+
+                if (login.CheckBox.IsChecked == (bool ?)true)
+                {
+                    loginVM.SetBool(true);
+                }
             }
         }
 
