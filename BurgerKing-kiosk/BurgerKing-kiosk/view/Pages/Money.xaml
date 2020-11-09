@@ -28,7 +28,7 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <TextBlock FontSize="60" FontWeight="Bold">총 금액 :</TextBlock>
-                <TextBlock FontSize="60" FontWeight="Bold">ㅏㅏ</TextBlock>
+                <TextBlock x:Name="totalPrice" FontSize="60" FontWeight="Bold"></TextBlock>
                 <TextBlock FontSize="60" FontWeight="Bold">원</TextBlock>
             </StackPanel>
         </Grid>

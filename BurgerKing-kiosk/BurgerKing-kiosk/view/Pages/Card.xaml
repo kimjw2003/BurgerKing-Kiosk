@@ -31,10 +31,15 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="40">총 금액 :</TextBlock>
-                    <TextBlock x:Name="tdRecog" FontSize="40">ㅏㅏ</TextBlock>
+                    <TextBlock x:Name="tdRecog" FontSize="40"></TextBlock>
                     <TextBlock FontSize="40">원</TextBlock>
                 </StackPanel>
                 
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="40">총 금액 :</TextBlock>
+                    <TextBlock x:Name="totalPrice" FontSize="40"></TextBlock>
+                    <TextBlock FontSize="40">원</TextBlock>
+                </StackPanel>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">

@@ -23,6 +23,7 @@ namespace BurgerKing_kiosk.view.Pages
         public Money()
         {
             InitializeComponent();
+            totalPrice.Text = App.totalPrice + "";
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
