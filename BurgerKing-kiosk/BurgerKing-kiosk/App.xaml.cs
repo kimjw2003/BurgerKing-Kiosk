@@ -23,6 +23,7 @@ namespace BurgerKing_kiosk
     {
         public static MenuViewModel menuVM = new MenuViewModel();
         public static List<MenuModel> menuList = new List<MenuModel>();
+        public static List<MenuModel> menuList2 = new List<MenuModel>();
         public static int totalPrice;
 
         public static OrderViewModel orderVM = new OrderViewModel();
