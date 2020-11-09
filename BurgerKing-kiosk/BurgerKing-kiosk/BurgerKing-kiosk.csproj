@@ -114,6 +114,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\DB\AutoLoginDB.cs" />
+    <Compile Include="model\DB\EnergizingTimeDB.cs" />
     <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\DB\UserListDB.cs" />
     <Compile Include="model\OrderModel.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="model\DB\connectDB.cs" />
     <Compile Include="model\DB\MenuDB.cs" />
     <Compile Include="viewModel\AutoLoginViewModel.cs" />
+    <Compile Include="viewModel\EnergizingTimeViewModel.cs" />
     <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
