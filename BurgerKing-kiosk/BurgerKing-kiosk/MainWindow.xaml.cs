@@ -6,6 +6,7 @@ using System.Diagnostics;
 using BurgerKing_kiosk.model;
 using System.Windows.Forms;
 using BurgerKing_kiosk.view.Pages;
+using BurgerKing_kiosk.model.DB;
 
 namespace BurgerKing_kiosk
 {
@@ -80,6 +81,8 @@ namespace BurgerKing_kiosk
         {
             if (true)
             {
+                AutoLoginDB test = new AutoLoginDB();
+                //test.GetBool();
                 frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
             }
             else
@@ -91,8 +94,6 @@ namespace BurgerKing_kiosk
 
         private void LoginCheck()
         {
-            //frame_content.Navigate(new Uri("view/Pages/Login.xaml", UriKind.Relative));
-
             LoginWin login = new LoginWin();
             login.Owner = this;
 
