@@ -1,4 +1,5 @@
-﻿using BurgerKing_kiosk.viewModel;
+﻿using BurgerKing_kiosk.model.DB;
+using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +29,13 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         DispatcherTimer timer = new DispatcherTimer();
 
+        EnergizingTimeViewModel RuntimeVM = new EnergizingTimeViewModel();
+        TimeSpan LastRuntime;
+
         public Main()
         {
+            LastRuntime = RuntimeVM.GetTime();
+
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
@@ -40,7 +46,10 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            RunTime.Text = "프로그램 구동 시간: " + App.CurrentTime;
+            TimeSpan TotalRuntime = App.ts + LastRuntime;
+            String TotalRuntimeString = String.Format("{0:00}:{1:00}:{2:00}",
+            TotalRuntime.Hours, TotalRuntime.Minutes, TotalRuntime.Seconds);
+            RunTime.Text = "프로그램 구동 시간: " + TotalRuntimeString;
         }
 
         private void SetSaleText() //db에서 할인율 불러와서 계산해야함

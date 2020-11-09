@@ -9,6 +9,6 @@ namespace BurgerKing_kiosk.model
     class UserListModel
     {
         public String name { get; set; } 
-        public int barcode { get; set; }
+        public String barcode { get; set; }
     }
 }
