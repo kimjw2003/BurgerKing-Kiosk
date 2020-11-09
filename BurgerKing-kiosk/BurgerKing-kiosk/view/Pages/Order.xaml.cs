@@ -1,6 +1,7 @@
 ﻿
 using BurgerKing_kiosk.model;
 using BurgerKing_kiosk.viewModel;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,9 +64,18 @@ namespace BurgerKing_kiosk
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
-           App.orderVM.AddOrder(OrderModel.GetInstance());
+
+            if (ordered_Menu_List.Items.Count == 0)
+            {
+                MessageBox.Show("메뉴가 선택되지 않았습니다.");
+                return;
+            }
+
+            App.orderVM.AddOrder(OrderModel.GetInstance());
             App.totalPrice = Int32.Parse(allPrice.Text);
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
+
+            
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) // 메뉴 리스트가 눌러지면 실행
@@ -118,20 +128,35 @@ namespace BurgerKing_kiosk
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
         {
-            //MessageBox
-            NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
 
-            OrderModel.GetInstance().Clear();
-            ordered_Menu_List.Items.Refresh();
+            MessageBoxResult result = MessageBox.Show("주문을 취소하시겠습니까?","취소", MessageBoxButton.OKCancel);
+            if(result == MessageBoxResult.OK) {
+                OrderModel.GetInstance().Clear();
+                ordered_Menu_List.Items.Refresh();
+            } else {
+                return;
+            }
+
+            NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
         }
 
         private void allDel_Btn_Click(object sender, RoutedEventArgs e) //모두삭제 버튼
         {
-            OrderModel.GetInstance().Clear();
-            ordered_Menu_List.Items.Refresh();
 
-            totalPrice = 0;
-            allPrice.Text = totalPrice.ToString();
+            MessageBoxResult result = MessageBox.Show("주문목록을 삭제하시겠습니까?", "삭제", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                OrderModel.GetInstance().Clear();
+                ordered_Menu_List.Items.Refresh();
+
+                totalPrice = 0;
+                allPrice.Text = totalPrice.ToString();
+            }
+            else
+            {
+                return;
+            }
+
         }
 
         private void ordered_Menu_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
