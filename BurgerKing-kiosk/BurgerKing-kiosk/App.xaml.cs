@@ -9,6 +9,7 @@ using System.Windows.Threading;
 using System.Diagnostics;
 using BurgerKing_kiosk.model;
 using BurgerKing_kiosk.viewModel;
+using BurgerKing_kiosk.model.DB;
 
 namespace BurgerKing_kiosk
 {
@@ -30,10 +31,11 @@ namespace BurgerKing_kiosk
         public static List<TableModel> tableList = new List<TableModel>();
 
         public static String CurrentTime;
+        public static TimeSpan ts;
 
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
-                
+
         public App()
         {
   
@@ -46,14 +48,15 @@ namespace BurgerKing_kiosk
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            TimeSpan ts = stopWatch.Elapsed;
-            CurrentTime = String.Format("{0:00}:{1:00}:{2:00}",
-            ts.Hours, ts.Minutes, ts.Seconds);
+            ts = stopWatch.Elapsed;
+            //CurrentTime = String.Format("{0:00}:{1:00}:{2:00}",
+            //ts.Hours, ts.Minutes, ts.Seconds);
         }
 
         void App_Exit(object sender, ExitEventArgs e)
         {
-            
+            EnergizingTimeDB db = new EnergizingTimeDB();
+            db.SetTime(ts);
         }
     }
 }

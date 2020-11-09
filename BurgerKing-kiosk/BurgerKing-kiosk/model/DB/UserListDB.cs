@@ -29,7 +29,7 @@ namespace BurgerKing_kiosk.model.DB
                 {
                     user = new UserListModel();
                     user.name = (String)reader["name"]; 
-                    user.barcode = (int)reader["barcode"];
+                    user.barcode = (String)reader["barcode"];
 
                     users.Add(user);
                 }
