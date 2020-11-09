@@ -1,20 +1,18 @@
 ﻿using BurgerKing_kiosk.model.DB;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace BurgerKing_kiosk.viewModel
 {
-    public class CardViewModel
+    class MoneyViewModel
     {
-        CardDB db = new CardDB();
-        public bool GetBarcode(String name)
+        MoneyDB db = new MoneyDB();
+        public bool GetName(String barcode)
         {
-            return db.GetUserBarCode(name);
+            return db.GetUserName(barcode);
         }
     }
 }

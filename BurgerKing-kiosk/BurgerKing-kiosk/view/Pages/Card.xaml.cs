@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BurgerKing_kiosk.viewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class CardPage : Page
     {
+        CardViewModel viewModel = new CardViewModel();
         public CardPage()
         {
             InitializeComponent();
@@ -34,8 +36,16 @@ namespace BurgerKing_kiosk
             NavigationService.GoBack();
         }
 
-        private void webcam_QrDecoded(object sender, string e) {
-            tdRecog.Text = e; 
+        private void webcam_QrDecoded(object sender, string userName) {
+            if (viewModel.GetBarcode(userName))
+            {
+                App.userData.name = userName;
+                NavigationService.Navigate(new Uri("view/Pages/Finish.xaml", UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("회원이 아니십니다.");
+            }
         }
 
     }

@@ -13,11 +13,11 @@ namespace BurgerKing_kiosk
         public FinishPage()
         {
             InitializeComponent();
+            Name.Text = App.userData.name;
+            CardNum.Text = App.userData.barcode;
+            OrderNum.Text = App.OrderNumber.ToString();
+            totalPrice.Text = App.totalPrice.ToString();
 
-            this.Dispatcher.Invoke((ThreadStart)(() => { }), DispatcherPriority.ApplicationIdle);
-            Thread.Sleep(1000);
-            while (NavigationService?.CanGoBack == true) { NavigationService?.RemoveBackEntry(); }
-            NavigationService.Navigate(new HomePage());
         }
     }
 }

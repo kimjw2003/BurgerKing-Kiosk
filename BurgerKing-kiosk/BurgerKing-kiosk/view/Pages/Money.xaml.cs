@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BurgerKing_kiosk.viewModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BurgerKing_kiosk.view.Pages
 {
@@ -20,14 +11,26 @@ namespace BurgerKing_kiosk.view.Pages
     /// </summary>
     public partial class Money : Page
     {
+        MoneyViewModel viewModel = new MoneyViewModel();
         public Money()
         {
             InitializeComponent();
+            barcode.Focus();
             totalPrice.Text = App.totalPrice + "";
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void barcode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Console.WriteLine(barcode.Text);
+            if (viewModel.GetName(barcode.Text))
+            {
+                App.userData.barcode = barcode.Text;
+                NavigationService.Navigate(new Uri("view/Pages/Finish.xaml", UriKind.Relative));
+            }
         }
     }
 }

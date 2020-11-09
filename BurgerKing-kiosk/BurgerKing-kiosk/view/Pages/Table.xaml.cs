@@ -58,6 +58,7 @@ namespace BurgerKing_kiosk
         {
             if (table == 0)
             {
+                MessageBox.Show("테이블을 선택해주세요.");
                 return;
             }
             App.orderVM.SetTable(table);

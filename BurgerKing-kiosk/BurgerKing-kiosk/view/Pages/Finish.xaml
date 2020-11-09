@@ -22,11 +22,11 @@
                 <StackPanel Orientation="Horizontal" Margin="0,40,0,0"
                             HorizontalAlignment="Center">
                     <TextBlock FontSize="30">회원명 : </TextBlock>
-                    <TextBlock FontSize="30">ㅏㅏㅏ</TextBlock>
+                    <TextBlock x:Name="Name" FontSize="30"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock FontSize="30">인식 된 카드번호 :</TextBlock>
-                    <TextBlock FontSize="30">ㅏㅏㅏ</TextBlock>
+                    <TextBlock x:Name="CardNum" FontSize="30"></TextBlock>
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -38,11 +38,11 @@
                            Margin="0,30">결제가 완료되었습니다.</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock FontSize="30">주문번호 :</TextBlock>
-                    <TextBlock FontSize="30">ㅏㅏㅏ</TextBlock>
+                    <TextBlock x:Name="OrderNum" FontSize="30"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock FontSize="30">총 금액 :</TextBlock>
-                    <TextBlock FontSize="30">ㅏㅏㅏ</TextBlock>
+                    <TextBlock x:Name="totalPrice" FontSize="30"></TextBlock>
                     <TextBlock FontSize="30">원</TextBlock>
                 </StackPanel>
             </StackPanel>

@@ -5,15 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace BurgerKing_kiosk.model.DB
 {
-    class CardDB
+    class MoneyDB
     {
         private connectDB conDB = new connectDB();
 
-        public bool GetUserBarCode(String name)
+        public bool GetUserName(String barcode)
         {
 
             MySqlConnection conn = conDB.OpenConnection();
@@ -22,12 +21,12 @@ namespace BurgerKing_kiosk.model.DB
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
-                string sql = "SELECT * FROM user WHERE name=\"" + name + "\"";
+                string sql = "SELECT * FROM user WHERE barcode=\"" + barcode + "\"";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    App.userData.barcode = (string)reader["barcode"];
+                    App.userData.name = (string)reader["name"];
                     returnType = true;
                 }
             }

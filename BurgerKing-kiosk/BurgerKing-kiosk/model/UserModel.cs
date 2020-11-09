@@ -8,6 +8,8 @@ namespace BurgerKing_kiosk.model
 {
     public class UserModel
     {
+        public String name = "";
+        public String barcode = "";
         public int seat { get; set; } = 0;
         public int price { get; set; } = 0;
         public List<OrderModel> order { get; set; }
