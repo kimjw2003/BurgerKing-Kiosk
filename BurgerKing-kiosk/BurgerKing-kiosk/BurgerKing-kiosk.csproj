@@ -114,6 +114,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\DB\AutoLoginDB.cs" />
+    <Compile Include="model\DB\CardDB.cs" />
     <Compile Include="model\DB\EnergizingTimeDB.cs" />
     <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\DB\UserListDB.cs" />
