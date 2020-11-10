@@ -43,18 +43,26 @@ namespace BurgerKing_kiosk
             ordered_Menu_List.ItemsSource = OrderModel.GetInstance();
         }
 
-        private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e) //카테고리 선택
         {
 
             if (lbCategory.SelectedIndex == -1) return;
 
             Category category = (Category)lbCategory.SelectedIndex;
-            lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
+            //lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
+            lbFood.ItemsSource = App.menuList.Where(x=>x.category == category).ToList();
             lbFood.Items.Refresh();
+
         }
         private void OrderPage_Loaded(object sender, RoutedEventArgs e)
         { //주문페이지가 시작되면 실행되는 함수
+            List<MenuModel> menuList = new List<MenuModel>();
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
+
+            for(int i =0;i<9; i++)
+            {
+                menuList.Add(App.menuList[i]);
+            }
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
@@ -86,7 +94,7 @@ namespace BurgerKing_kiosk
             
             if (orderList != null)
             {
-                MessageBox.Show(orderList.page.ToString());
+   
                 if (OrderModel.GetInstance().Exists(x => x.name == orderList.name))
                 {
                     var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);
