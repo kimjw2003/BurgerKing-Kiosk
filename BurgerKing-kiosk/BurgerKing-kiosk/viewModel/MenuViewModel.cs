@@ -14,7 +14,7 @@ namespace BurgerKing_kiosk.viewModel
         public List<MenuModel> GetMenus(string cartegory)
         {
             List<MenuModel> menu = new List<MenuModel>();
-            List<MenuModel> menu2 = new List<MenuModel>();
+            
             
             foreach (var list in App.menuList)
             {
@@ -24,11 +24,7 @@ namespace BurgerKing_kiosk.viewModel
                     
                 }
             }
-
-            for(int i =0; i<=9; i++)
-            {
-                menu2.Add(menu[i]);
-            }
+            
 
             return menu;
         }
