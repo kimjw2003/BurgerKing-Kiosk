@@ -32,6 +32,8 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         EnergizingTimeViewModel RuntimeVM = new EnergizingTimeViewModel();
         TimeSpan LastRuntime;
 
+        AutoLoginViewModel loginVM = new AutoLoginViewModel();
+
         public Main()
         {
             LastRuntime = RuntimeVM.GetTime();
@@ -42,6 +44,13 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
             InitializeComponent();
             frame_content.Navigate(new Uri("view/Pages/Statistics/Chart.xaml", UriKind.Relative));
+            this.Loaded += Main_Loaded;
+        }
+
+        private void Main_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            CheckBox.IsChecked = loginVM.GetBool();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -86,6 +95,19 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         private void Discount_Apply_Btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("view/Pages/Statistics/Apply_Discount.xaml", UriKind.Relative));
+        }
+
+        private void ApplyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBox.IsChecked == (bool?)true)
+            {
+                loginVM.SetBool(true);
+            }
+            else
+            {
+                loginVM.SetBool(false);
+            }
+            
         }
 
         /* private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
