@@ -102,10 +102,12 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             if (CheckBox.IsChecked == (bool?)true)
             {
                 loginVM.SetBool(true);
+                MessageBox.Show("자동로그인이 적용되었습니다");
             }
             else
             {
                 loginVM.SetBool(false);
+                MessageBox.Show("자동로그인이 해제되었습니다");
             }
             
         }
