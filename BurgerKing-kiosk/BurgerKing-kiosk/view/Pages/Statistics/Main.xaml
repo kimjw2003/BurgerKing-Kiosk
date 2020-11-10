@@ -37,7 +37,14 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock x:Name="RunTime" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center"></TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="RunTime" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center">프로그램 구동 시간: </TextBlock>
+                    <StackPanel Margin="20 0 0 0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right"          >
+                        <CheckBox VerticalAlignment="Center" x:Name="CheckBox"/>
+                        <TextBlock  FontSize="25"> 로그인 유지</TextBlock>
+                        <Button Click="ApplyBtn_Click" x:Name="ApplyBtn">적용하기</Button>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1">
