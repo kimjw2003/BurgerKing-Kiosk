@@ -22,21 +22,12 @@ namespace BurgerKing_kiosk.model.DB
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
-                string sql = "INSERT INTO  kiosk.order(`menu`, `category`, `user`, `day`, `price`, `seat`, `sale`, `payment_method`, `time`) VALUES (@menu, @category, @user, @day, @price, @seat, @sale, @payment, @time);";
+                string sql = string.Format($"INSERT INTO  kiosk.order(`menu`, `category`, `user`, `day`, `price`, `seat`, `sale`, `payment_method`, `time`, `count`) VALUES (" +
+                    $"'{OrderModel.GetInstance()[orderIdx].name}', '{OrderModel.GetInstance()[orderIdx].category}', '{App.userData.name}', '{DateTime.Today.ToString("yyyy-MM-dd")}', " +
+                    $"{OrderModel.GetInstance()[orderIdx].price}, {App.userData.seat}, {OrderModel.GetInstance()[orderIdx].sale}, '{App.userData.payment}','{DateTime.Now.ToString("HH:mm:ss")}', " +
+                    $"{OrderModel.GetInstance()[orderIdx].count});");
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@menu", OrderModel.GetInstance()[orderIdx].name);
-                cmd.Parameters.AddWithValue("@category", OrderModel.GetInstance()[orderIdx].name);
-                cmd.Parameters.AddWithValue("@user", App.userData.name);
-                cmd.Parameters.AddWithValue("@day", DateTime.Today.ToString("yyyy-MM-dd"));
-                cmd.Parameters.Add("@price", (MySqlDbType)SqlDbType.Int);
-                cmd.Parameters["@price"].Value = OrderModel.GetInstance()[orderIdx].price;
-                cmd.Parameters.Add("@seat", (MySqlDbType)SqlDbType.Int);
-                cmd.Parameters["@seat"].Value = App.userData.seat;
-                cmd.Parameters.Add("@sale", (MySqlDbType)SqlDbType.Int);
-                cmd.Parameters["@sale"].Value = OrderModel.GetInstance()[orderIdx].sale;
-                cmd.Parameters.AddWithValue("@payment", App.userData.payment);
-                cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("HH:mm:ss"));
-                Console.WriteLine(cmd.Parameters.ToString());
+                Console.WriteLine(sql);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)

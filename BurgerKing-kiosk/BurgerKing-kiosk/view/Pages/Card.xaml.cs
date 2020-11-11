@@ -43,10 +43,6 @@ namespace BurgerKing_kiosk
                 App.userData.payment = "credit";
                 NavigationService.Navigate(new Uri("view/Pages/Finish.xaml", UriKind.Relative));
             }
-            else
-            {
-                MessageBox.Show("회원이 아니십니다.");
-            }
         }
 
     }
