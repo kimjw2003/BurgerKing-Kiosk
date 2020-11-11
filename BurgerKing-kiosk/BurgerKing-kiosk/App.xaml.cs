@@ -10,6 +10,7 @@ using System.Diagnostics;
 using BurgerKing_kiosk.model;
 using BurgerKing_kiosk.viewModel;
 using BurgerKing_kiosk.model.DB;
+using System.Windows.Controls;
 
 namespace BurgerKing_kiosk
 {

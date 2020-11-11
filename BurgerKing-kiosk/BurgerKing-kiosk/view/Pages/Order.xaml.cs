@@ -59,6 +59,8 @@ namespace BurgerKing_kiosk
         }
         private void OrderPage_Loaded(object sender, RoutedEventArgs e)
         { //주문페이지가 시작되면 실행되는 함수
+
+            ordered_Menu_List.Items.Refresh();
             
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
 

@@ -133,6 +133,7 @@ namespace BurgerKing_kiosk
             while (frame_content.CanGoBack == true)
             {
                 frame_content.GoBack();
+                OrderModel.GetInstance().Clear();
             }
         }
     }
