@@ -1,5 +1,6 @@
 ﻿using BurgerKing_kiosk.model;
 using BurgerKing_kiosk.model.DB;
+using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     public partial class Apply_Discount : Page
     {
         int Original_Price;
+        ApplySaleViewModel SaleVM = new ApplySaleViewModel();
         public Apply_Discount()
         {
             InitializeComponent();
@@ -38,10 +40,15 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         }
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
 
             if (lbCategory.SelectedIndex == -1) return;
 
+            Refresh_IbFood();
+        }
+
+        private void Refresh_IbFood()
+        {
             Category category = (Category)lbCategory.SelectedIndex;
             lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
             lbFood.Items.Refresh();
@@ -59,9 +66,12 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e)
         {
-            ApplySaleDB db = new ApplySaleDB();
-            db.SetSalePercent(MenuModel.instance);
+            SaleVM.SetSalePercent(MenuModel.instance);
             MessageBox.Show("할인이 적용되었습니다");
+
+            App.menuVM.GetDBMenus();
+            Refresh_IbFood();
+
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
