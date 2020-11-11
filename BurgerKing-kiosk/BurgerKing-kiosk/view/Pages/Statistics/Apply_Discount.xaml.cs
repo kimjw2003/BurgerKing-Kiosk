@@ -1,4 +1,6 @@
 ﻿using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.model.DB;
+using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static BurgerKing_kiosk.model.MenuModel;
 
 namespace BurgerKing_kiosk.view.Pages.Statistics
 {
@@ -21,18 +24,15 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     /// </summary>
     public partial class Apply_Discount : Page
     {
-
-        int totalPrice = 0;
-        private static OrderData instance;
-
-
+        int Original_Price;
+        ApplySaleViewModel SaleVM = new ApplySaleViewModel();
         public Apply_Discount()
         {
             InitializeComponent();
 
             this.Loaded += OrderPage_Loaded;
 
-            this.DataContext = new OrderData();
+            //this.DataContext = new OrderData();
 
             //allPrice.Text = totalPrice + "";
 
@@ -40,10 +40,15 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         }
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
 
             if (lbCategory.SelectedIndex == -1) return;
 
+            Refresh_IbFood();
+        }
+
+        private void Refresh_IbFood()
+        {
             Category category = (Category)lbCategory.SelectedIndex;
             lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
             lbFood.Items.Refresh();
@@ -61,8 +66,12 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            SaleVM.SetSalePercent(MenuModel.instance);
             MessageBox.Show("할인이 적용되었습니다");
+
+            App.menuVM.GetDBMenus();
+            Refresh_IbFood();
+
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,14 +81,17 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
             if (orderList != null)
             {
-                instance = new OrderData() { menuName = orderList.name, menuPrice = orderList.price, menuImg = orderList.picture, SalePercent = orderList.sale, Category = orderList.category.ToString() };
-                
-                Uri imageUri = new Uri(instance.menuImg, UriKind.Relative);
+                MenuModel.instance= new MenuModel() { id = orderList.id, name = orderList.name, picture = orderList.picture, price = orderList.price, sale = orderList.sale};
+
+                Uri imageUri = new Uri(MenuModel.instance.picture, UriKind.Relative);
                 BitmapImage imageBitmap = new BitmapImage(imageUri);
 
                 Select_Img.Source = imageBitmap;
-                Select_Name.Text = instance.menuName;
-                Select_Price.Text = instance.menuPrice.ToString()+"원";
+                Select_Name.Text = MenuModel.instance.name;
+                Select_Price.Text = MenuModel.instance.price.ToString()+"원";
+
+                Original_Price = MenuModel.instance.price;
+
                 SetSalePercent();
                 SetSalePrice();
             }
@@ -93,13 +105,12 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void SetSalePercent()
         {
-            Select_Sale.Text = instance.SalePercent.ToString();
+            Select_Sale.Text = MenuModel.instance.sale.ToString();
         }
 
         private void SetSalePrice()
         {
-            int Original_Price = instance.menuPrice;
-            int Sale_Percent = instance.SalePercent;
+            int Sale_Percent = MenuModel.instance.sale;
             Sale_Price.Text = (Original_Price - ((Original_Price / 100) * Sale_Percent)).ToString();
         }
 
@@ -110,39 +121,27 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void Up_Click(object sender, RoutedEventArgs e)
         {
-            instance.SalePercent += 1;
+            if(MenuModel.instance.sale == 100)
+            {
+                return;
+            }
+
+            MenuModel.instance.sale += 1;
             SetSalePrice();
             SetSalePercent();
         }
 
         private void Down_Click(object sender, RoutedEventArgs e)
         {
-            if(instance.SalePercent == 0)
+            if(MenuModel.instance.sale == 0)
             {
                 return;
             }
 
-            instance.SalePercent -= 1;
+            MenuModel.instance.sale -= 1;
             SetSalePrice();
             SetSalePercent();
         }
-    }
-
-    class OrderData
-    {
-        public string menuName { get; set; }
-        public String menuImg { get; set; }
-        public int menuPrice { get; set; }
-        public int SalePercent { get; set; }
-        public string Category { get; set; }
-
-        private static OrderData instance = new OrderData();
-
-        public static OrderData GetInstance()
-        {
-
-            return instance;
-        }
-    }
+    } 
 }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.model.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,11 @@ namespace BurgerKing_kiosk.viewModel
 {
     class ApplySaleViewModel
     {
+        ApplySaleDB db = new ApplySaleDB();
+
+        public void SetSalePercent(MenuModel instance)
+        {
+           db.SetSalePercent(instance);
+        }
     }
 }

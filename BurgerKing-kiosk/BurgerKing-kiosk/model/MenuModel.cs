@@ -17,7 +17,16 @@ namespace BurgerKing_kiosk.model
         public int amount { get; set; }
         public int page { get; set; }
 
+        public static MenuModel instance;
+
+        public static MenuModel GetInstance()
+        {
+            return instance;
+        }
+
     }
+
+
 
     public enum Category
     {
