@@ -40,6 +40,7 @@ namespace BurgerKing_kiosk
             if (viewModel.GetBarcode(userName))
             {
                 App.userData.name = userName;
+                App.userData.payment = "credit";
                 NavigationService.Navigate(new Uri("view/Pages/Finish.xaml", UriKind.Relative));
             }
             else

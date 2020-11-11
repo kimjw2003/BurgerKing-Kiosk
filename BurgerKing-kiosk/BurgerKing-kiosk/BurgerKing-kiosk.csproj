@@ -117,6 +117,7 @@
     <Compile Include="model\DB\AutoLoginDB.cs" />
     <Compile Include="model\DB\CardDB.cs" />
     <Compile Include="model\DB\EnergizingTimeDB.cs" />
+    <Compile Include="model\DB\FinishDB.cs" />
     <Compile Include="model\DB\MoneyDB.cs" />
     <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\DB\StatisticsDB.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="viewModel\ApplySaleViewModel.cs" />
     <Compile Include="viewModel\AutoLoginViewModel.cs" />
     <Compile Include="viewModel\EnergizingTimeViewModel.cs" />
+    <Compile Include="viewModel\FinishViewModel.cs" />
     <Compile Include="viewModel\MoneyViewModel.cs" />
     <Compile Include="viewModel\OrderViewModel.cs" />
     <Compile Include="viewModel\CardViewModel.cs" />
