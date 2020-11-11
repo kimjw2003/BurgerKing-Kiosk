@@ -21,7 +21,6 @@ namespace BurgerKing_kiosk.viewModel
                 if(list.category.ToString() == cartegory)
                 {
                     menu.Add(list);
-                    
                 }
             }
             
@@ -31,6 +30,7 @@ namespace BurgerKing_kiosk.viewModel
 
         public void GetDBMenus()
         {
+            App.menuList = new List<MenuModel>();
             Category category = (Category)0;
             App.menuList.AddRange(db.GetMenu(category));
             category = (Category)1;

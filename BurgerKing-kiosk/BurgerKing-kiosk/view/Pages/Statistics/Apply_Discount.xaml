@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:BurgerKing_kiosk.view.Pages.Statistics"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="Apply_Discount">
+      Title="Apply_Discount"
+      >
 
     <Grid Background="White" Margin="10">
         <Grid.ColumnDefinitions>
