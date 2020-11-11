@@ -67,7 +67,7 @@ namespace BurgerKing_kiosk
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-             
+            List<MenuModel> menuList = new List<MenuModel>();
         }
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
@@ -101,10 +101,9 @@ namespace BurgerKing_kiosk
                     item.price += (item.price / item.count);
                     item.count++;
                     
-                    
                 }
                 else {
-                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price });
+                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price, category = orderList.category });
 
                     lbFood.SelectedItem = null;
 

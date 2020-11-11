@@ -14,6 +14,7 @@ namespace BurgerKing_kiosk.model
         public int count { get; set; }
         public int price { get; set; }
         public int sale { get; set; }
+        public Category category { get; set; }
 
         private static List<OrderModel> instance;
 
