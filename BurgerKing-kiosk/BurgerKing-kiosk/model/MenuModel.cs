@@ -16,6 +16,7 @@ namespace BurgerKing_kiosk.model
         public int sale { get; set; }
         public int amount { get; set; }
         public int page { get; set; }
+        public int salePrice { get; internal set; }
 
         public static MenuModel instance;
 

@@ -111,19 +111,19 @@ namespace BurgerKing_kiosk
                 if (OrderModel.GetInstance().Exists(x => x.name == orderList.name))
                 {
                     var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);
-                    item.price += (item.price / item.count);
+                    item.salePrice += (item.salePrice / item.count);
                     item.count++;
                     
                 }
                 else {
-                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price, category = orderList.category, sale = orderList.sale });
+                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price, salePrice = orderList.salePrice, category = orderList.category, sale = orderList.sale });
 
                     lbFood.SelectedItem = null;
 
                     int selectedPrice = 0;
                     for (int i = 0; i < OrderModel.GetInstance().Count; i++)
                     {
-                        selectedPrice = OrderModel.GetInstance()[i].price;
+                        selectedPrice = OrderModel.GetInstance()[i].salePrice;
                     }
                     int beforeTotalPrice = int.Parse(allPrice.Text);
                     allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
@@ -141,7 +141,7 @@ namespace BurgerKing_kiosk
 
             if (item2.count > 1)
             {
-                allPrice_Int += (item2.price / item2.count);
+                allPrice_Int += (item2.salePrice / item2.count);
                 allPrice.Text = allPrice_Int.ToString();
             }
             lbFood.SelectedItem = null;
@@ -193,10 +193,10 @@ namespace BurgerKing_kiosk
             if (OrderModel.GetInstance().Exists(x => x.name == data.name))
             {
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int += (data.price / data.count);
+                allPrice_Int += (data.salePrice / data.count);
                 allPrice.Text = allPrice_Int.ToString();
 
-                data.price += (data.price / data.count);
+                data.salePrice += (data.salePrice / data.count);
             }
             data.count += 1;
             
@@ -211,10 +211,10 @@ namespace BurgerKing_kiosk
 
 
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= (data.price / data.count);
+                allPrice_Int -= (data.salePrice / data.count);
                 allPrice.Text = allPrice_Int.ToString();
 
-                data.price -= (data.price / data.count);
+                data.salePrice -= (data.salePrice / data.count);
             }
 
             data.count -= 1;
@@ -245,7 +245,7 @@ namespace BurgerKing_kiosk
                 OrderModel.GetInstance().Remove(data);
 
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= data.price;
+                allPrice_Int -= data.salePrice;
                 allPrice.Text = allPrice_Int.ToString();
 
             }

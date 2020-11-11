@@ -35,9 +35,11 @@ namespace BurgerKing_kiosk.viewModel.DB
                     menu.id = (int)reader["id"]; //todo - object형식이 int형으로 바뀌었는지 확인 안되면 밑에것도 함께 고침
                     menu.name = (string)reader["name"];
                     menu.picture = (string)reader["picture"];
-                    menu.price = (int)reader["price"];
                     menu.sale = (int)reader["sale"];
+                    menu.price = (int)reader["price"];
+                    menu.salePrice = (int)(menu.price - (menu.price * ((double)menu.sale / 100)));
                     menu.category = tablename;
+                    Console.WriteLine(menu.sale + "gg" + menu.price + "gg" + menu.salePrice);
 
                     if (categoryIndex != (int)menu.category)
                     {

@@ -13,6 +13,7 @@ namespace BurgerKing_kiosk.model
         public string name { get; set; }
         public int count { get; set; }
         public int price { get; set; }
+        public int salePrice { get; set; }
         public int sale { get; set; }
         public Category category { get; set; }
 

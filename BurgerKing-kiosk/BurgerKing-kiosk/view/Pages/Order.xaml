@@ -84,10 +84,11 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="150" Height="150" >
+                            <StackPanel Width="140" Height="200" >
                                 <Image Source="{Binding picture}"/>
                                 <TextBlock Text="{Binding name}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                                <TextBlock Text="{Binding price}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
+                                <TextBlock Text="{Binding salePrice}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
+                                <TextBlock Text="{Binding sale}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">% 할인</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -171,7 +172,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding price}"/>
+                            <GridViewColumn Header="가격" Width="170" DisplayMemberBinding="{Binding salePrice}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
