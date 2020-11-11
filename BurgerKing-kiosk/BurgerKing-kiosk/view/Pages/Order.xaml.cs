@@ -31,6 +31,7 @@ namespace BurgerKing_kiosk
     {
 
         int totalPrice = 0;
+        List<MenuModel> allMenuList = new List<MenuModel>();
 
         public OrderPage()
         {
@@ -41,6 +42,8 @@ namespace BurgerKing_kiosk
             allPrice.Text = totalPrice + "";
 
             ordered_Menu_List.ItemsSource = OrderModel.GetInstance();
+            
+
         }
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e) //카테고리 선택
@@ -56,18 +59,28 @@ namespace BurgerKing_kiosk
         }
         private void OrderPage_Loaded(object sender, RoutedEventArgs e)
         { //주문페이지가 시작되면 실행되는 함수
-            List<MenuModel> menuList = new List<MenuModel>();
+            
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
 
-            for(int i =0;i<9; i++)
+            for(int i =0;i<=8; i++)
             {
-                menuList.Add(App.menuList[i]);
+                allMenuList.Add(App.menuList[i]);
             }
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-            List<MenuModel> menuList = new List<MenuModel>();
+
+            if (lbCategory.SelectedIndex == 0)
+            {
+                allMenuList.Clear();
+                for (int i = 9; i <= 17; i++)
+                {
+                    allMenuList.Add(App.menuList[i]);
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
         }
 
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
@@ -103,7 +116,7 @@ namespace BurgerKing_kiosk
                     
                 }
                 else {
-                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price, category = orderList.category });
+                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price, category = orderList.category, sale = orderList.sale });
 
                     lbFood.SelectedItem = null;
 
@@ -145,7 +158,7 @@ namespace BurgerKing_kiosk
                 return;
             }
 
-            NavigationService.Navigate(new Uri("/view/Pages/Home.xaml", UriKind.Relative));
+            NavigationService.GoBack();
         }
 
         private void allDel_Btn_Click(object sender, RoutedEventArgs e) //모두삭제 버튼

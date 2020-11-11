@@ -121,6 +121,7 @@
                         Foreground="white"
                         FontSize="30"
                         FontWeight="Bold"
+                        Click="nextBtn_Click"
                         Height="50"
                         Width="140"
                         Background="#f1555a"
