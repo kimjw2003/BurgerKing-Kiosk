@@ -29,6 +29,7 @@ namespace BurgerKing_kiosk.view.Pages
             if (viewModel.GetName(barcode.Text))
             {
                 App.userData.barcode = barcode.Text;
+                App.userData.payment = "cash";
                 NavigationService.Navigate(new Uri("view/Pages/Finish.xaml", UriKind.Relative));
             }
         }

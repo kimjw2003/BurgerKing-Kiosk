@@ -28,7 +28,7 @@ namespace BurgerKing_kiosk
         public static OrderViewModel orderVM = new OrderViewModel();
         public static UserModel userData = new UserModel();
 
-        public static int OrderNumber = 0;
+        public static int OrderNumber = 1;
 
         public static List<TableModel> tableList = new List<TableModel>();
 
