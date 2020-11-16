@@ -145,7 +145,6 @@ namespace BurgerKing_kiosk
                 lbFood.Items.Refresh();
             }
 
-
             else if (lbCategory.SelectedIndex == 1 && pageCount * 9 <= App.sideList.Count)
             {
                 allMenuList.Clear();
@@ -207,7 +206,7 @@ namespace BurgerKing_kiosk
                     
                 }
                 else {
-                    OrderModel.GetInstance().Add(new OrderModel() { Name = orderList.name, Count = 1, Price = orderList.price, salePrice = orderList.salePrice, category = orderList.category, sale = orderList.sale });
+                    OrderModel.GetInstance().Add(new OrderModel() { Name = orderList.name, Count = 1, price = orderList.price, salePrice = orderList.salePrice, category = orderList.category, sale = orderList.sale });
 
                     lbFood.SelectedItem = null;
 

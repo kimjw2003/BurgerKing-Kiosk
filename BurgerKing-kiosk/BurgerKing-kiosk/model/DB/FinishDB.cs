@@ -24,7 +24,7 @@ namespace BurgerKing_kiosk.model.DB
                 Console.WriteLine("DataBase연동 성공");
                 string sql = string.Format($"INSERT INTO  kiosk.order(`menu`, `category`, `user`, `day`, `price`, `seat`, `sale`, `payment_method`, `time`, `count`) VALUES (" +
                     $"'{OrderModel.GetInstance()[orderIdx].Name}', '{OrderModel.GetInstance()[orderIdx].category}', '{App.userData.name}', '{DateTime.Today.ToString("yyyy-MM-dd")}', " +
-                    $"{OrderModel.GetInstance()[orderIdx].Price}, {App.userData.seat}, {OrderModel.GetInstance()[orderIdx].sale}, '{App.userData.payment}','{DateTime.Now.ToString("HH:mm:ss")}', " +
+                    $"{OrderModel.GetInstance()[orderIdx].price}, {App.userData.seat}, {OrderModel.GetInstance()[orderIdx].sale}, '{App.userData.payment}','{DateTime.Now.ToString("HH:mm:ss")}', " +
                     $"{OrderModel.GetInstance()[orderIdx].Count});");
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 Console.WriteLine(sql);

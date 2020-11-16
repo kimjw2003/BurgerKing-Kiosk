@@ -32,7 +32,7 @@ namespace BurgerKing_kiosk.viewModel
             {
                 if (i == lengh)
                 {
-                    App.userData.price -= list.Price;
+                    App.userData.price -= list.price;
                 }
                 i++;
             }
