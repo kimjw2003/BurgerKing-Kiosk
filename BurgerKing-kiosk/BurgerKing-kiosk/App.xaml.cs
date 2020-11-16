@@ -23,7 +23,9 @@ namespace BurgerKing_kiosk
     public partial class App : Application
     {
         public static MenuViewModel menuVM = new MenuViewModel();
-        public static List<MenuModel> menuList = new List<MenuModel>();
+        public static List<MenuModel> burgerList = new List<MenuModel>();
+        public static List<MenuModel> sideList = new List<MenuModel>();
+        public static List<MenuModel> desertList = new List<MenuModel>();
         public static int totalPrice;
 
         public static OrderViewModel orderVM = new OrderViewModel();
@@ -32,6 +34,8 @@ namespace BurgerKing_kiosk
         public static int OrderNumber = 1;
 
         public static List<TableModel> tableList = new List<TableModel>();
+
+        public static ServerVIewModel server = new ServerVIewModel();
 
         public static String CurrentTime;
         public static TimeSpan ts;

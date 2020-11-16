@@ -111,6 +111,7 @@
                         Width="140"
                         Background="#707070"
                         BorderThickness="0"
+                        Click="beforeBtn_Click"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                     />
@@ -152,7 +153,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="상품명" Width="170" DisplayMemberBinding="{Binding Name}"/>
 
                             <GridViewColumn Width="35" Header="">
                                 <GridViewColumn.CellTemplate>
@@ -162,7 +163,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="수량" Width="100" DisplayMemberBinding="{Binding count}"/>
+                            <GridViewColumn Header="수량" Width="100" DisplayMemberBinding="{Binding Count}"/>
 
                             <GridViewColumn Width="35" Header="">
                                 <GridViewColumn.CellTemplate>

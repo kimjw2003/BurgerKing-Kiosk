@@ -55,7 +55,8 @@
             <Grid Grid.Column="1">
                 <ListBox x:Name="lvTable" Margin="5"
                   SelectionChanged="lvTable_SelectionChanged"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="3" Rows="3"/>
@@ -64,16 +65,16 @@
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="500" Height="160" Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}">
+                            <StackPanel Margin="2" Width="450" Height="160" Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}">
                                 <TextBlock TextAlignment="Left" FontSize="20"
                                        HorizontalAlignment="Left"  VerticalAlignment="Top"
                                        Text="{Binding id, StringFormat={}   NO. {0}}"/>
                                 <TextBlock TextAlignment="Left" FontSize="20"
-                                       HorizontalAlignment="Left"  VerticalAlignment="Center"
-                                       Text="{Binding id, StringFormat={}   NO. {0}}"/>
+                                       HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                       Text="{Binding id, StringFormat={}   {00시간00분00초}}"/>
                                 <TextBlock TextAlignment="Right" FontSize="20"
-                                       HorizontalAlignment="Right"  VerticalAlignment="Bottom"
-                                       Text="{Binding id, StringFormat={}   NO. {0}}"/>
+                                       VerticalAlignment="Bottom"
+                                       Text="{Binding time, StringFormat={}   주문시간 : {00:00:00}}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

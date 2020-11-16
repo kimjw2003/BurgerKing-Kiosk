@@ -67,14 +67,14 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Width="340" Height="80" Background="White" Margin="5">
-                                        <TextBlock Text="{Binding name}" FontSize="25"
+                                        <TextBlock Text="{Binding Name}" FontSize="25"
                                                    Margin="10,0,0,15" HorizontalAlignment="Left"/>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                                            <TextBlock Text="{Binding price}" FontSize="20"
+                                            <TextBlock Text="{Binding Price}" FontSize="20"
                                                        Margin="10,0,0,0" HorizontalAlignment="Left"/>
                                             <TextBlock Text="원" FontSize="20"
                                                        HorizontalAlignment="Left"/>
-                                            <TextBlock Text="{Binding count}" FontSize="20"
+                                            <TextBlock Text="{Binding Count}" FontSize="20"
                                                        Margin="210,0,0,0" HorizontalAlignment="Right"/>
                                             <TextBlock Text="개" FontSize="20"
                                                        HorizontalAlignment="Right"/>

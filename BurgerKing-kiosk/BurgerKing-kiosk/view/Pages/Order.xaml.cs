@@ -29,7 +29,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
-
+        int pageCount = 0;
         int totalPrice = 0;
         List<MenuModel> allMenuList = new List<MenuModel>();
 
@@ -50,10 +50,23 @@ namespace BurgerKing_kiosk
         {
 
             if (lbCategory.SelectedIndex == -1) return;
+            
+            pageCount = 0;
 
             Category category = (Category)lbCategory.SelectedIndex;
             //lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
-            lbFood.ItemsSource = App.menuList.Where(x=>x.category == category).ToList();
+            if (lbCategory.SelectedIndex == 0)
+            {
+                lbFood.ItemsSource = App.burgerList.ToList();
+            }
+            else if (lbCategory.SelectedIndex == 1)
+            {
+                lbFood.ItemsSource = App.sideList.ToList();
+            }
+            else
+            {
+                lbFood.ItemsSource = App.desertList.ToList();
+            }
             lbFood.Items.Refresh();
 
         }
@@ -64,27 +77,102 @@ namespace BurgerKing_kiosk
             
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
 
-            for(int i =0;i<=8; i++)
+            for(int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
             {
-                allMenuList.Add(App.menuList[i]);
+                allMenuList.Add(App.burgerList[i]);
             }
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-
-            if (lbCategory.SelectedIndex == 0)
+            if (lbCategory.SelectedIndex == 0 && pageCount * 9 <= App.burgerList.Count)
             {
                 allMenuList.Clear();
-                for (int i = 9; i <= 17; i++)
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
                 {
-                    allMenuList.Add(App.menuList[i]);
+                    if (i >= App.burgerList.Count) break;
+                    allMenuList.Add(App.burgerList[i]);
                 }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            } 
+
+
+            else if(lbCategory.SelectedIndex == 1 && pageCount * 9 <= App.sideList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.sideList.Count) break;
+                    allMenuList.Add(App.sideList[i]);
+                }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 2 && pageCount * 9 <= App.desertList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.desertList.Count) break;
+                    allMenuList.Add(App.desertList[i]);
+
+                }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+            
+        }
+
+        private void beforeBtn_Click(object sender, RoutedEventArgs e) //이전메뉴 버튼이 눌러지면 실행
+        {
+
+            if (lbCategory.SelectedIndex == 0 && pageCount * 9 <= App.burgerList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.burgerList.Count) break;
+                    allMenuList.Add(App.burgerList[i]);
+                }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+            else if (lbCategory.SelectedIndex == 1 && pageCount * 9 <= App.sideList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.sideList.Count) break;
+                    allMenuList.Add(App.sideList[i]);
+                }
+                pageCount -= 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 2 && pageCount * 9 <= App.desertList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.desertList.Count) break;
+                    allMenuList.Add(App.desertList[i]);
+
+                }
+                pageCount -= 1;
                 lbFood.ItemsSource = allMenuList;
                 lbFood.Items.Refresh();
             }
         }
-
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
 
@@ -110,15 +198,15 @@ namespace BurgerKing_kiosk
             if (orderList != null)
             {
    
-                if (OrderModel.GetInstance().Exists(x => x.name == orderList.name))
+                if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))
                 {
-                    var item = OrderModel.GetInstance().Find(x => x.name == orderList.name);
-                    item.salePrice += (item.salePrice / item.count);
-                    item.count++;
+                    var item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
+                    item.salePrice += (item.salePrice / item.Count);
+                    item.Count++;
                     
                 }
                 else {
-                    OrderModel.GetInstance().Add(new OrderModel() { name = orderList.name, count = 1, price = orderList.price, salePrice = orderList.salePrice, category = orderList.category, sale = orderList.sale });
+                    OrderModel.GetInstance().Add(new OrderModel() { Name = orderList.name, Count = 1, Price = orderList.price, salePrice = orderList.salePrice, category = orderList.category, sale = orderList.sale });
 
                     lbFood.SelectedItem = null;
 
@@ -138,12 +226,12 @@ namespace BurgerKing_kiosk
                 return;
             }
 
-            var item2 = OrderModel.GetInstance().Find(x => x.name == orderList.name);
+            var item2 = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
             var allPrice_Int = int.Parse(allPrice.Text);
 
-            if (item2.count > 1)
+            if (item2.Count > 1)
             {
-                allPrice_Int += (item2.salePrice / item2.count);
+                allPrice_Int += (item2.salePrice / item2.Count);
                 allPrice.Text = allPrice_Int.ToString();
             }
             lbFood.SelectedItem = null;
@@ -192,15 +280,15 @@ namespace BurgerKing_kiosk
             OrderModel data = (sender as Button).DataContext as OrderModel;
             
 
-            if (OrderModel.GetInstance().Exists(x => x.name == data.name))
+            if (OrderModel.GetInstance().Exists(x => x.Name == data.Name))
             {
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int += (data.salePrice / data.count);
+                allPrice_Int += (data.salePrice / data.Count);
                 allPrice.Text = allPrice_Int.ToString();
 
-                data.salePrice += (data.salePrice / data.count);
+                data.salePrice += (data.salePrice / data.Count);
             }
-            data.count += 1;
+            data.Count += 1;
             
             ordered_Menu_List.Items.Refresh();
         }
@@ -208,25 +296,25 @@ namespace BurgerKing_kiosk
         {
             OrderModel data = (sender as Button).DataContext as OrderModel;
 
-            if (OrderModel.GetInstance().Exists(x => x.name == data.name))
+            if (OrderModel.GetInstance().Exists(x => x.Name == data.Name))
             {
 
 
                 var allPrice_Int = int.Parse(allPrice.Text);
-                allPrice_Int -= (data.salePrice / data.count);
+                allPrice_Int -= (data.salePrice / data.Count);
                 allPrice.Text = allPrice_Int.ToString();
 
-                data.salePrice -= (data.salePrice / data.count);
+                data.salePrice -= (data.salePrice / data.Count);
             }
 
-            data.count -= 1;
+            data.Count -= 1;
 
-            if (data.count < 1)
+            if (data.Count < 1)
             {
-                if (OrderModel.GetInstance().Exists(x => x.name == data.name))
+                if (OrderModel.GetInstance().Exists(x => x.Name == data.Name))
                 {
                     var allPrice_Int = int.Parse(allPrice.Text);
-                    allPrice_Int -= data.count;
+                    allPrice_Int -= data.Count;
                     allPrice.Text = allPrice_Int.ToString();
 
                     OrderModel.GetInstance().Remove(data);
@@ -242,7 +330,7 @@ namespace BurgerKing_kiosk
         {
             OrderModel data = (sender as Button).DataContext as OrderModel;
 
-            if(OrderModel.GetInstance().Exists(x => x.name == data.name))
+            if(OrderModel.GetInstance().Exists(x => x.Name == data.Name))
             {
                 OrderModel.GetInstance().Remove(data);
 
