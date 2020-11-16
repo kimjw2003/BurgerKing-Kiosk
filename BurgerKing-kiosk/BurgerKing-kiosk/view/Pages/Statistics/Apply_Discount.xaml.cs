@@ -142,6 +142,11 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             SetSalePrice();
             SetSalePercent();
         }
+
+        private void order_Soldout_Btn_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
     } 
 }
 

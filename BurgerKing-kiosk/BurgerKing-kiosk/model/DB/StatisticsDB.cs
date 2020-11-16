@@ -34,12 +34,56 @@ namespace BurgerKing_kiosk.model.DB
                     sale.category = (String)reader["category"];
                     sale.price = (int)reader["price"];
                     sale.sale = (int)reader["sale"];
+                    sale.count = (int)reader["count"];
 
                     sales.Add(sale);
-
-                    Console.WriteLine(sale.price);
                 }
                 return sales;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                switch (ex.Number)
+                {
+                    case 0:
+                        Console.WriteLine("데이터베이스 서버에 연결할 수 없습니다.");
+                        break;
+
+                    case 1045:
+                        Console.WriteLine("유저 ID 또는 Password를 확인해주세요.");
+                        break;
+                }
+            }
+            return null;
+        }
+
+        public List<string> SelectMenuList(string Wheresql)
+        {
+
+            MySqlConnection conn = conDB.OpenConnection();
+
+            try
+            {
+                conn.Open();
+                Console.WriteLine("DataBase연동 성공");
+                string sql = "SELECT menu FROM kiosk.order "+Wheresql+" GROUP BY menu";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                List<string> menus = new List<string>();
+                String menu;
+
+                while (reader.Read())
+                {
+                    menu = (string)reader["menu"];
+                    // sale.category = (String)reader["category"];
+                    //sale.price = (int)reader["price"];
+                    //sale.menu = (string)reader["menu"];
+                    //sale.sale = (int)reader["sale"];
+
+                    menus.Add(menu);
+                }
+                return menus;
             }
             catch (MySqlException ex)
             {

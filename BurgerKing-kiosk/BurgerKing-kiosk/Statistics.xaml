@@ -7,27 +7,9 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="Statistics" Height="1080" Width="1920">
-    
-    <Window.Resources>
-        <Style x:Key="SaleBtnStyle" TargetType="Button">
-            <Setter Property="Background" Value="#0B4C5F"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Width" Value="140"/>
-            <Setter Property="Height" Value="70"/>
-            <Setter Property="Margin" Value="10 0 0 0"/>
-            <Setter Property="FontSize" Value="25"/>
-        </Style>
-
-        <Style x:Key="SaleTextStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="Margin" Value="10 0 0 3 "/>
-        </Style>
-        
-    </Window.Resources>
 
     <Grid>
-        <Frame Name="frame_content"
+            <Frame Name="frame_content"
                    NavigationUIVisibility="Hidden"/>
-    </Grid>
-   
+        </Grid>
 </Window>

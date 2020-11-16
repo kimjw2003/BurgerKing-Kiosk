@@ -33,6 +33,16 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             Func<ChartPoint, string> labelPoint = chartPoint =>
              string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
+            Console.WriteLine(StatisticsVM.GetWholeSaleAmount("2020-11-11"));
+
+           /* for(int i = 1; i<= 9; i++)
+            {
+                Console.WriteLine("좌석번호: "+i+"카테고리: burger"+StatisticsVM.GetSeatCategorySaleCount("burger", i));
+                Console.WriteLine("좌석번호: " + i + "카테고리: side" + StatisticsVM.GetSeatCategorySaleCount("side", i));
+                Console.WriteLine("좌석번호: " + i + "카테고리: desert" + StatisticsVM.GetSeatCategorySaleCount("desert", i));
+            }*/
+            
+
             PieChart1.Series = new SeriesCollection
         {
             new PieSeries

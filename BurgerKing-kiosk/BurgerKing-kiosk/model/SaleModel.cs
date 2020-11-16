@@ -17,6 +17,7 @@ namespace BurgerKing_kiosk.model
         public int seat { get; set; }
         public int sale { get; set; }
         public String payment_method { get; set; }
+        public int count { get; set; }
 
     }
 }
