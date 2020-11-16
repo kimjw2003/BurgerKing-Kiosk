@@ -13,30 +13,28 @@ namespace BurgerKing_kiosk.viewModel
         MenuDB db = new MenuDB();
         public List<MenuModel> GetMenus(string cartegory)
         {
-            List<MenuModel> menu = new List<MenuModel>();
-            
-            
-            foreach (var list in App.menuList)
+            if(cartegory == "burger")
             {
-                if(list.category.ToString() == cartegory)
-                {
-                    menu.Add(list);
-                }
+                return App.burgerList;
             }
-            
-
-            return menu;
+            else if(cartegory == "side")
+            {
+                return App.sideList;
+            }
+            else
+            {
+                return App.desertList;
+            }
         }
 
         public void GetDBMenus()
         {
-            App.menuList = new List<MenuModel>();
             Category category = (Category)0;
-            App.menuList.AddRange(db.GetMenu(category));
+            App.burgerList.AddRange(db.GetMenu(category));
             category = (Category)1;
-            App.menuList.AddRange(db.GetMenu(category));
+            App.sideList.AddRange(db.GetMenu(category));
             category = (Category)2;
-            App.menuList.AddRange(db.GetMenu(category));
+            App.desertList.AddRange(db.GetMenu(category));
         }
 
     }

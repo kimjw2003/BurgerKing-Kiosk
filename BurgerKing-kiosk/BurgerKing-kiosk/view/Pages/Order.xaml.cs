@@ -29,7 +29,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class OrderPage : Page
     {
-
+        int pageCount = 0;
         int totalPrice = 0;
         List<MenuModel> allMenuList = new List<MenuModel>();
 
@@ -50,10 +50,23 @@ namespace BurgerKing_kiosk
         {
 
             if (lbCategory.SelectedIndex == -1) return;
+            
+            pageCount = 0;
 
             Category category = (Category)lbCategory.SelectedIndex;
             //lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
-            lbFood.ItemsSource = App.menuList.Where(x=>x.category == category).ToList();
+            if (lbCategory.SelectedIndex == 0)
+            {
+                lbFood.ItemsSource = App.burgerList.ToList();
+            }
+            else if (lbCategory.SelectedIndex == 1)
+            {
+                lbFood.ItemsSource = App.sideList.ToList();
+            }
+            else
+            {
+                lbFood.ItemsSource = App.desertList.ToList();
+            }
             lbFood.Items.Refresh();
 
         }
@@ -64,27 +77,103 @@ namespace BurgerKing_kiosk
             
             lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
 
-            for(int i =0;i<=8; i++)
+            for(int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
             {
-                allMenuList.Add(App.menuList[i]);
+                allMenuList.Add(App.burgerList[i]);
             }
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-
-            if (lbCategory.SelectedIndex == 0)
+            if (lbCategory.SelectedIndex == 0 && pageCount * 9 <= App.burgerList.Count)
             {
                 allMenuList.Clear();
-                for (int i = 9; i <= 17; i++)
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
                 {
-                    allMenuList.Add(App.menuList[i]);
+                    if (i >= App.burgerList.Count) break;
+                    allMenuList.Add(App.burgerList[i]);
                 }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            } 
+
+
+            else if(lbCategory.SelectedIndex == 1 && pageCount * 9 <= App.sideList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.sideList.Count) break;
+                    allMenuList.Add(App.sideList[i]);
+                }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 2 && pageCount * 9 <= App.desertList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.desertList.Count) break;
+                    allMenuList.Add(App.desertList[i]);
+
+                }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+            
+        }
+
+        private void beforeBtn_Click(object sender, RoutedEventArgs e) //이전메뉴 버튼이 눌러지면 실행
+        {
+
+            if (lbCategory.SelectedIndex == 0 && pageCount * 9 <= App.burgerList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.burgerList.Count) break;
+                    allMenuList.Add(App.burgerList[i]);
+                }
+                pageCount += 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 1 && pageCount * 9 <= App.sideList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.sideList.Count) break;
+                    allMenuList.Add(App.sideList[i]);
+                }
+                pageCount -= 1;
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 2 && pageCount * 9 <= App.desertList.Count)
+            {
+                allMenuList.Clear();
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.desertList.Count) break;
+                    allMenuList.Add(App.desertList[i]);
+
+                }
+                pageCount -= 1;
                 lbFood.ItemsSource = allMenuList;
                 lbFood.Items.Refresh();
             }
         }
-
         private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
         {
 
