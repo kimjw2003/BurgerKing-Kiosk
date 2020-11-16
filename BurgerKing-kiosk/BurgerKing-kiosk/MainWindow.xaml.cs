@@ -32,6 +32,10 @@ namespace BurgerKing_kiosk
 
             App.menuVM.GetDBMenus();
             App.server.ConnectionServer();
+            JsonModel json = new JsonModel();
+            json.MSGType = 0;
+            json.Id = "2102";
+            App.server.SendServer(json);
 
             App.tableList.Add(new TableModel()
             {
