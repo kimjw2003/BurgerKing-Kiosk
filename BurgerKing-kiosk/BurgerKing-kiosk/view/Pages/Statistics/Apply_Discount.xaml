@@ -166,7 +166,9 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
+                    
                     <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="35*"/>
@@ -184,7 +186,7 @@
                         BorderThickness="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch" 
-                            Margin= "130,0,0,35" Click="order_cancle_Btn_Click" Grid.Column="1"
+                            Margin= "10,0,0,35" Click="order_cancle_Btn_Click" Grid.Column="1"
 
                             />
                     </Grid>
@@ -201,9 +203,29 @@
                         BorderThickness="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                           Margin="0,0,170,35" Click="order_order_Btn_Click" 
+                           Margin="0,0,10,35" Click="order_order_Btn_Click" 
                             />
+
                     </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Button 
+                        x:Name="order_Soldout_Btn"
+                        Content="품절적용"
+                        Foreground="white"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Height="50"
+                        Width="220"
+                        Background="#f1555a"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                           Margin="0,0,10,35" Click="order_Soldout_Btn_Click" 
+                            />
+
+                    </Grid>
+
                 </Grid>
             </Grid>
         </Grid>

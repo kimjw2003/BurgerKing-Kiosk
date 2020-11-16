@@ -12,7 +12,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -23,6 +24,10 @@
         <Grid Grid.Column="1">
             <lvc:PieChart x:Name="PieChart2" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}">
             </lvc:PieChart>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            
         </Grid>
         
     </Grid>

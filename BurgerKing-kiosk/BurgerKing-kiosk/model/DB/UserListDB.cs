@@ -12,22 +12,22 @@ namespace BurgerKing_kiosk.model.DB
     {
 
         private connectDB conDB = new connectDB();
-        private List<UserListModel> users = new List<UserListModel>();
+        private List<UserModel> users = new List<UserModel>();
 
-        public List<UserListModel> GetUser()
+        public List<UserModel> GetUser()
         {
             MySqlConnection conn = conDB.OpenConnection();
             try
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
-                UserListModel user;
+                UserModel user;
                 string sql = "select * from kiosk.user";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    user = new UserListModel();
+                    user = new UserModel();
                     user.name = (String)reader["name"]; 
                     user.barcode = (String)reader["barcode"];
 

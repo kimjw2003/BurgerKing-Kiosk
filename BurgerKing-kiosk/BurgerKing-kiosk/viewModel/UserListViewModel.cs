@@ -12,9 +12,9 @@ namespace BurgerKing_kiosk.viewModel
     {
         UserListDB db = new UserListDB();
 
-        public List<UserListModel> GetUser()
+        public List<UserModel> GetUser()
         {
-            List<UserListModel> user = db.GetUser();
+            List<UserModel> user = db.GetUser();
            
             return user;
         }
