@@ -35,6 +35,8 @@ namespace BurgerKing_kiosk
 
         public static List<TableModel> tableList = new List<TableModel>();
 
+        public static ServerVIewModel server = new ServerVIewModel();
+
         public static String CurrentTime;
         public static TimeSpan ts;
 

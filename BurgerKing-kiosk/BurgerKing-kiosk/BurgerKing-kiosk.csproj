@@ -59,6 +59,9 @@
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -122,6 +125,7 @@
     <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\DB\StatisticsDB.cs" />
     <Compile Include="model\DB\UserListDB.cs" />
+    <Compile Include="model\JsonModel.cs" />
     <Compile Include="model\OrderModel.cs" />
     <Compile Include="model\MenuModel.cs" />
     <Compile Include="model\SaleModel.cs" />
@@ -144,6 +148,7 @@
     <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\PlaceViewModel.cs" />
     <Compile Include="viewModel\SaleViewModel.cs" />
+    <Compile Include="viewModel\ServerVIewModel.cs" />
     <Compile Include="viewModel\StatisticsViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="viewModel\UserListViewModel.cs" />

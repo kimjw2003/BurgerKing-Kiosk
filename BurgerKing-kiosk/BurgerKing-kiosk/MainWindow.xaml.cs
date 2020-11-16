@@ -31,6 +31,8 @@ namespace BurgerKing_kiosk
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             App.menuVM.GetDBMenus();
+            App.server.ConnectionServer();
+
             App.tableList.Add(new TableModel()
             {
                 id = 1,
