@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:converter="clr-namespace:BurgerKing_kiosk.view.Pages"
+      xmlns:converter="clr-namespace:BurgerKing_kiosk.view.Pages.Converter"
       xmlns:local = "clr-namespace:BurgerKing_kiosk"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
@@ -33,6 +33,7 @@
             <Setter Property="Foreground" Value="White"/>
         </Style>
         <converter:BackgroundConverter x:Key="BackgroundConverter" />
+        <converter:VisibleConverter x:Key="VisibleConverter"/>
     </Page.Resources>
 
     <Grid Background="White">
@@ -65,16 +66,19 @@
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="2" Width="450" Height="160" Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}">
-                                <TextBlock TextAlignment="Left" FontSize="20"
+                            <StackPanel Margin="2" Width="450" Height="160" 
+                                        Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBlock TextAlignment="Left" FontSize="26"
                                        HorizontalAlignment="Left"  VerticalAlignment="Top"
                                        Text="{Binding id, StringFormat={}   NO. {0}}"/>
-                                <TextBlock TextAlignment="Left" FontSize="20"
+                                <TextBlock Visibility="{Binding OrderTime, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                    TextAlignment="Left" FontSize="20" Margin="0,30"
                                        HorizontalAlignment="Center"  VerticalAlignment="Center"
-                                       Text="{Binding id, StringFormat={}   {00시간00분00초}}"/>
-                                <TextBlock TextAlignment="Right" FontSize="20"
-                                       VerticalAlignment="Bottom"
-                                       Text="{Binding time, StringFormat={}   주문시간 : {00:00:00}}"/>
+                                       Text="{Binding RemainSeconds,  StringFormat={}  {0}초 남았습니다.}"/>
+                                <TextBlock  Visibility="{Binding OrderTime, Converter={StaticResource VisibleConverter}}"
+                                    TextAlignment="Right" FontSize="22"
+                                       VerticalAlignment="Bottom" Margin="15,0"
+                                       Text="{Binding OrderTime, StringFormat={} 주문시간 : {0: HH:mm:ss}}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

@@ -34,7 +34,6 @@ namespace BurgerKing_kiosk
             {
                 MessageBox.Show("사용중인 테이블 입니다.");
                 return;
-                //selectedTable.IsUsed = false;
             }
             else if (table != 0)
             {

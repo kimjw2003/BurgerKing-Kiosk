@@ -152,7 +152,8 @@
     <Compile Include="viewModel\StatisticsViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="viewModel\UserListViewModel.cs" />
-    <Compile Include="view\Pages\BackgroundConverter.cs" />
+    <Compile Include="view\Pages\Converter\BackgroundConverter.cs" />
+    <Compile Include="view\Pages\Converter\VisibleConverter.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>

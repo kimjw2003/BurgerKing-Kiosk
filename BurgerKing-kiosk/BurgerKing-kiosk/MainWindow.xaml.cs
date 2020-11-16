@@ -31,11 +31,11 @@ namespace BurgerKing_kiosk
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             App.menuVM.GetDBMenus();
-            App.server.ConnectionServer();
+            //App.server.ConnectionServer();
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
-            App.server.SendServer(json);
+            //App.server.SendServer(json);
 
             App.tableList.Add(new TableModel()
             {

@@ -24,12 +24,12 @@ namespace BurgerKing_kiosk
             OrderNum.Text = OrderNum.Text = viewModel.AddZero(App.OrderNumber);
             totalPrice.Text = App.totalPrice.ToString();
 
-            JsonModel json = new JsonModel();
-            json.MSGType = 2;
-            json.Id = "2102";
-            json.OrderNumber = OrderNum.Text;
-            json.Menus = App.userData.order;
-            App.server.SendServer(json);
+            //JsonModel json = new JsonModel();
+            //json.MSGType = 2;
+            //json.Id = "2102";
+            //json.OrderNumber = OrderNum.Text;
+            //json.Menus = App.userData.order;
+            //App.server.SendServer(json);
 
             timer.Interval = new TimeSpan(0, 0, 5);
             timer.Tick += Timer_Tick;

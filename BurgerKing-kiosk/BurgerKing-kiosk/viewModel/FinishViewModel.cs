@@ -17,7 +17,7 @@ namespace BurgerKing_kiosk.viewModel
             {
                 db.SetOrderData(i);
             }
-            App.tableList[App.userData.seat - 1].time = DateTime.Now.ToString("HH:mm:ss");
+            App.tableList[App.userData.seat - 1].OrderTime = DateTime.Now;
         }
         public void ClearData()
         {

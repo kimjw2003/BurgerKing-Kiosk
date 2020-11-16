@@ -4,9 +4,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace BurgerKing_kiosk.model
 {
+    static class Constants
+    {
+        public const int second = 60;
+    }
     public class TableModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -16,17 +21,65 @@ namespace BurgerKing_kiosk.model
         }
 
         public int id { get; set; }
-        public String time { get; set; } = "";
-
-        private bool _isUsed = false;
-        public bool IsUsed
+        private int remainSeconds { get; set; }
+        public int RemainSeconds
         {
-            get => _isUsed;
+            get => remainSeconds;
             set
             {
-                _isUsed = value;
+                remainSeconds = value;
+                NotifyPropertyChanged(nameof(RemainSeconds));
+            }
+        }
+        private DateTime endTime { get; set; }
+        public DateTime EndTime
+        {
+            get => endTime;
+            set
+            {
+                endTime = value;
+                NotifyPropertyChanged(nameof(EndTime));
+            }
+        }
+        private DateTime orderTime { get; set; }
+        public DateTime OrderTime
+        {
+            get => orderTime;
+            set
+            {
+                orderTime = value;
+                NotifyPropertyChanged(nameof(OrderTime));
+                endTime = orderTime.AddSeconds(Constants.second);
+                RemainSeconds = Constants.second;
+                IsUsed = true;
+                SetRemainTimerEvent();
+            }
+        }
+
+        private bool isUsed = false;
+        public bool IsUsed
+        {
+            get => isUsed;
+            set
+            {
+                isUsed = value;
                 NotifyPropertyChanged(nameof(IsUsed));
             }
+        }
+        private void SetRemainTimerEvent()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += new EventHandler((object sender, EventArgs e) => {
+                if (RemainSeconds <= 0)
+                {
+                    timer.Stop();
+                    OrderTime = DateTime.Parse("0001-01-01 오전 12:00:00");
+                    IsUsed = false;
+                }
+                RemainSeconds -= 1;
+            });
+            timer.Start();
         }
     }
 }
