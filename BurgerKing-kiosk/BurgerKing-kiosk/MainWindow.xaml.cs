@@ -30,60 +30,27 @@ namespace BurgerKing_kiosk
             
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
+            LoginServer();
+            GetDB();
+
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void GetDB()
+        {
             App.menuVM.GetDBMenus();
+
+            TableDB db = new TableDB();
+            App.tableList = db.GetTable();
+        }
+
+        private void LoginServer()
+        {
             //App.server.ConnectionServer();
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
             //App.server.SendServer(json);
-
-            App.tableList.Add(new TableModel()
-            {
-                id = 1,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 2,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 3,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 4,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 5,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 6,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 7,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 8,
-                IsUsed = false
-            });
-            App.tableList.Add(new TableModel()
-            {
-                id = 9,
-                IsUsed = false
-            });
-
-            this.Loaded += MainWindow_Loaded;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BurgerKing_kiosk.viewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -74,7 +75,9 @@ namespace BurgerKing_kiosk.model
                 if (RemainSeconds <= 0)
                 {
                     timer.Stop();
-                    OrderTime = DateTime.Parse("0001-01-01 오전 12:00:00");
+                    TableViewModel ViewModel = new TableViewModel();
+                    ViewModel.UpdateTables(id, false);
+                    OrderTime = default(DateTime);
                     IsUsed = false;
                 }
                 RemainSeconds -= 1;

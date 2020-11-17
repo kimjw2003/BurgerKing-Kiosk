@@ -11,7 +11,6 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class TablePage : Page
     {
-        int table = 0;
         public TablePage()
         {
             InitializeComponent();
@@ -23,44 +22,36 @@ namespace BurgerKing_kiosk
         }
         private void lvTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (App.orderVM.GetTable() != 0)
-            {
-                table = App.orderVM.GetTable();
-                App.orderVM.SetTable(0);
-                return;
-            }
             var selectedTable = (TableModel)lvTable.SelectedItem;
             if (selectedTable.IsUsed)
             {
                 MessageBox.Show("사용중인 테이블 입니다.");
                 return;
             }
-            else if (table != 0)
+            else if (App.orderVM.GetTable() != 0)
             {
-                App.tableList[table - 1].IsUsed = false;
+                App.tableList[App.orderVM.GetTable() - 1].IsUsed = false;
                 selectedTable.IsUsed = true;
-                table = selectedTable.id;
+                App.orderVM.SetTable(selectedTable.id);
             }
             else
             {
                 selectedTable.IsUsed = true;
-                table = selectedTable.id;
+                App.orderVM.SetTable(selectedTable.id);
             }
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
-            App.tableList[table - 1].IsUsed = false;
-            table = 0;
+            App.tableList[App.orderVM.GetTable() - 1].IsUsed = false;
             NavigationService.GoBack();
         }
         private void GoNext(object sender, RoutedEventArgs e)
         {
-            if (table == 0)
+            if (App.orderVM.GetTable() == 0)
             {
                 MessageBox.Show("테이블을 선택해주세요.");
                 return;
             }
-            App.orderVM.SetTable(table);
             NavigationService.Navigate(new Uri("view/Pages/HowPay.xaml", UriKind.Relative));
         }
     }

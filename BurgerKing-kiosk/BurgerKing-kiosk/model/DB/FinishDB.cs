@@ -27,7 +27,6 @@ namespace BurgerKing_kiosk.model.DB
                     $"{OrderModel.GetInstance()[orderIdx].Price}, {App.userData.seat}, {OrderModel.GetInstance()[orderIdx].sale}, '{App.userData.payment}','{DateTime.Now.ToString("HH:mm:ss")}', " +
                     $"{OrderModel.GetInstance()[orderIdx].Count});");
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                Console.WriteLine(sql);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -43,6 +42,10 @@ namespace BurgerKing_kiosk.model.DB
                         Console.WriteLine("유저 ID 또는 Password를 확인해주세요.");
                         break;
                 }
+            }
+            finally
+            {
+                conn.Close();
             }
             return returnType;
         }

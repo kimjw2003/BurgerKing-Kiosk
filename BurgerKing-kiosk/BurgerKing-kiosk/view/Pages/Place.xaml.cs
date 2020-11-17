@@ -23,8 +23,6 @@ namespace BurgerKing_kiosk
         public PlacePage()
         {
             InitializeComponent();
-
-            this.DataContext = new viewModel.PlaceViewModel();
         }
 
         private void Packing(object sender, RoutedEventArgs e)
