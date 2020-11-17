@@ -38,6 +38,7 @@ namespace BurgerKing_kiosk.model.DB
 
                     sales.Add(sale);
                 }
+
                 return sales;
             }
             catch (MySqlException ex)
@@ -54,6 +55,11 @@ namespace BurgerKing_kiosk.model.DB
                         break;
                 }
             }
+            finally
+            {
+                conn.Close();
+            }
+
             return null;
         }
 

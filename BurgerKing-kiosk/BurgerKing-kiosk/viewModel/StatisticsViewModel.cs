@@ -97,10 +97,10 @@ namespace BurgerKing_kiosk.viewModel
             return TotalPrice;
         }
 
-        public int GetWholeSaleAmount(string date)
+        public int GetWholeSaleAmount(string date, string time)
         {
             int TotalPrice = 0;
-            string sql = "WHERE day = '" + date + "'";
+            string sql = "WHERE day = '" + date + "' AND time LIKE '"+time+"%'";
             List<SaleModel> sales = db.SelectOrderList(sql);
 
             foreach (SaleModel sale in sales)
