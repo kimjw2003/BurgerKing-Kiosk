@@ -112,6 +112,11 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("view/Pages/Statistics/Daily_Chart.xaml", UriKind.Relative));
+        }
+
         /* private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbCategory.SelectedIndex == -1) return;
