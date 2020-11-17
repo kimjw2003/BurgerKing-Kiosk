@@ -85,44 +85,44 @@ namespace BurgerKing_kiosk
 
         private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-            if (lbCategory.SelectedIndex == 0 && pageCount * 9 <= App.burgerList.Count)
+            if (lbCategory.SelectedIndex == 0 && (pageCount + 1) * 9 <= App.burgerList.Count)
             {
                 allMenuList.Clear();
+                pageCount += 1;
                 for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
                 {
                     if (i >= App.burgerList.Count) break;
                     allMenuList.Add(App.burgerList[i]);
                 }
-                pageCount += 1;
                 lbFood.ItemsSource = allMenuList;
                 lbFood.Items.Refresh();
             } 
 
 
-            else if(lbCategory.SelectedIndex == 1 && pageCount * 9 <= App.sideList.Count)
+            else if(lbCategory.SelectedIndex == 1 && (pageCount+1) * 9 <= App.sideList.Count)
             {
                 allMenuList.Clear();
+                pageCount += 1;
                 for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
                 {
                     if (i >= App.sideList.Count) break;
                     allMenuList.Add(App.sideList[i]);
                 }
-                pageCount += 1;
                 lbFood.ItemsSource = allMenuList;
                 lbFood.Items.Refresh();
             }
 
 
-            else if (lbCategory.SelectedIndex == 2 && pageCount * 9 <= App.desertList.Count)
+            else if (lbCategory.SelectedIndex == 2 && (pageCount + 1) * 9 <= App.desertList.Count)
             {
                 allMenuList.Clear();
+                pageCount += 1;
                 for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
                 {
                     if (i >= App.desertList.Count) break;
                     allMenuList.Add(App.desertList[i]);
 
                 }
-                pageCount += 1;
                 lbFood.ItemsSource = allMenuList;
                 lbFood.Items.Refresh();
             }
