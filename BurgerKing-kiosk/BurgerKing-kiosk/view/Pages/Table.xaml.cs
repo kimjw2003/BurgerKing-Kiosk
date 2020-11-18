@@ -11,6 +11,7 @@ namespace BurgerKing_kiosk
     /// </summary>
     public partial class TablePage : Page
     {
+        bool first = true;
         public TablePage()
         {
             InitializeComponent();
@@ -23,20 +24,21 @@ namespace BurgerKing_kiosk
         private void lvTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedTable = (TableModel)lvTable.SelectedItem;
-            if (selectedTable.IsUsed)
+            if (selectedTable.IsUsed && !first)
             {
                 MessageBox.Show("사용중인 테이블 입니다.");
                 return;
             }
             else if (App.orderVM.GetTable() != 0)
             {
+                first = false;
                 App.tableList[App.orderVM.GetTable() - 1].IsUsed = false;
                 selectedTable.IsUsed = true;
                 App.orderVM.SetTable(selectedTable.id);
             }
             else
             {
-                Console.WriteLine(App.orderVM.GetTable());
+                first = false;
                 selectedTable.IsUsed = true;
                 App.orderVM.SetTable(selectedTable.id);
             }

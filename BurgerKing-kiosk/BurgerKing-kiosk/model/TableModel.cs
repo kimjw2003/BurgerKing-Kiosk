@@ -52,9 +52,12 @@ namespace BurgerKing_kiosk.model
                 NotifyPropertyChanged(nameof(OrderTime));
                 endTime = orderTime.AddSeconds(Constants.second);
                 TimeSpan second = endTime - DateTime.Now;
-                RemainSeconds = (int)second.TotalSeconds;
-                IsUsed = true;
-                SetRemainTimerEvent();
+                if ((int)second.TotalSeconds >= 0 && (int)second.TotalSeconds <= 60)
+                {
+                    RemainSeconds = (int)second.TotalSeconds;
+                    IsUsed = true;
+                    SetRemainTimerEvent();
+                }
             }
         }
 
@@ -73,18 +76,9 @@ namespace BurgerKing_kiosk.model
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += new EventHandler((object sender, EventArgs e) => {
-                if (RemainSeconds == 0)
+                if (RemainSeconds < 1)
                 {
                     timer.Stop();
-                    TableViewModel ViewModel = new TableViewModel();
-                    ViewModel.UpdateTables(id);
-                    OrderTime = default(DateTime);
-                    IsUsed = false;
-                }
-                if (RemainSeconds < 0)
-                {
-                    timer.Stop();
-                    OrderTime = default(DateTime);
                     IsUsed = false;
                 }
                 RemainSeconds -= 1;
