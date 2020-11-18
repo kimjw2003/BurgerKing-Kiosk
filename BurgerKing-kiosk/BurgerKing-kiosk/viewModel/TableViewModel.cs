@@ -19,10 +19,9 @@ namespace BurgerKing_kiosk.viewModel
         {
             App.tableList = db.GetTable();
         }
-        public void UpdateTables(int id,bool isUsed)
+        public void UpdateTables(int id)
         {
-            Console.WriteLine(id);
-            db.UpdateTable(id, isUsed);
+            db.UpdateTable(id);
             App.tableList = new List<TableModel>();
             App.tableList = db.GetTable();
         }

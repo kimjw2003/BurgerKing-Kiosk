@@ -36,6 +36,7 @@ namespace BurgerKing_kiosk
             }
             else
             {
+                Console.WriteLine(App.orderVM.GetTable());
                 selectedTable.IsUsed = true;
                 App.orderVM.SetTable(selectedTable.id);
             }

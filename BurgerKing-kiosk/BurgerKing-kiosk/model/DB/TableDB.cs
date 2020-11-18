@@ -17,7 +17,6 @@ namespace BurgerKing_kiosk.model.DB
         {
             TableModel table;
             List<TableModel> list = new List<TableModel>();
-            var cultureInfo = new CultureInfo("en-US");
             MySqlConnection conn = conDB.OpenConnection();
             try
             {
@@ -30,7 +29,7 @@ namespace BurgerKing_kiosk.model.DB
                 {
                     table = new TableModel();
                     table.id = (int)reader["id"];
-                    table.IsUsed = (bool)reader["IsUsed"];
+                    table.OrderTime = DateTime.Parse((string)reader["OrderTime"]);
                     list.Add(table);
                 }
             }
@@ -54,7 +53,7 @@ namespace BurgerKing_kiosk.model.DB
             }
             return list;
         }
-        public void UpdateTable(int id, bool isUsed)
+        public void UpdateTable(int id)
         {
 
             MySqlConnection conn = conDB.OpenConnection();
@@ -62,15 +61,7 @@ namespace BurgerKing_kiosk.model.DB
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
-                string sql;
-                if (isUsed)
-                {
-                    sql = string.Format($"UPDATE kiosk.table SET OrderTime = \"{DateTime.Now.ToString()}\" , IsUsed = {isUsed} WHERE id = {id}");
-                }
-                else
-                {
-                    sql = string.Format($"UPDATE kiosk.table SET OrderTime = \"{default(DateTime).ToString()}\" , IsUsed = {isUsed} WHERE id = {id}");
-                }
+                string sql = string.Format($"UPDATE kiosk.table SET OrderTime = \"{DateTime.Now.ToString()}\" WHERE id = {id}");
                 Console.WriteLine(sql);
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();

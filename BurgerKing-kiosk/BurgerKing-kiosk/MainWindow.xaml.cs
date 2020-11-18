@@ -46,11 +46,11 @@ namespace BurgerKing_kiosk
 
         private void LoginServer()
         {
-            //App.server.ConnectionServer();
+            App.server.ConnectionServer();
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
-            //App.server.SendServer(json);
+            App.server.SendServer(json);
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)

@@ -16,6 +16,7 @@ namespace BurgerKing_kiosk
     {
         DispatcherTimer timer = new DispatcherTimer();
         FinishViewModel viewModel = new FinishViewModel();
+        int second = 1;
         public FinishPage()
         {
             InitializeComponent();
@@ -25,29 +26,33 @@ namespace BurgerKing_kiosk
             totalPrice.Text = App.totalPrice.ToString();
 
             TableViewModel tViewModel = new TableViewModel();
-            tViewModel.UpdateTables(App.userData.seat, true);
+            tViewModel.UpdateTables(App.userData.seat);
 
             JsonModel json = new JsonModel();
             json.MSGType = 2;
             json.Id = "2102";
             json.OrderNumber = OrderNum.Text;
             json.Menus = App.userData.order;
-            //App.server.SendServer(json);
+            App.server.SendServer(json);
 
-            timer.Interval = new TimeSpan(0, 0, 5);
+            timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            viewModel.SetOrderData();
-            viewModel.ClearData();
-            while (NavigationService.CanGoBack)
+            if (second == 5)
             {
-                NavigationService.GoBack();
+                timer.Stop();
+                viewModel.SetOrderData();
+                viewModel.ClearData();
+                while (NavigationService.CanGoBack)
+                {
+                    NavigationService.GoBack();
+                }
             }
-            timer.Stop();
+            second += 1;
         }
     }
 }
