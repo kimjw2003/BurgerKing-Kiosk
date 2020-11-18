@@ -29,7 +29,7 @@ namespace BurgerKing_kiosk.model.DB
                 {
                     table = new TableModel();
                     table.id = (int)reader["id"];
-                   // table.OrderTime = DateTime.Parse((string)reader["OrderTime"]);
+                    table.OrderTime = DateTime.Parse((string)reader["OrderTime"]);
                     list.Add(table);
                 }
             }
