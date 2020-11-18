@@ -235,6 +235,8 @@ namespace BurgerKing_kiosk
                 allPrice.Text = allPrice_Int.ToString();
             }
             lbFood.SelectedItem = null;
+
+            
         }
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
