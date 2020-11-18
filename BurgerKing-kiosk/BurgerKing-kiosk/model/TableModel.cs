@@ -53,6 +53,7 @@ namespace BurgerKing_kiosk.model
                 endTime = orderTime.AddSeconds(Constants.second);
                 TimeSpan second = endTime - DateTime.Now;
                 RemainSeconds = (int)second.TotalSeconds;
+                IsUsed = true;
                 SetRemainTimerEvent();
             }
         }
