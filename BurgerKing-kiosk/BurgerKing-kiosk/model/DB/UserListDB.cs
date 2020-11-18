@@ -47,7 +47,10 @@ namespace BurgerKing_kiosk.model.DB
                         break;
                 }
             }
-            Console.WriteLine(users);
+            finally
+            {
+                conn.Close();
+            }
             return users;
         }
     }

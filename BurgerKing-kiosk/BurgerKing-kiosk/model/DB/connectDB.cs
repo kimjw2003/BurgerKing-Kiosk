@@ -22,19 +22,5 @@ namespace BurgerKing_kiosk.viewModel.DB
             conn = new MySqlConnection(connStr);
             return conn;
         }
-        public bool CloseConnection()
-        {
-            try
-            {
-                conn.Close();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
-
     }
 }

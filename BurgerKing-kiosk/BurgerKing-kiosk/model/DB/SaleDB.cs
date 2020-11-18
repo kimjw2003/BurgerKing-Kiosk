@@ -49,7 +49,10 @@ namespace BurgerKing_kiosk.viewModel.DB
                         break;
                 }
             }
-            Console.WriteLine(sales);
+            finally
+            {
+                conn.Close();
+            }
             return sales;
         }
     }

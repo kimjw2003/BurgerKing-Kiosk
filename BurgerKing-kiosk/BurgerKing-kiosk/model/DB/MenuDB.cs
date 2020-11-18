@@ -68,6 +68,10 @@ namespace BurgerKing_kiosk.viewModel.DB
                         break;
                 }
             }
+            finally
+            {
+                conn.Close();
+            }
 
             return null;
         }

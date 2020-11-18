@@ -41,6 +41,10 @@ namespace BurgerKing_kiosk.model.DB
                         break;
                 }
             }
+            finally
+            {
+                conn.Close();
+            }
 
             return times;
         }
@@ -67,6 +71,10 @@ namespace BurgerKing_kiosk.model.DB
                         Console.WriteLine("유저 ID 또는 Password를 확인해주세요.");
                         break;
                 }
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }
