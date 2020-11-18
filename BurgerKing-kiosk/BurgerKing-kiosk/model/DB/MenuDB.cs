@@ -38,8 +38,8 @@ namespace BurgerKing_kiosk.viewModel.DB
                     menu.sale = (int)reader["sale"];
                     menu.price = (int)reader["price"];
                     menu.salePrice = (int)(menu.price - (menu.price * ((double)menu.sale / 100)));
+                    menu.soldOut = Convert.ToBoolean((System.SByte)reader["soldout"]);
                     menu.category = tablename;
-                    Console.WriteLine(menu.sale + "gg" + menu.price + "gg" + menu.salePrice);
 
                     if (categoryIndex != (int)menu.category)
                     {

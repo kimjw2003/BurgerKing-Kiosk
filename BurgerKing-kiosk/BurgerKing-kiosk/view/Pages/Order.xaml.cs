@@ -193,12 +193,15 @@ namespace BurgerKing_kiosk
         {
 
             MenuModel orderList = (MenuModel)lbFood.SelectedItem;
-
             
-            if (orderList != null)
+            if (orderList != null) // 주문리스트가 널이 아니면 실행
             {
-   
-                if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))
+                if (orderList.soldOut)
+                {
+                    MessageBox.Show("품절된 상품입니다.");
+                    return;
+                }
+                if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))     
                 {
                     var item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
                     item.salePrice += (item.salePrice / item.Count);
@@ -217,8 +220,6 @@ namespace BurgerKing_kiosk
                     }
                     int beforeTotalPrice = int.Parse(allPrice.Text);
                     allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
-
-                    
                 }
 
                 ordered_Menu_List.Items.Refresh();
@@ -235,8 +236,6 @@ namespace BurgerKing_kiosk
                 allPrice.Text = allPrice_Int.ToString();
             }
             lbFood.SelectedItem = null;
-
-            
         }
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행

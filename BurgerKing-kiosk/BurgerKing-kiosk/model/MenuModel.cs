@@ -14,7 +14,7 @@ namespace BurgerKing_kiosk.model
         public int price { get; set; }
         public String picture { get; set; }
         public int sale { get; set; }
-        public int soldOut { get; set; }
+        public bool soldOut { get; set; } = false;
         public int amount { get; set; }
         public int page { get; set; }
         public int salePrice { get; internal set; }
