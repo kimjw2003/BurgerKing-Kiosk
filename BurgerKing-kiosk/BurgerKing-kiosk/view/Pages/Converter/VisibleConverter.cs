@@ -12,7 +12,7 @@ namespace BurgerKing_kiosk.view.Pages.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int second = (int)value;
-            if (second > 0 && second <=60)
+            if (second >= 0 && second <=60)
             {
                 return Visibility.Visible;
             }

@@ -35,6 +35,9 @@ namespace BurgerKing_kiosk
             json.Menus = App.userData.order;
             App.server.SendServer(json);
 
+            viewModel.SetOrderData();
+            viewModel.ClearData();
+
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
@@ -45,8 +48,6 @@ namespace BurgerKing_kiosk
             if (second == 5)
             {
                 timer.Stop();
-                viewModel.SetOrderData();
-                viewModel.ClearData();
                 while (NavigationService.CanGoBack)
                 {
                     NavigationService.GoBack();

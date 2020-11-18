@@ -58,6 +58,10 @@ namespace BurgerKing_kiosk.model
                     IsUsed = true;
                     SetRemainTimerEvent();
                 }
+                else
+                {
+                    RemainSeconds = -1;
+                }
             }
         }
 
