@@ -16,7 +16,16 @@ namespace BurgerKing_kiosk.viewModel
         public void ConnectionServer()
         {
             client = new TcpClient("10.80.162.152", 80);
+            //client = new TcpClient("10.80.163.197",80);
             stream = client.GetStream();
+        }
+        public void ReceiveServer()
+        {
+            byte[] outbuf = new byte[1024];
+            int nbytes = stream.Read(outbuf, 0, outbuf.Length);
+            string output = Encoding.ASCII.GetString(outbuf, 0, nbytes);
+
+            Console.WriteLine($"{nbytes} bytes: {output}");
         }
         public void SendServer(JsonModel model)
         {
@@ -26,11 +35,7 @@ namespace BurgerKing_kiosk.viewModel
 
             stream.Write(buff, 0, buff.Length);
 
-            byte[] outbuf = new byte[1024];
-            int nbytes = stream.Read(outbuf, 0, outbuf.Length);
-            string output = Encoding.ASCII.GetString(outbuf, 0, nbytes);
-
-            Console.WriteLine($"{nbytes} bytes: {output}");
+            ReceiveServer();
         }
         public void CloseServer()
         {
