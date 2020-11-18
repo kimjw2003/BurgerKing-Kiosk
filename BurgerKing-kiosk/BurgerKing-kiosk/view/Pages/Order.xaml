@@ -85,7 +85,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="140" Height="200" >
-                                <Image Source="{Binding picture}"/>
+                                <Image Source="{Binding picture}" Width="120" Height="110"/>
                                 <TextBlock Text="{Binding name}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                                 <TextBlock Text="{Binding salePrice}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
                                 <TextBlock Text="{Binding sale}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">% 할인</TextBlock>
