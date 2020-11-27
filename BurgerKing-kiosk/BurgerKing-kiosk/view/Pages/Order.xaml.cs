@@ -30,7 +30,6 @@ namespace BurgerKing_kiosk
     public partial class OrderPage : Page
     {
         int pageCount = 0;
-        int totalPrice = 0;
         List<MenuModel> allMenuList = new List<MenuModel>();
 
         public OrderPage()
@@ -39,7 +38,7 @@ namespace BurgerKing_kiosk
 
             this.Loaded += OrderPage_Loaded;
 
-            allPrice.Text = totalPrice + "";
+            allPrice.Text = App.totalPrice + "";
 
             ordered_Menu_List.ItemsSource = OrderModel.GetInstance();
             
@@ -261,8 +260,8 @@ namespace BurgerKing_kiosk
                 OrderModel.GetInstance().Clear();
                 ordered_Menu_List.Items.Refresh();
 
-                totalPrice = 0;
-                allPrice.Text = totalPrice.ToString();
+                App.totalPrice = 0;
+                allPrice.Text = App.totalPrice.ToString();
             }
             else
             {
