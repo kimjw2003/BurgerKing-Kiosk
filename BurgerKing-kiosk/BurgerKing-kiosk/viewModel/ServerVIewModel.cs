@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BurgerKing_kiosk.viewModel
 {
-    public class ServerVIewModel
+    public class ServerViewModel
     {
         TcpClient client;
         NetworkStream stream;

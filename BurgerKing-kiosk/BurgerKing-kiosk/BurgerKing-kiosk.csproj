@@ -148,7 +148,7 @@
     <Compile Include="viewModel\HowPayViewModel.cs" />
     <Compile Include="viewModel\MenuViewModel.cs" />
     <Compile Include="viewModel\SaleViewModel.cs" />
-    <Compile Include="viewModel\ServerVIewModel.cs" />
+    <Compile Include="viewModel\ServerViewModel.cs" />
     <Compile Include="viewModel\StatisticsViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="viewModel\UserListViewModel.cs" />
