@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBox x:Name="barcode" Focusable="True" TextChanged="barcode_TextChanged"/>
+                <TextBox x:Name="barcode" Focusable="True" KeyDown="OnKeyDownHandler"/>
                 <TextBlock HorizontalAlignment="Center" FontSize="55">
                     현금계산을 선택하셨습니다.
                 </TextBlock>
