@@ -113,6 +113,10 @@ namespace BurgerKing_kiosk
             {
                 frame_content.GoBack();
             }
+            if (App.userData.seat != 0)
+            {
+                App.tableList[App.userData.seat - 1].IsUsed = false;
+            }
             FinishViewModel viewModel = new FinishViewModel();
             viewModel.ClearData();
         }

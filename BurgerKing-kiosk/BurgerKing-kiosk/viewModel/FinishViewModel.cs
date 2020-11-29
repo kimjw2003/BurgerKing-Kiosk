@@ -23,10 +23,6 @@ namespace BurgerKing_kiosk.viewModel
         }
         public void ClearData()
         {
-            if (App.userData.seat != 0)
-            {
-                App.tableList[App.userData.seat - 1].IsUsed = false;
-            }
             App.userData = new UserModel();
             App.OrderNumber++;
             OrderModel.GetInstance().Clear();
