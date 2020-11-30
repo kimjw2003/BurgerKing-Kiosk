@@ -87,7 +87,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
                 MenuPrice.Add(Order.price);
             }
 
-            SeriesCollection = new SeriesCollection
+            LineCategoryCountSeriesCollection = new SeriesCollection
             {
                 new ColumnSeries
                 {
@@ -97,7 +97,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
                 },
             };
 
-            SeriesCollection2 = new SeriesCollection
+            LineCategoryPriceSeriesCollection = new SeriesCollection
             {
                 new ColumnSeries
                 {
@@ -208,8 +208,8 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         public SeriesCollection CategoryCountSeriesCollection { get; set; }
         public SeriesCollection CategoryPriceSeriesCollection { get; set; }
-        public SeriesCollection SeriesCollection { get; set; }
-        public SeriesCollection SeriesCollection2 { get; set; }
+        public SeriesCollection LineCategoryCountSeriesCollection { get; set; }
+        public SeriesCollection LineCategoryPriceSeriesCollection { get; set; }
 
         public int BurgerCount { get; set; }
         public int DesertCount { get; set; }
