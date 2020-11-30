@@ -185,7 +185,7 @@ namespace BurgerKing_kiosk
                     lbFood.SelectedItem = null;
                     return;
                 }
-                //----------------------------------------------------------------------
+                    
                 if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))
                 {
                     var first_selected_item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
@@ -212,7 +212,7 @@ namespace BurgerKing_kiosk
             }else {
                 return;
             }
-             //----------------------------------------------------------------------
+                
             var second_selected_item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
             var allPrice_Int = int.Parse(allPrice.Text);
 
