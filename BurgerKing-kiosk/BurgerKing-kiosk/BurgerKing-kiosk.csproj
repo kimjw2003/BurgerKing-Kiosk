@@ -122,7 +122,6 @@
     <Compile Include="model\DB\EnergizingTimeDB.cs" />
     <Compile Include="model\DB\FinishDB.cs" />
     <Compile Include="model\DB\MoneyDB.cs" />
-    <Compile Include="model\DB\SaleDB.cs" />
     <Compile Include="model\DB\StatisticsDB.cs" />
     <Compile Include="model\DB\TableDB.cs" />
     <Compile Include="model\DB\UserListDB.cs" />
@@ -148,7 +147,6 @@
     <Compile Include="viewModel\CardViewModel.cs" />
     <Compile Include="viewModel\HowPayViewModel.cs" />
     <Compile Include="viewModel\MenuViewModel.cs" />
-    <Compile Include="viewModel\SaleViewModel.cs" />
     <Compile Include="viewModel\ServerViewModel.cs" />
     <Compile Include="viewModel\StatisticsViewModel.cs" />
     <Compile Include="viewModel\TableViewModel.cs" />
