@@ -1,26 +1,11 @@
 ﻿
 using BurgerKing_kiosk.model;
-using BurgerKing_kiosk.viewModel;
-using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using static BurgerKing_kiosk.model.MenuModel;
-using static BurgerKing_kiosk.model.OrderModel;
 
 namespace BurgerKing_kiosk
 {
@@ -108,7 +93,7 @@ namespace BurgerKing_kiosk
                     allMenuList.Add(App.sideList[i]);
                 }
                 lbFood.ItemsSource = allMenuList;
-                lbFood.Items.Refresh();
+                lbFood.Items.Refresh(); 
             }
 
 
@@ -195,12 +180,13 @@ namespace BurgerKing_kiosk
             
             if (orderList != null) // 주문리스트가 널이 아니면 실행
             {
-                if (orderList.soldOut)
+                if (orderList.soldOut) //품절된 상품이면 실행
                 {
                     MessageBox.Show("품절된 상품입니다.");
+                    lbFood.SelectedItem = null;
                     return;
                 }
-                if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))     
+                if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))
                 {
                     var item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
                     item.salePrice += (item.salePrice / item.Count);
@@ -239,33 +225,39 @@ namespace BurgerKing_kiosk
 
         private void order_cancle_Btn_Click(object sender, RoutedEventArgs e) //주문취소를 누르면 실행
         {
-
-            MessageBoxResult result = MessageBox.Show("주문을 취소하시겠습니까?","취소", MessageBoxButton.OKCancel);
-            if(result == MessageBoxResult.OK) {
-                OrderModel.GetInstance().Clear();
-                ordered_Menu_List.Items.Refresh();
-            } else {
-                return;
+            if (allPrice.Text != "0")
+            {
+                MessageBoxResult result = MessageBox.Show("주문을 취소하시겠습니까?", "취소", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    OrderModel.GetInstance().Clear();
+                    ordered_Menu_List.Items.Refresh();
+                }
+                else
+                {
+                    return;
+                }
             }
-
             NavigationService.GoBack();
         }
 
         private void allDel_Btn_Click(object sender, RoutedEventArgs e) //모두삭제 버튼
         {
-
-            MessageBoxResult result = MessageBox.Show("주문목록을 삭제하시겠습니까?", "삭제", MessageBoxButton.OKCancel);
-            if (result == MessageBoxResult.OK)
+            if (allPrice.Text != "0")
             {
-                OrderModel.GetInstance().Clear();
-                ordered_Menu_List.Items.Refresh();
+                MessageBoxResult result = MessageBox.Show("주문목록을 삭제하시겠습니까?", "삭제", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    OrderModel.GetInstance().Clear();
+                    ordered_Menu_List.Items.Refresh();
 
-                App.totalPrice = 0;
-                allPrice.Text = App.totalPrice.ToString();
-            }
-            else
-            {
-                return;
+                    App.totalPrice = 0;
+                    allPrice.Text = App.totalPrice.ToString();
+                }
+                else
+                {
+                    return;
+                }
             }
 
         }
