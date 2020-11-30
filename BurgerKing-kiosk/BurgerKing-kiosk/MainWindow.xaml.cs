@@ -50,6 +50,7 @@ namespace BurgerKing_kiosk
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
+            json.Group = false;
             App.server.SendServer(json);
         }
 
@@ -103,12 +104,14 @@ namespace BurgerKing_kiosk
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = System.Windows.MessageBox.Show("주문을 취소하시겠습니까?", "취소", MessageBoxButton.OKCancel);
-            if (result != MessageBoxResult.OK)
+            if (App.totalPrice != 0)
             {
-                return;
+                MessageBoxResult result = System.Windows.MessageBox.Show("주문을 취소하시겠습니까?", "취소", MessageBoxButton.OKCancel);
+                if (result != MessageBoxResult.OK)
+                {
+                    return;
+                }
             }
-
             while (frame_content.CanGoBack == true)
             {
                 frame_content.GoBack();
