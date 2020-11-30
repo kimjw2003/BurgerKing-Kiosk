@@ -46,7 +46,6 @@ namespace BurgerKing_kiosk
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            IsConnect = App.server.sModel.IsConnect;
             if (loginVM.GetBool())
             {
                 frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));
@@ -56,7 +55,7 @@ namespace BurgerKing_kiosk
                 LoginCheck();
             }
 
-            DataContext = this;
+            DataContext = App.server.sModel;
         }
 
         public void ServerOn(object sender, RoutedEventArgs e)
@@ -64,14 +63,6 @@ namespace BurgerKing_kiosk
             if (!App.server.CheckClient())
             {
                 App.server.ConnectionServer();
-            }
-            else
-            {
-                JsonModel json = new JsonModel();
-                json.MSGType = 0;
-                json.Id = "2102";
-                json.Group = false;
-                App.server.SendServer(json);
             }
         }
 
@@ -131,7 +122,5 @@ namespace BurgerKing_kiosk
             FinishViewModel viewModel = new FinishViewModel();
             viewModel.ClearData();
         }
-
-        public bool IsConnect { get; set; }
     }
 }

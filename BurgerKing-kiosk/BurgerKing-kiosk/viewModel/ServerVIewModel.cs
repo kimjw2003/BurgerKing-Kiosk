@@ -18,13 +18,13 @@ namespace BurgerKing_kiosk.viewModel
         public ServerModel sModel = new ServerModel();
         private Socket clientSocket = null;
         private Socket cbSocket;
-        //private String host = "10.80.162.152";
-        private String host = "10.80.163.149";
+        private String host = "10.80.162.152";
         private int port = 80;
         byte[] outbuf = new byte[1024];
 
         public void ConnectionServer()
         {
+            sModel.IsConnect = false;
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             this.BeginConnect();
         }
@@ -39,6 +39,7 @@ namespace BurgerKing_kiosk.viewModel
             {
                 //서버접속 실패
                 Console.WriteLine("서버 접속 실패하셨습니다.");
+                this.CloseServer();
             }
         }
 
@@ -60,14 +61,13 @@ namespace BurgerKing_kiosk.viewModel
                 json.Id = "2102";
                 json.Group = false;
                 this.SendServer(json);
-                sModel.IsConnect = true;
             }
             catch(SocketException se)
             {
                 if(se.SocketErrorCode == SocketError.NotConnected)
                 {
                     Console.WriteLine("서버 접속 실패");
-                    MessageBox.Show("서버가 연결되어 있지 않습니다.");
+                    this.CloseServer();
                 }
             }
         }
@@ -83,15 +83,11 @@ namespace BurgerKing_kiosk.viewModel
                         new AsyncCallback(SendCallback), json);
                     ReceiveServer();
                 }
-                else
-                {
-                    MessageBox.Show("서버가 꺼져있습니다.");
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine("전송오류");
-                MessageBox.Show("서버가 연결되어 있지 않습니다.");
+                this.CloseServer();
             }
         }
         private void SendCallback(IAsyncResult ar)
@@ -136,17 +132,19 @@ namespace BurgerKing_kiosk.viewModel
                             ReceiveServer();
                             return;
                         }
-                        MessageBox.Show("서버가 연결되어 있지 않습니다.");
+                        this.CloseServer();
                     }
+                }
+                else
+                {
+                    this.CloseServer();
+                    return;
                 }
                 ReceiveServer();
             }
-            catch(SocketException se)
+            catch(Exception e)
             {
-                if (se.SocketErrorCode == SocketError.ConnectionReset)
-                {
-                    this.BeginConnect();
-                }
+                this.CloseServer();
             }
         }
         public void CloseServer()

@@ -54,8 +54,8 @@ namespace BurgerKing_kiosk
             lbFood.Items.Refresh();
 
         }
-        private void OrderPage_Loaded(object sender, RoutedEventArgs e)
-        { //주문페이지가 시작되면 실행되는 함수
+        private void OrderPage_Loaded(object sender, RoutedEventArgs e) //주문페이지가 시작되면 실행
+        { 
 
             ordered_Menu_List.Items.Refresh();
             
@@ -170,7 +170,6 @@ namespace BurgerKing_kiosk
             App.totalPrice = Int32.Parse(allPrice.Text);
             NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
 
-            
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) // 메뉴 리스트가 눌러지면 실행
@@ -186,11 +185,12 @@ namespace BurgerKing_kiosk
                     lbFood.SelectedItem = null;
                     return;
                 }
+                //----------------------------------------------------------------------
                 if (OrderModel.GetInstance().Exists(x => x.Name == orderList.name))
                 {
-                    var item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
-                    item.salePrice += (item.salePrice / item.Count);
-                    item.Count++;
+                    var first_selected_item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
+                    first_selected_item.salePrice += (first_selected_item.salePrice / first_selected_item.Count);
+                    first_selected_item.Count++;
                     
                 }
                 else {
@@ -212,13 +212,13 @@ namespace BurgerKing_kiosk
             }else {
                 return;
             }
-
-            var item2 = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
+             //----------------------------------------------------------------------
+            var second_selected_item = OrderModel.GetInstance().Find(x => x.Name == orderList.name);
             var allPrice_Int = int.Parse(allPrice.Text);
 
-            if (item2.Count > 1)
+            if (second_selected_item.Count > 1)
             {
-                allPrice_Int += (item2.salePrice / item2.Count);
+                allPrice_Int += (second_selected_item.salePrice / second_selected_item.Count);
                 App.totalPrice = allPrice_Int;
                 allPrice.Text = allPrice_Int.ToString();
             }
@@ -235,6 +235,7 @@ namespace BurgerKing_kiosk
                     App.totalPrice = 0;
                     OrderModel.GetInstance().Clear();
                     ordered_Menu_List.Items.Refresh();
+                    App.totalPrice = 0;
                 }
                 else
                 {
@@ -315,8 +316,6 @@ namespace BurgerKing_kiosk
                     OrderModel.GetInstance().Remove(data);
                 }
             }
-
-            
 
             ordered_Menu_List.Items.Refresh();
         }
