@@ -136,6 +136,11 @@ namespace BurgerKing_kiosk.viewModel
                         this.CloseServer();
                     }
                 }
+                else
+                {
+                    this.CloseServer();
+                    return;
+                }
                 ReceiveServer();
             }
             catch(Exception e)
