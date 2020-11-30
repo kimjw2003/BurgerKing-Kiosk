@@ -63,7 +63,6 @@ namespace BurgerKing_kiosk
             if (!App.server.CheckClient())
             {
                 App.server.ConnectionServer();
-                System.Windows.MessageBox.Show("조금 기다려 주십시오.");
             }
         }
 
