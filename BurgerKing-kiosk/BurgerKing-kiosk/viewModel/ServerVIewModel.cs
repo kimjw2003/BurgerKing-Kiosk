@@ -81,7 +81,7 @@ namespace BurgerKing_kiosk.viewModel
         }
         private void SendCallback(IAsyncResult ar)
         {
-            JsonModel json = (JsonModel)ar.AsyncState;
+            String json = (String)ar.AsyncState;
             Console.WriteLine("서버 전송완료");
         }
         public void ReceiveServer()
