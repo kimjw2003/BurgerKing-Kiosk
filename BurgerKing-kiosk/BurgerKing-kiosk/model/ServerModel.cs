@@ -4,16 +4,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace BurgerKing_kiosk.model
 {
-    public class ServerModel
+    public class ServerModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         private bool isConnect = false;
         public bool IsConnect
         {
@@ -21,8 +23,19 @@ namespace BurgerKing_kiosk.model
             set
             {
                 isConnect = value;
-                NotifyPropertyChanged(nameof(isConnect));
+                TimerEvent();
+                NotifyPropertyChanged(nameof(IsConnect));
             }
+        }
+        private void TimerEvent()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += new EventHandler((object sender, EventArgs e) => {
+                IsConnect = App.server.CheckClient();
+                Console.WriteLine(IsConnect);
+            });
+            timer.Start();
         }
     }
 }
