@@ -10,16 +10,11 @@ namespace BurgerKing_kiosk.viewModel.DB
 {
     class connectDB
     {
-        //private String ip = "10.80.162.51";
-        //private String port = "3306";
-        //private String dbName = "kiosk";
-        //private String id = "user1";
-        //private String pwd = "1q2w3e4r!";
-        private String ip = "localhost";
+        private String ip = "10.80.162.51";
         private String port = "3306";
         private String dbName = "kiosk";
-        private String id = "root";
-        private String pwd = "1234";
+        private String id = "user1";
+        private String pwd = "1q2w3e4r!";
         public MySqlConnection conn;
  
         public MySqlConnection OpenConnection()

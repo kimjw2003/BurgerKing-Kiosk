@@ -18,8 +18,7 @@ namespace BurgerKing_kiosk.viewModel
         public ServerModel sModel = new ServerModel();
         private Socket clientSocket = null;
         private Socket cbSocket;
-        //private String host = "10.80.162.152";
-        private String host = "10.80.163.155";
+        private String host = "10.80.162.152";
         private int port = 80;
         byte[] outbuf = new byte[1024];
 
