@@ -78,7 +78,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             ChartValues<double> MenuCount = new ChartValues<double>();
             ChartValues<double> MenuPrice = new ChartValues<double>();
 
-            List<SaleModel> Orders = StatisticsVM.GetMenuSalePrice(seat);
+            List<SaleModel> Orders = StatisticsVM.GetMenuStatistics(seat);
 
             foreach (SaleModel Order in Orders)
             {
@@ -117,9 +117,9 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void CategoryCountDoughnutChart(string seat)
         {
-            SaleModel BurgerSale = StatisticsVM.Test("burger", seat);
-            SaleModel DesertSale = StatisticsVM.Test("desert", seat);
-            SaleModel SideSale = StatisticsVM.Test("side", seat);
+            SaleModel BurgerSale = StatisticsVM.GetCategoryStatistics("burger", seat);
+            SaleModel DesertSale = StatisticsVM.GetCategoryStatistics("desert", seat);
+            SaleModel SideSale = StatisticsVM.GetCategoryStatistics("side", seat);
 
             BurgerCount = BurgerSale.count;
             BurgerPrice = BurgerSale.price;

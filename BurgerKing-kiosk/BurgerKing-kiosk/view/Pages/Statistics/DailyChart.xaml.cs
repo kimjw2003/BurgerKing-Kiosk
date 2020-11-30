@@ -105,9 +105,10 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             Getvalues = new ChartValues<double>();
 
             foreach (String time in timeLabel)
-            { 
-                Getvalues.Add(StatisticsVM.GetWholeSaleAmount(date,time));
-                Price += StatisticsVM.GetWholeSaleAmount(date, time);
+            {
+                int HourlyPrice = StatisticsVM.GetDailyStatistics(date, time);
+                Getvalues.Add(HourlyPrice);
+                Price += HourlyPrice;
             }
 
             TotalPrice = Price.ToString() + "원";

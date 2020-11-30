@@ -12,9 +12,8 @@ namespace BurgerKing_kiosk.viewModel
     {
         StatisticsDB db = new StatisticsDB();
 
-        public List<SaleModel> GetMenuSalePrice(string seat)
+        public List<SaleModel> GetMenuStatistics(string seat)
         {
-            
             List<SaleModel> sales = new List<SaleModel>();
             string wheresql;
             if(seat == "0")
@@ -55,7 +54,7 @@ namespace BurgerKing_kiosk.viewModel
             return sales;
         }
 
-        public SaleModel Test(string Category, string seat)
+        public SaleModel GetCategoryStatistics(string Category, string seat)
         {
             SaleModel sale = new SaleModel();
             string sql = "WHERE category = '" + Category +"'";
@@ -80,7 +79,7 @@ namespace BurgerKing_kiosk.viewModel
             return sale;
         }
 
-        public int GetWholeSaleAmount(string date, string time)
+        public int GetDailyStatistics(string date, string time)
         {
             int TotalPrice = 0;
             string sql = "WHERE day = '" + date + "'";
