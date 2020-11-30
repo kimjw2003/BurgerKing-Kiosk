@@ -76,7 +76,6 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             if (calendar.SelectedDate.HasValue)
             {
                 Price = 0;
-                // ... Display SelectedDate in Title.
                 DateTime date = calendar.SelectedDate.Value;
                 GetPrice(date.ToShortDateString());
                 Date = date.ToShortDateString();

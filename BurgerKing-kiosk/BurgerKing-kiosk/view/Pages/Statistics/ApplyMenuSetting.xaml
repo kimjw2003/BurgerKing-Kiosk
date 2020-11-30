@@ -92,7 +92,7 @@
                         <DataTemplate>
                             <StackPanel Width="140" Height="300">
                                 <Grid>
-                                    <TextBlock HorizontalAlignment="Center" Visibility="{Binding soldOut, Converter={StaticResource TextVisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                    <TextBlock HorizontalAlignment="Center" Visibility="{Binding soldOut, Converter={StaticResource TextVisibleConverter}}"
                                            VerticalAlignment="Top" Panel.ZIndex="1" Foreground="#f1555a">품절</TextBlock>
                                     <Image Source="{Binding picture}" Width="120" Height="110"/>
                                 </Grid>
@@ -169,7 +169,7 @@
                 <Grid Grid.Row="3">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Viewbox Height="20" HorizontalAlignment="Left">
-                            <CheckBox IsChecked="{Binding PreSoldOut}" x:Name="LoginOption" FontWeight="Bold" Content="품절"/>
+                            <CheckBox IsChecked="{Binding PreSoldOut}" FontWeight="Bold" Content="품절"/>
                         </Viewbox>
 
                         <StackPanel Orientation="Horizontal" >
@@ -179,7 +179,7 @@
                             <Button x:Name="Down" Content="-"  Width="20" Height="20" Click="Down_Click"/>
                         </StackPanel>
 
-                        <TextBlock Text="{Binding PreSalePrice, StringFormat={}할인 적용가: {0}원}" FontSize="15"/>
+                        <TextBlock Text="{Binding PreSalePrice, StringFormat={}할인 적용가: {0}원 }" FontSize="15"/>
 
                     </StackPanel>
                     <StackPanel>

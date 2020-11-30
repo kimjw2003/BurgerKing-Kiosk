@@ -20,7 +20,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock>아이디</TextBlock>
-                    <TextBox 
+                    <TextBox x:Name="IdTextBox"
                     Width="200"
                     Height="25"
                     HorizontalContentAlignment="Left"
@@ -28,11 +28,12 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock>비밀번호</TextBlock>
-                    <TextBox Name="textBox"
+                    <PasswordBox x:Name="PwTextBox"
                     Width="200"
                     Height="25"
                     HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
+                    VerticalContentAlignment="Center"
+                    />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <CheckBox x:Name="CheckBox"/>

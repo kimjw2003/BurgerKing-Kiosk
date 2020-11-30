@@ -74,6 +74,7 @@ namespace BurgerKing_kiosk
             login.Owner = this;
 
             bool? result = login.ShowDialog();
+
             if (result == true)
             {
                 frame_content.Navigate(new Uri("view/Pages/Home.xaml", UriKind.Relative));

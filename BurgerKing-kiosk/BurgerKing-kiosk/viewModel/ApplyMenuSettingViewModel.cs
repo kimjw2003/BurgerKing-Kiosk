@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BurgerKing_kiosk.viewModel
 {
-    class ApplySaleViewModel
+    class ApplyMenuSettingViewModel
     {
-        ApplySaleDB db = new ApplySaleDB();
+        ApplyMenuSettingDB db = new ApplyMenuSettingDB();
 
         public void SetMenuSetting (MenuModel menu)
         {

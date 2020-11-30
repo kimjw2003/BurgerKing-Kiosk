@@ -27,8 +27,20 @@ namespace BurgerKing_kiosk.view.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //chris: 사용자 아이디와 패스워드가 틀린 경우, 아래 코드를 실행시키면 안됨
-            this.DialogResult = true;
-            this.Close();
+
+            string id = IdTextBox.Text;
+            string pw = PwTextBox.Password;
+
+            if(id == "test" && pw == "1234")
+            {
+                this.DialogResult = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("다시 시도하세요");
+            }
+           
         }
     }
 }

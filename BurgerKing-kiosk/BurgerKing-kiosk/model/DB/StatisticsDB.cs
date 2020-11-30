@@ -82,13 +82,9 @@ namespace BurgerKing_kiosk.model.DB
                 while (reader.Read())
                 {
                     menu = (string)reader["menu"];
-                    // sale.category = (String)reader["category"];
-                    //sale.price = (int)reader["price"];
-                    //sale.menu = (string)reader["menu"];
-                    //sale.sale = (int)reader["sale"];
-
                     menus.Add(menu);
                 }
+
                 return menus;
             }
             catch (MySqlException ex)
