@@ -3,11 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converter="clr-namespace:BurgerKing_kiosk.view.Pages.Converter"
       xmlns:local="clr-namespace:BurgerKing_kiosk.view.Pages.Statistics"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Apply_Discount"
       >
+
+    <Page.Resources>
+        <converter:TextVisibleConverter x:Key="TextVisibleConverter"/>
+    </Page.Resources>
 
     <Grid Background="White" Margin="10">
         <Grid.ColumnDefinitions>
@@ -85,12 +90,17 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="150" Height="150" >
-                                <Image Source="{Binding picture}"/>
-                                <TextBlock Text="{Binding name}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                                <TextBlock Text="{Binding price}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
+                            <StackPanel Width="140" Height="300">
+                                <Grid>
+                                    <TextBlock HorizontalAlignment="Center" Visibility="{Binding soldOut, Converter={StaticResource TextVisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                           VerticalAlignment="Top" Panel.ZIndex="1" Foreground="#f1555a">품절</TextBlock>
+                                    <Image Source="{Binding picture}" Width="120" Height="110"/>
+                                </Grid>
+                                <TextBlock Text="{Binding name}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                 <TextBlock Text="{Binding salePrice, StringFormat={} {0}원}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <TextBlock Text="{Binding sale, StringFormat={} {0}% 할인}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                             </StackPanel>
-                        </DataTemplate> 
+                        </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
@@ -111,6 +121,7 @@
                         Width="140"
                         Background="#707070"
                         BorderThickness="0"
+                        Click="beforeBtn_Click"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                     />
@@ -122,6 +133,7 @@
                         Foreground="white"
                         FontSize="30"
                         FontWeight="Bold"
+                        Click="nextBtn_Click"
                         Height="50"
                         Width="140"
                         Background="#f1555a"
@@ -136,39 +148,41 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" DataContext="{Binding Selected_Menu}" Name="SelectMenuGrid" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
 
-                <StackPanel Width="500" Height="500" >
-                    <Image Name="Select_Img" Source="{Binding menuImg, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Name="Select_Name" Text="{Binding menuName}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <TextBlock Name="Select_Price" Text="{Binding menuPrice}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top">원</TextBlock>
-                </StackPanel>
-            </Grid>
-
-            <Grid Grid.Row="1">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock x:Name="Sale_Price">할인가:</TextBlock>
-                    <TextBlock x:Name="Select_Sale">할인율</TextBlock >
-                    <StackPanel>
-                        <Button x:Name="Up" Content="+" Click="Up_Click"></Button>
-                        <Button x:Name="Down" Content="-" Click="Down_Click"></Button>
+                <Grid Grid.Row="0">
+                    <StackPanel Width="500" Height="500">
+                        <Image Source="{Binding picture}" Width="300" Height="200"/>
+                        <TextBlock Text="{Binding name}"  FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding price, StringFormat={} {0}원}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     </StackPanel>
-                    
-                </StackPanel>
-            </Grid>
-    
-            <Grid Grid.Row="2">
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <StackPanel>
+                        <CheckBox IsChecked="{Binding soldOut}" x:Name="LoginOption">품절</CheckBox>
+                        <TextBlock Text="{Binding sale, StringFormat={} 할인율: {0}}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        
+                    </StackPanel>
+                </Grid>
+                
+        </Grid>
+           
+            <Grid Grid.Row="1">
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    
                     <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="35*"/>
@@ -176,23 +190,6 @@
                         </Grid.ColumnDefinitions>
                         <Button 
                         x:Name="order_cancle_Btn"
-                        Content="뒤로가기"
-                        Foreground="white"
-                        FontSize="30"
-                        FontWeight="Bold"
-                        Height="50"
-                        Width="220"
-                        Background="#606060"
-                        BorderThickness="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch" 
-                            Margin= "10,0,0,35" Click="order_cancle_Btn_Click" Grid.Column="1"
-
-                            />
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Button 
-                        x:Name="order_order_Btn"
                         Content="할인적용"
                         Foreground="white"
                         FontSize="30"
@@ -202,15 +199,14 @@
                         Background="#f1555a"
                         BorderThickness="0"
                         HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                           Margin="0,0,10,35" Click="order_order_Btn_Click" 
+                        VerticalAlignment="Stretch" 
+                            Margin= "130,0,0,35" Grid.Column="1"
+
                             />
-
                     </Grid>
-
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="1">
                         <Button 
-                        x:Name="order_Soldout_Btn"
+                        x:Name="order_order_Btn"
                         Content="품절적용"
                         Foreground="white"
                         FontSize="30"
@@ -221,11 +217,9 @@
                         BorderThickness="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                           Margin="0,0,10,35" Click="order_Soldout_Btn_Click" 
+                           Margin="0,0,170,35"
                             />
-
                     </Grid>
-
                 </Grid>
             </Grid>
         </Grid>

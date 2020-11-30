@@ -154,6 +154,7 @@
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="viewModel\UserListViewModel.cs" />
     <Compile Include="view\Pages\Converter\BackgroundConverter.cs" />
+    <Compile Include="view\Pages\Converter\TextVisibleConverter.cs" />
     <Compile Include="view\Pages\Converter\VisibleConverter.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>

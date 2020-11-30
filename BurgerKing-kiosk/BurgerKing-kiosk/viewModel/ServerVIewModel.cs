@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BurgerKing_kiosk.viewModel
 {
@@ -99,7 +100,29 @@ namespace BurgerKing_kiosk.viewModel
                 {
                     string data = Encoding.UTF8.GetString(outbuf, 0, readSize);
                     Console.WriteLine(data);
+
+                    int checkMsg = data.IndexOf("총매출액");
+
+                    if(checkMsg != -1)
+                    {
+                        JsonModel json = new JsonModel();
+                        json.MSGType = 1;
+                        json.Id = "2102";
+                        StatisticsViewModel viewModel = new StatisticsViewModel();
+                        json.Content = viewModel.GetWholeSaleAmount(DateTime.Now.ToString("yyyy-MM-dd"),null).ToString() + "원";
+                        json.Group = true;
+
+                        SendServer(json);
+                    }
+                    else if (data != "200")
+                    {
+                        if (data != null)
+                        {
+                            MessageBox.Show(data, "공지사항");
+                        }
+                    }
                 }
+                ReceiveServer();
             }
             catch(SocketException se)
             {

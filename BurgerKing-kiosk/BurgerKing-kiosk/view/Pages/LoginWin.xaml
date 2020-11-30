@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BurgerKing_kiosk.view.Pages"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="LoginWin" Height="450" Width="800">
+       WindowStyle="None"
+        Title="LoginWin" Height="350" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

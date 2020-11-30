@@ -18,9 +18,8 @@
             <Setter Property="FontSize" Value="25"/>
         </Style>
 
-        <Style x:Key="SaleTextStyle" TargetType="TextBlock">
+        <Style x:Key="TextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="30"/>
-            <Setter Property="Margin" Value="10 0 0 3 "/>
         </Style>
     </Page.Resources>
 
@@ -39,9 +38,9 @@
                 </StackPanel>
                 
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding WholeSalePrice, StringFormat={}   총 매출액: {0}원}"/>
-                    <TextBlock Text="{Binding PureSalePrice, StringFormat={}   순수 매출액: {0}원}"/>
-                    <TextBlock Text="{Binding SalePrice, StringFormat={}   할인 금액: {0}원}"/>
+                    <TextBlock Style="{StaticResource TextStyle}" Text="{Binding WholeSalePrice, StringFormat={}   총 매출액: {0}원}"/>
+                    <TextBlock  Style="{StaticResource TextStyle}" Text="{Binding PureSalePrice, StringFormat={}   순수 매출액: {0}원}"/>
+                    <TextBlock  Style="{StaticResource TextStyle}" Text="{Binding SalePrice, StringFormat={}   할인 금액: {0}원}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -53,7 +52,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock Text="{Binding TotalRuntimeString, StringFormat={}   프로그램 구동 시간: {0}}"/>
+                <TextBlock Style="{StaticResource TextStyle}" Text="{Binding TotalRuntimeString, StringFormat={}   프로그램 구동 시간: {0}}"/>
             </Grid>
 
             <Grid Grid.Row="1">

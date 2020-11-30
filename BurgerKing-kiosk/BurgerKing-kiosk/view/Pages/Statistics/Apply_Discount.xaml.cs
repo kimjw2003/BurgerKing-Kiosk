@@ -24,129 +24,172 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     /// </summary>
     public partial class Apply_Discount : Page
     {
-        int Original_Price;
-        ApplySaleViewModel SaleVM = new ApplySaleViewModel();
+        int pageCount = 0;
+        List<MenuModel> allMenuList = new List<MenuModel>();
         public Apply_Discount()
         {
             InitializeComponent();
 
             this.Loaded += OrderPage_Loaded;
 
-            //this.DataContext = new OrderData();
-
-            //allPrice.Text = totalPrice + "";
-
-           // ordered_Menu_List.ItemsSource = OrderData.GetInstance();
         }
-
-        private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { 
+        private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e) //카테고리 선택
+        {
 
             if (lbCategory.SelectedIndex == -1) return;
 
-            Refresh_IbFood();
-        }
+            pageCount = 0;
 
-        private void Refresh_IbFood()
-        {
             Category category = (Category)lbCategory.SelectedIndex;
-            lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
-            lbFood.Items.Refresh();
-        }
-
-        private void OrderPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
-        }
-
-        private void nextBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void order_order_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            SaleVM.SetSalePercent(MenuModel.instance);
-            MessageBox.Show("할인이 적용되었습니다");
-
-            App.menuVM.GetDBMenus();
-            Refresh_IbFood();
-
-        }
-
-        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            MenuModel orderList = (MenuModel)lbFood.SelectedItem;
-
-            if (orderList != null)
+            //lbFood.ItemsSource = App.menuVM.GetMenus(category.ToString());
+            if (lbCategory.SelectedIndex == 0)
             {
-                MenuModel.instance= new MenuModel() { id = orderList.id, name = orderList.name, picture = orderList.picture, price = orderList.price, sale = orderList.sale};
-
-                Uri imageUri = new Uri(MenuModel.instance.picture, UriKind.Relative);
-                BitmapImage imageBitmap = new BitmapImage(imageUri);
-
-                Select_Img.Source = imageBitmap;
-                Select_Name.Text = MenuModel.instance.name;
-                Select_Price.Text = MenuModel.instance.price.ToString()+"원";
-
-                Original_Price = MenuModel.instance.price;
-
-                SetSalePercent();
-                SetSalePrice();
+                lbFood.ItemsSource = App.burgerList.ToList();
+            }
+            else if (lbCategory.SelectedIndex == 1)
+            {
+                lbFood.ItemsSource = App.sideList.ToList();
             }
             else
             {
-                return;
+                lbFood.ItemsSource = App.desertList.ToList();
             }
 
+            lbFood.Items.Refresh();
 
         }
+        private void OrderPage_Loaded(object sender, RoutedEventArgs e)
+        { //주문페이지가 시작되면 실행되는 함수
 
-        private void SetSalePercent()
-        {
-            Select_Sale.Text = MenuModel.instance.sale.ToString();
-        }
+            //ordered_Menu_List.Items.Refresh();
 
-        private void SetSalePrice()
-        {
-            int Sale_Percent = MenuModel.instance.sale;
-            Sale_Price.Text = (Original_Price - ((Original_Price / 100) * Sale_Percent)).ToString();
-        }
+            lbCategory.SelectedIndex = 0; //처음 실행 시 첫번째 카테고리가 선택되도록
 
-        private void order_cancle_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
-        private void Up_Click(object sender, RoutedEventArgs e)
-        {
-            if(MenuModel.instance.sale == 100)
+            for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
             {
-                return;
+                allMenuList.Add(App.burgerList[i]);
             }
-
-            MenuModel.instance.sale += 1;
-            SetSalePrice();
-            SetSalePercent();
         }
 
-        private void Down_Click(object sender, RoutedEventArgs e)
+        private void nextBtn_Click(object sender, RoutedEventArgs e) //다음메뉴 버튼이 눌러지면 실행
         {
-            if(MenuModel.instance.sale == 0)
+            if (lbCategory.SelectedIndex == 0 && (pageCount + 1) * 9 <= App.burgerList.Count)
             {
-                return;
+                allMenuList.Clear();
+                pageCount += 1;
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.burgerList.Count) break;
+                    allMenuList.Add(App.burgerList[i]);
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
             }
 
-            MenuModel.instance.sale -= 1;
-            SetSalePrice();
-            SetSalePercent();
+
+            else if (lbCategory.SelectedIndex == 1 && (pageCount + 1) * 9 <= App.sideList.Count)
+            {
+                allMenuList.Clear();
+                pageCount += 1;
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.sideList.Count) break;
+                    allMenuList.Add(App.sideList[i]);
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 2 && (pageCount + 1) * 9 <= App.desertList.Count)
+            {
+                allMenuList.Clear();
+                pageCount += 1;
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.desertList.Count) break;
+                    allMenuList.Add(App.desertList[i]);
+
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
         }
 
-        private void order_Soldout_Btn_Click(object sender, RoutedEventArgs e)
+        private void beforeBtn_Click(object sender, RoutedEventArgs e) //이전메뉴 버튼이 눌러지면 실행
         {
-          
+
+            if (lbCategory.SelectedIndex == 0 && pageCount > 0)
+            {
+                allMenuList.Clear();
+                pageCount -= 1;
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.burgerList.Count) break;
+                    allMenuList.Add(App.burgerList[i]);
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+            else if (lbCategory.SelectedIndex == 1 && pageCount > 0)
+            {
+                allMenuList.Clear();
+                pageCount -= 1;
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.sideList.Count) break;
+                    allMenuList.Add(App.sideList[i]);
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
+
+
+            else if (lbCategory.SelectedIndex == 2 && pageCount > 0)
+            {
+                allMenuList.Clear();
+                pageCount -= 1;
+                for (int i = pageCount * 9; i <= pageCount * 9 + 8; i++)
+                {
+                    if (i >= App.desertList.Count) break;
+                    allMenuList.Add(App.desertList[i]);
+
+                }
+                lbFood.ItemsSource = allMenuList;
+                lbFood.Items.Refresh();
+            }
         }
-    } 
+        private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
+        {
+
+            //if (ordered_Menu_List.Items.Count == 0)
+            //{
+            //    MessageBox.Show("메뉴가 선택되지 않았습니다.");
+            //    return;
+            //}
+           
+            //NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
+
+
+        }
+
+        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) // 메뉴 리스트가 눌러지면 실행
+        {
+            SelectMenuGrid.Visibility = Visibility;
+            Selected_Menu = (MenuModel)lbFood.SelectedItem;
+
+            DataContext = null;
+            DataContext = this;
+
+            //if (orderList != null) // 주문리스트가 널이 아니면 실행
+            //{
+            //    Selected_lbFood.ItemsSource = orderList;
+
+            //}
+        }
+
+        public MenuModel Selected_Menu { get; set; }
+    }
 }
-
