@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -14,9 +15,11 @@ namespace BurgerKing_kiosk.viewModel
 {
     public class ServerViewModel
     {
+        public ServerModel sModel = new ServerModel();
         private Socket clientSocket = null;
         private Socket cbSocket;
-        private String host = "10.80.162.152";
+        //private String host = "10.80.162.152";
+        private String host = "10.80.163.149";
         private int port = 80;
         byte[] outbuf = new byte[1024];
 
@@ -36,7 +39,6 @@ namespace BurgerKing_kiosk.viewModel
             {
                 //서버접속 실패
                 Console.WriteLine("서버 접속 실패하셨습니다.");
-                this.ConnectionServer();
             }
         }
 
@@ -52,13 +54,20 @@ namespace BurgerKing_kiosk.viewModel
                 cbSocket = tempSocket;
                 cbSocket.BeginReceive(this.outbuf, 0, outbuf.Length,
                     SocketFlags.None, new AsyncCallback(ReceiveCallback), cbSocket);
+
+                JsonModel json = new JsonModel();
+                json.MSGType = 0;
+                json.Id = "2102";
+                json.Group = false;
+                this.SendServer(json);
+                sModel.IsConnect = true;
             }
             catch(SocketException se)
             {
                 if(se.SocketErrorCode == SocketError.NotConnected)
                 {
                     Console.WriteLine("서버 접속 실패");
-                    this.BeginConnect();//서버연결 실패시 다시 접속 시도
+                    MessageBox.Show("서버가 연결되어 있지 않습니다.");
                 }
             }
         }
@@ -74,10 +83,15 @@ namespace BurgerKing_kiosk.viewModel
                         new AsyncCallback(SendCallback), json);
                     ReceiveServer();
                 }
+                else
+                {
+                    MessageBox.Show("서버가 꺼져있습니다.");
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine("전송오류");
+                MessageBox.Show("서버가 연결되어 있지 않습니다.");
             }
         }
         private void SendCallback(IAsyncResult ar)
@@ -119,7 +133,10 @@ namespace BurgerKing_kiosk.viewModel
                         if (data != null)
                         {
                             MessageBox.Show(data, "공지사항");
+                            ReceiveServer();
+                            return;
                         }
+                        MessageBox.Show("서버가 연결되어 있지 않습니다.");
                     }
                 }
                 ReceiveServer();
@@ -140,7 +157,7 @@ namespace BurgerKing_kiosk.viewModel
                 cbSocket.Close();
             }
         }
-        private bool CheckClient()
+        public bool CheckClient()
         {
             return clientSocket.Connected;
         }

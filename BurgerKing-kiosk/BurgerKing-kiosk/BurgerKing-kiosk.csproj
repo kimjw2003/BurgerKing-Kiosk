@@ -129,6 +129,7 @@
     <Compile Include="model\OrderModel.cs" />
     <Compile Include="model\MenuModel.cs" />
     <Compile Include="model\SaleModel.cs" />
+    <Compile Include="model\ServerModel.cs" />
     <Compile Include="model\StatisticsModel.cs" />
     <Compile Include="model\TableModel.cs" />
     <Compile Include="model\UserListModel.cs" />
@@ -152,6 +153,8 @@
     <Compile Include="viewModel\TableViewModel.cs" />
     <Compile Include="viewModel\UserListViewModel.cs" />
     <Compile Include="view\Pages\Converter\BackgroundConverter.cs" />
+    <Compile Include="view\Pages\Converter\FillConverter.cs" />
+    <Compile Include="view\Pages\Converter\TextConverter.cs" />
     <Compile Include="view\Pages\Converter\TextVisibleConverter.cs" />
     <Compile Include="view\Pages\Converter\VisibleConverter.cs" />
     <Compile Include="view\Pages\Home.xaml.cs">

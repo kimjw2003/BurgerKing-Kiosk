@@ -64,7 +64,7 @@ namespace BurgerKing_kiosk
         {
             EnergizingTimeDB db = new EnergizingTimeDB();
             db.SetTime(ts);
-            //server.CloseServer();
+            server.CloseServer();
         }
     }
 }

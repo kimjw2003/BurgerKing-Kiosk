@@ -219,6 +219,7 @@ namespace BurgerKing_kiosk
             if (item2.Count > 1)
             {
                 allPrice_Int += (item2.salePrice / item2.Count);
+                App.totalPrice = allPrice_Int;
                 allPrice.Text = allPrice_Int.ToString();
             }
             lbFood.SelectedItem = null;
@@ -231,6 +232,7 @@ namespace BurgerKing_kiosk
                 MessageBoxResult result = MessageBox.Show("주문을 취소하시겠습니까?", "취소", MessageBoxButton.OKCancel);
                 if (result == MessageBoxResult.OK)
                 {
+                    App.totalPrice = 0;
                     OrderModel.GetInstance().Clear();
                     ordered_Menu_List.Items.Refresh();
                 }
@@ -291,11 +293,10 @@ namespace BurgerKing_kiosk
 
             if (OrderModel.GetInstance().Exists(x => x.Name == data.Name))
             {
-
-
                 var allPrice_Int = int.Parse(allPrice.Text);
                 allPrice_Int -= (data.salePrice / data.Count);
                 allPrice.Text = allPrice_Int.ToString();
+                App.totalPrice = allPrice_Int;
 
                 data.salePrice -= (data.salePrice / data.Count);
             }
@@ -309,6 +310,7 @@ namespace BurgerKing_kiosk
                     var allPrice_Int = int.Parse(allPrice.Text);
                     allPrice_Int -= data.Count;
                     allPrice.Text = allPrice_Int.ToString();
+                    App.totalPrice = allPrice_Int;
 
                     OrderModel.GetInstance().Remove(data);
                 }
@@ -330,7 +332,7 @@ namespace BurgerKing_kiosk
                 var allPrice_Int = int.Parse(allPrice.Text);
                 allPrice_Int -= data.salePrice;
                 allPrice.Text = allPrice_Int.ToString();
-
+                App.totalPrice = allPrice_Int;
             }
 
             ordered_Menu_List.Items.Refresh();
