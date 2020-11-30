@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BurgerKing_kiosk.model.DB
 {
-    class ApplySaleDB
+    class ApplyMenuSettingDB
     {
         private connectDB conDB = new connectDB();
         public void SetMenuSetting(MenuModel instance)

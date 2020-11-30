@@ -3,6 +3,7 @@ using BurgerKing_kiosk.model.DB;
 using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     {
         int pageCount = 0;
         List<MenuModel> allMenuList = new List<MenuModel>();
-        ApplySaleViewModel ApplyVM = new ApplySaleViewModel();
+        ApplyMenuSettingViewModel ApplyMenuSettingVM = new ApplyMenuSettingViewModel();
 
         public Apply_Discount()
         {
@@ -189,7 +190,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             Selected_Menu.sale = (int)PreSale;
             Selected_Menu.soldOut = PreSoldOut;
 
-            ApplyVM.SetMenuSetting(Selected_Menu);
+            ApplyMenuSettingVM.SetMenuSetting(Selected_Menu);
             lbFood.Items.Refresh();
 
             DataContext = null;
@@ -216,14 +217,16 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             DataContext = this;
         }
 
-        public MenuModel Selected_Menu { get; set; }
+       
+           
+            public MenuModel Selected_Menu { get; set; }
 
-        public bool PreSoldOut { get; set; }
+            public bool PreSoldOut { get; set; }
+            public float PrePrice { get; set; }
 
-        public float PrePrice { get; set; }
-        public float PreSale { get; set; }
-        public float PreSalePrice { get; set; }
+            public float PreSale { get; set; }
 
-        
+            public float PreSalePrice { get; set; }
+       
     }
 }
