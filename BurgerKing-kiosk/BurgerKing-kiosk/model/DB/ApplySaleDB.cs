@@ -11,17 +11,21 @@ namespace BurgerKing_kiosk.model.DB
     class ApplySaleDB
     {
         private connectDB conDB = new connectDB();
-        public void SetSalePercent(MenuModel instance)
+        public void SetMenuSetting(MenuModel instance)
         {
             MySqlConnection conn = conDB.OpenConnection();
             try
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
-                string sql = "UPDATE "+instance.category + " SET sale =" + instance.sale + " WHERE id = "+instance.id;
-                Console.WriteLine(sql);
+                string sql = "UPDATE " + instance.category + " SET sale =" + instance.sale + " WHERE id = " + instance.id;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
+
+                sql = "UPDATE " + instance.category + " SET soldout =" + instance.soldOut + " WHERE id = " + instance.id;
+                cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+
             }
             catch (MySqlException ex)
             {

@@ -40,6 +40,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             {
                 new LineSeries
                 {
+                    Title = "시간대 별 매출액",
                     PointGeometry = DefaultGeometries.Circle,
                     PointGeometrySize = 10,
                     DataLabels = true,
@@ -59,9 +60,6 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         private void Daily_Chart_Loaded(object sender, RoutedEventArgs e)
         {
             Calendar.SelectedDate = DateTime.Now;
-
-
-
         }
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -108,8 +106,9 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
             foreach (String time in timeLabel)
             {
-                Getvalues.Add(StatisticsVM.GetWholeSaleAmount(date,time));
-                Price += StatisticsVM.GetWholeSaleAmount(date, time);
+                int HourlyPrice = StatisticsVM.GetDailyStatistics(date, time);
+                Getvalues.Add(HourlyPrice);
+                Price += HourlyPrice;
             }
 
             TotalPrice = Price.ToString() + "원";

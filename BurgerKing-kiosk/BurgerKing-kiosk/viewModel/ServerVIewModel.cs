@@ -123,7 +123,7 @@ namespace BurgerKing_kiosk.viewModel
                         json.MSGType = 1;
                         json.Id = "2102";
                         StatisticsViewModel viewModel = new StatisticsViewModel();
-                        json.Content = viewModel.GetWholeSaleAmount(DateTime.Now.ToString("yyyy-MM-dd"),null).ToString() + "원";
+                        json.Content = viewModel.GetDailyStatistics(DateTime.Now.ToString("yyyy-MM-dd"),null).ToString() + "원";
                         json.Group = true;
 
                         SendServer(json);

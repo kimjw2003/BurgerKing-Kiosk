@@ -30,9 +30,9 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         {
             InitializeComponent();
 
-            SaleModel BurgerSale = StatisticsVM.Test("burger", "0");
-            SaleModel DesertSale = StatisticsVM.Test("desert", "0");
-            SaleModel SideSale = StatisticsVM.Test("side", "0");
+            SaleModel BurgerSale = StatisticsVM.GetCategoryStatistics("burger", "0");
+            SaleModel DesertSale = StatisticsVM.GetCategoryStatistics("desert", "0");
+            SaleModel SideSale = StatisticsVM.GetCategoryStatistics("side", "0");
 
             BurgerCount = BurgerSale.count;
             BurgerPrice = BurgerSale.price;

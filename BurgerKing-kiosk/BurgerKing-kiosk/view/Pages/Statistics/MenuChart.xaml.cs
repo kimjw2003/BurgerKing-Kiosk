@@ -38,7 +38,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             ChartValues<double> MenuCount = new ChartValues<double>();
             ChartValues<double> MenuPrice = new ChartValues<double>();
 
-            List<SaleModel> Orders = StatisticsVM.GetMenuSalePrice("0");
+            List<SaleModel> Orders = StatisticsVM.GetMenuStatistics("0");
 
             foreach (SaleModel Order in Orders)
             {
