@@ -60,9 +60,6 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         private void Daily_Chart_Loaded(object sender, RoutedEventArgs e)
         {
             Calendar.SelectedDate = DateTime.Now;
-
-
-
         }
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -108,7 +105,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             Getvalues = new ChartValues<double>();
 
             foreach (String time in timeLabel)
-            {
+            { 
                 Getvalues.Add(StatisticsVM.GetWholeSaleAmount(date,time));
                 Price += StatisticsVM.GetWholeSaleAmount(date, time);
             }

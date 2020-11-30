@@ -26,7 +26,7 @@ namespace BurgerKing_kiosk
         public Statistics()
         {
             InitializeComponent();
-            frame_content.Navigate(new Uri("view/Pages/Statistics/test.xaml", UriKind.Relative));
+            frame_content.Navigate(new Uri("view/Pages/Statistics/Main.xaml", UriKind.Relative));
         }
 
     }
