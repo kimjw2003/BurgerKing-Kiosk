@@ -31,7 +31,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         TimeSpan LastRuntime;
 
         AutoLoginViewModel loginVM = new AutoLoginViewModel();
-        SaleViewModel SaleVM = new SaleViewModel();
+        StatisticsViewModel StatisticsVM = new StatisticsViewModel();
 
         public Main()
         {
@@ -63,7 +63,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         private void SetSaleText(string payment_method) //db에서 할인율 불러와서 계산해야함
         {
-            StatisticsModel result = SaleVM.GetStatistics(payment_method);
+            StatisticsModel result = StatisticsVM.GetStatistics(payment_method);
 
             WholeSalePrice = result.OriginalPrice;
             PureSalePrice = result.PureSalePrice;

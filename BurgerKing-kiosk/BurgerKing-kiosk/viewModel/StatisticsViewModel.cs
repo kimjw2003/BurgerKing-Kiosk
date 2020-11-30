@@ -39,13 +39,16 @@ namespace BurgerKing_kiosk.viewModel
                 }
                 
                 List<SaleModel> MenuSales = db.SelectOrderList(sql);
+
                 SaleModel sale = new SaleModel();
+                sale.menu = menu;
 
                 foreach (SaleModel MenuSale in MenuSales)
                 {
-                    sale.menu = menu;
+                    int SalePrice = CalculateSalePrice(MenuSale);
+
                     sale.count += MenuSale.count;
-                    sale.price += (MenuSale.price*MenuSale.count);
+                    sale.price += SalePrice * MenuSale.count;
                 }
 
                sales.Add(sale);
@@ -57,6 +60,7 @@ namespace BurgerKing_kiosk.viewModel
         public SaleModel GetCategoryStatistics(string Category, string seat)
         {
             SaleModel sale = new SaleModel();
+
             string sql = "WHERE category = '" + Category +"'";
 
             if (seat != "0")
@@ -68,12 +72,10 @@ namespace BurgerKing_kiosk.viewModel
 
             foreach(SaleModel result in results)
             {
-                float Originalprice = result.price;
-                float SalePercent = (float)result.sale / 100;
-                float SalePrice = Originalprice * (1 - SalePercent);
+                int SalePrice = CalculateSalePrice(result);
 
                 sale.count += result.count;
-                sale.price += (int)SalePrice * result.count;
+                sale.price += SalePrice * result.count;
             }
 
             return sale;
@@ -82,21 +84,20 @@ namespace BurgerKing_kiosk.viewModel
         public int GetDailyStatistics(string date, string time)
         {
             int TotalPrice = 0;
+
             string sql = "WHERE day = '" + date + "'";
 
             if (time != null)
             {
                 sql += "AND time LIKE '" + time + "%'";
             }
-            List<SaleModel> sales = db.SelectOrderList(sql);
 
-            foreach (SaleModel sale in sales)
+            List<SaleModel> Sales = db.SelectOrderList(sql);
+
+            foreach (SaleModel Sale in Sales)
             {
-                float Originalprice = sale.price;
-                float SalePercent = (float)sale.sale / 100;
-                float SalePrice = Originalprice * (1 - SalePercent);
-
-                TotalPrice += (int)SalePrice * sale.count;
+                int SalePrice = CalculateSalePrice(Sale);
+                TotalPrice += SalePrice * Sale.count;
             }
 
             return TotalPrice;
@@ -116,23 +117,59 @@ namespace BurgerKing_kiosk.viewModel
              
 
                 List<SaleModel> MenuSales = db.SelectOrderList(sql);
+
                 SaleModel sale = new SaleModel();
+                sale.menu = menu;
 
                 foreach (SaleModel MenuSale in MenuSales)
                 {
-                    float Originalprice = MenuSale.price;
-                    float SalePercent = (float)MenuSale.sale / 100;
-                    float SalePrice = Originalprice * (1 - SalePercent);
+                    int SalePrice = CalculateSalePrice(MenuSale);
 
-                    sale.menu = menu;
                     sale.count += MenuSale.count;
-                    sale.price += (int)SalePrice * MenuSale.count;
+                    sale.price += SalePrice * MenuSale.count;
                 }
 
                 sales.Add(sale);
             }
 
             return sales;
+        }
+        public StatisticsModel GetStatistics(String payment_method)
+        {
+            string sql = null;
+            StatisticsModel result = new StatisticsModel();
+
+            if (payment_method != null)
+            {
+                sql = "WHERE payment_method = '" + payment_method + "' ";
+            }
+
+            List<SaleModel> Sales = db.SelectOrderList(sql);
+
+            foreach (SaleModel Sale in Sales)
+            {
+                float Originalprice = Sale.price;
+                float SalePercent = (float)Sale.sale / 100;
+                float PureSalePrice = Originalprice * (1 - SalePercent);
+                float SalePrice = Originalprice * SalePercent;
+
+                result.OriginalPrice += (int)Originalprice * Sale.count;
+                result.SalePrice += (int)SalePrice * Sale.count;
+                result.PureSalePrice += (int)PureSalePrice * Sale.count;
+            }
+
+            Console.WriteLine(result.OriginalPrice);
+
+            return result;
+        }
+
+        public int CalculateSalePrice(SaleModel Sale)
+        {
+            float Originalprice = Sale.price;
+            float SalePercent = (float)Sale.sale / 100;
+            float SalePrice = Originalprice * (1 - SalePercent);
+
+            return (int)SalePrice;
         }
     }
 }
