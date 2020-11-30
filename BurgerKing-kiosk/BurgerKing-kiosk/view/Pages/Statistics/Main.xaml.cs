@@ -1,4 +1,5 @@
-﻿using BurgerKing_kiosk.model.DB;
+﻿using BurgerKing_kiosk.model;
+using BurgerKing_kiosk.model.DB;
 using BurgerKing_kiosk.viewModel;
 using System;
 using System.Collections.Generic;
@@ -24,15 +25,13 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     public partial class Main : Page
     {
 
-        private SaleViewModel viewModel = new SaleViewModel();
-        private String payment_method = null;
-
         DispatcherTimer timer = new DispatcherTimer();
 
         EnergizingTimeViewModel RuntimeVM = new EnergizingTimeViewModel();
         TimeSpan LastRuntime;
 
         AutoLoginViewModel loginVM = new AutoLoginViewModel();
+        SaleViewModel SaleVM = new SaleViewModel();
 
         public Main()
         {
@@ -43,63 +42,40 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             timer.Start();
 
             InitializeComponent();
-            frame_content.Navigate(new Uri("view/Pages/Statistics/Chart.xaml", UriKind.Relative));
             this.Loaded += Main_Loaded;
         }
 
         private void Main_Loaded(object sender, RoutedEventArgs e)
         {
-
-            CheckBox.IsChecked = loginVM.GetBool();
+            LoginOption.IsChecked = loginVM.GetBool();
+            SetSaleText(null);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             TimeSpan TotalRuntime = App.ts + LastRuntime;
-            String TotalRuntimeString = String.Format("{0:00}:{1:00}:{2:00}",
+            TotalRuntimeString = String.Format("{0:00}:{1:00}:{2:00}",
             TotalRuntime.Hours, TotalRuntime.Minutes, TotalRuntime.Seconds);
-            RunTime.Text = "프로그램 구동 시간: " + TotalRuntimeString;
+
+            DataContext = null;
+            DataContext = this;
         }
 
-        private void SetSaleText() //db에서 할인율 불러와서 계산해야함
+        private void SetSaleText(string payment_method) //db에서 할인율 불러와서 계산해야함
         {
-            Console.WriteLine(payment_method);
-            List<String> result = (viewModel.GetSale(payment_method));
+            StatisticsModel result = SaleVM.GetStatistics(payment_method);
 
-            WholeSaleText.Text = result.ElementAt(0) + "원";
-            PureSaleText.Text = result.ElementAt(1) + "원";
-            DiscountText.Text = result.ElementAt(2) + "원";
-        }
+            WholeSalePrice = result.OriginalPrice;
+            PureSalePrice = result.PureSalePrice;
+            SalePrice = result.SalePrice;
 
-        private void All_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            payment_method = null;
-            SetSaleText();
-        }
-
-        private void Card_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            payment_method = "where payment_method = \"credit\"";
-            SetSaleText();
-        }
-
-        private void Cash_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            payment_method = "where payment_method = \"cash\"";
-            SetSaleText();
-        }
-        private void Member_List_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("view/Pages/Statistics/UserList.xaml", UriKind.Relative));
-        }
-        private void Discount_Apply_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("view/Pages/Statistics/Apply_Discount.xaml", UriKind.Relative));
+            DataContext = null;
+            DataContext = this;
         }
 
         private void ApplyBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckBox.IsChecked == (bool?)true)
+            if (LoginOption.IsChecked == (bool?)true)
             {
                 loginVM.SetBool(true);
                 MessageBox.Show("자동로그인이 적용되었습니다");
@@ -109,22 +85,30 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
                 loginVM.SetBool(false);
                 MessageBox.Show("자동로그인이 해제되었습니다");
             }
-            
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AllBtnClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("view/Pages/Statistics/Daily_Chart.xaml", UriKind.Relative));
+            SetSaleText(null);
         }
 
-        /* private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CashBtnClick(object sender, RoutedEventArgs e)
         {
-            if (lbCategory.SelectedIndex == -1) return;
+            SetSaleText("cash");
+        }
 
-            Category category = (Category)lbCategory.SelectedIndex;
-            List.ItemsSource = Food.Where(x => x.category == category).ToList();
-            List.Items.Refresh();
-        }*/
+        private void CreditBtnClick(object sender, RoutedEventArgs e)
+        {
+            SetSaleText("credit");
+        }
+
+        public string TotalRuntimeString { get; set; }
+        public int WholeSalePrice { get; set; }
+        public int PureSalePrice { get; set; }
+        public int SalePrice { get; set; }
+
+     
     }
 }
 

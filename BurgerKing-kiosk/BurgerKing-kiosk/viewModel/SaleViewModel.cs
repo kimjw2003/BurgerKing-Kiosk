@@ -11,37 +11,33 @@ namespace BurgerKing_kiosk.viewModel
 {
     class SaleViewModel
     {
-        private List<SaleModel> sales = null;
-        private List<String> result;
-        public List<String> GetSale(String payment_method)
+        SaleDB db = new SaleDB();
+        public StatisticsModel GetStatistics(String payment_method)
         {
-            result = new List<string>();
-            SaleDB sale = new SaleDB();
-            sales = sale.Select(payment_method);
+            string sql = null;
+            StatisticsModel result = new StatisticsModel();
 
-
-            float WholePrice = 0;
-            float PurePrice = 0;
-            float SalePrice = 0;
-
-            foreach (SaleModel Sale in sales)
+            if (payment_method != null)
             {
-                float price = Sale.price;
-                float saleAmount = Sale.sale;
-                float percent = saleAmount / 100;
-
-                WholePrice += price;
-                PurePrice += price * (1 - percent);
-                SalePrice += price * percent;
+                sql = "WHERE payment_method = '" + payment_method + "' ";
             }
 
-            result.Add(WholePrice.ToString());
-            result.Add(PurePrice.ToString());
-            result.Add(SalePrice.ToString());
+            List<SaleModel> Sales = db.Select(sql);
 
-            Console.WriteLine(WholePrice);
-            Console.WriteLine(PurePrice);
-            Console.WriteLine(SalePrice);
+            foreach (SaleModel Sale in Sales)
+            {
+                float Originalprice = Sale.price;
+                float SalePercent = (float)Sale.sale / 100;
+                float PureSalePrice = Originalprice * (1 - SalePercent);
+                float SalePrice = Originalprice * SalePercent;
+
+                
+                result.OriginalPrice += (int)Originalprice * Sale.count;
+                result.SalePrice += (int)SalePrice * Sale.count;
+                result.PureSalePrice += (int)PureSalePrice * Sale.count;
+            }
+
+            Console.WriteLine(result.OriginalPrice);
 
             return result;
         }

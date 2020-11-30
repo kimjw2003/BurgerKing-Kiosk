@@ -24,46 +24,72 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     public partial class Member_List : Page
     {
         StatisticsViewModel statisticsVM = new StatisticsViewModel();
+
+        UserModel user;
+        List<SaleModel> items;
+        List<SaleModel> SortedList;
+
         public Member_List()
         {
             InitializeComponent();
 
             this.Loaded += MemberPage_Loaded;
-
-            //UserOrder.AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(ListView_OnColumnClick));
-
+            UserOrder.AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(myListView_OnColumnClick));
         }
 
-        private void ListView_OnColumnClick(object sender, RoutedEventArgs e)
+        private void myListView_OnColumnClick(object sender, RoutedEventArgs e)
         {
-           
+            string column = ((GridViewColumnHeader)e.OriginalSource).Column.Header.ToString();
+
+            if (MemberName != null)
+            {
+                if (column == "Count ▼")
+                {
+                    count.Header = "Count ▲";
+                    SortedList = items.OrderByDescending(o => o.count).ToList();
+                    UserOrder.ItemsSource = SortedList;
+                }
+                else if (column == "Count ▲")
+                {
+                    count.Header = "Count ▼";
+                    SortedList = items.OrderBy(o => o.count).ToList();
+                    UserOrder.ItemsSource = SortedList;
+                }
+            }
         }
 
         private void MemberPage_Loaded(object sender, RoutedEventArgs e)
         {
             UserListViewModel userVM = new UserListViewModel();
-            List<UserModel> items = userVM.GetUser();
-       
-            Users.ItemsSource = items;
-        }
-
-        private void GoBack(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
+            UserList = userVM.GetUser();
+            Users.DataContext = this;
         }
 
         private void Users_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserModel user = (UserModel)Users.SelectedItem;
-            MemberName.Text = user.name;
-            MemberName1.Text = user.name;
-            TotalPrice.Text = statisticsVM.GetMemberSaleAmount(user.barcode).ToString() + "원";
+            user = (UserModel)Users.SelectedItem;
+            MemberName = user.name;
+            items = statisticsVM.GetUserStatistics(user.barcode);
 
-            List<SaleModel> items = statisticsVM.GetMemberSaleMenu(user.barcode);
-            //List<SaleModel> SortedList = items.OrderBy(o => o.count).ToList();
-            List<SaleModel> SortedList = items.OrderByDescending(o => o.count).ToList();
+            int price = 0;
 
+            foreach(SaleModel item in items)
+            {
+                price += item.price;
+            }
+
+            TotalPrice = price.ToString() + "원";
+
+            count.Header = "Count ▼";
+            SortedList = items.OrderBy(o => o.count).ToList();
             UserOrder.ItemsSource = SortedList;
+
+            DataContext = null;
+            DataContext = this;
         }
+
+        public List<UserModel> UserList {get; set;}
+        public String MemberName { get; set; }
+        public String TotalPrice { get; set; }
     }
 }

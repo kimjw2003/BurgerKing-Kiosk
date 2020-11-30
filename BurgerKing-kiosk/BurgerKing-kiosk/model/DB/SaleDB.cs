@@ -11,9 +11,8 @@ namespace BurgerKing_kiosk.viewModel.DB
     class SaleDB
     {
         private connectDB conDB = new connectDB();
-        private List<SaleModel> sales = new List<SaleModel>();
 
-        public List<SaleModel> Select(String payment_method)
+        public List<SaleModel> Select(String WhereSql)
         {
 
             MySqlConnection conn = conDB.OpenConnection();
@@ -22,18 +21,26 @@ namespace BurgerKing_kiosk.viewModel.DB
             {
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
+
                 SaleModel sale;
-                string sql = "SELECT * FROM kiosk.order " + payment_method;
+                List<SaleModel> sales = new List<SaleModel>();
+
+                string sql = "SELECT * FROM kiosk.order " + WhereSql;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     sale = new SaleModel();
                     sale.price = (int)reader["price"];
                     sale.sale = (int)reader["sale"];
+                    sale.payment_method = (string)reader["payment_method"];
+                    sale.count = (int)reader["count"];
 
                     sales.Add(sale);
                 }
+
+                return sales;
             }
             catch (MySqlException ex)
             {
@@ -53,7 +60,8 @@ namespace BurgerKing_kiosk.viewModel.DB
             {
                 conn.Close();
             }
-            return sales;
+
+            return null;
         }
     }
 }

@@ -12,12 +12,12 @@ namespace BurgerKing_kiosk.viewModel
     {
         StatisticsDB db = new StatisticsDB();
 
-        public void GetMenuSalePrice(int seat)
+        public List<SaleModel> GetMenuSalePrice(string seat)
         {
             
             List<SaleModel> sales = new List<SaleModel>();
             string wheresql;
-            if(seat == 0)
+            if(seat == "0")
             {
                 wheresql = null;
             }
@@ -30,7 +30,7 @@ namespace BurgerKing_kiosk.viewModel
             foreach(string menu in menus)
             {
                 String sql;
-                if(seat == 0)
+                if(seat == "0")
                 {
                     sql = "WHERE menu = '" + menu + "' ";
                 }
@@ -49,52 +49,35 @@ namespace BurgerKing_kiosk.viewModel
                     sale.price += (MenuSale.price*MenuSale.count);
                 }
 
-                Console.WriteLine("메뉴:" + menu + " 수량:" + sale.count+" 총 가격:"+sale.price);
-
                sales.Add(sale);
             }
+
+            return sales;
         }
 
-        public int GetCategorySaleCount(string Category)
+        public SaleModel Test(string Category, string seat)
         {
-            string sql = "WHERE category = '" + Category+"'";
-            List<SaleModel> sales = db.SelectOrderList(sql);
-            return sales.Count;
-        }
+            SaleModel sale = new SaleModel();
+            string sql = "WHERE category = '" + Category +"'";
 
-        public int GetCategorySalePrice(string Category)
-        {
-            int TotalPrice = 0;
-            string sql = "WHERE category = '" + Category + "'";
-            List<SaleModel> sales = db.SelectOrderList(sql);
-
-            foreach(SaleModel sale in sales)
+            if (seat != "0")
             {
-                TotalPrice += sale.price * sale.count;
+                sql += " AND seat = '" + seat + "'";
+            }
+     
+            List<SaleModel> results = db.SelectOrderList(sql);
+
+            foreach(SaleModel result in results)
+            {
+                float Originalprice = result.price;
+                float SalePercent = (float)result.sale / 100;
+                float SalePrice = Originalprice * (1 - SalePercent);
+
+                sale.count += result.count;
+                sale.price += (int)SalePrice * result.count;
             }
 
-            return TotalPrice;
-        }
-
-        public int GetSeatCategorySaleCount(string Category, int Seat)
-        {
-            string sql = "WHERE seat = '" + Seat + "' AND " + "category = '" + Category + "'";
-            List<SaleModel> sales = db.SelectOrderList(sql);
-            return sales.Count;
-        }
-
-        public int GetSeatCategorySalePrice(string Category, int Seat)
-        {
-            int TotalPrice = 0;
-            string sql = "WHERE seat = '" + Seat + "' AND " + "category = '" + Category + "'";
-            List<SaleModel> sales = db.SelectOrderList(sql);
-
-            foreach (SaleModel sale in sales)
-            {
-                TotalPrice += sale.price * sale.count;
-            }
-
-            return TotalPrice;
+            return sale;
         }
 
         public int GetWholeSaleAmount(string date, string time)
@@ -111,21 +94,7 @@ namespace BurgerKing_kiosk.viewModel
             return TotalPrice;
         }
         
-        public int GetMemberSaleAmount(string barcode)
-        {
-            int TotalPrice = 0;
-            string sql = "WHERE user = '" + barcode + "'";
-            List<SaleModel> sales = db.SelectOrderList(sql);
-
-            foreach (SaleModel sale in sales)
-            {
-                TotalPrice += sale.price * sale.count;
-            }
-
-            return TotalPrice;
-        }
-
-        public List<SaleModel> GetMemberSaleMenu(string barcode)
+        public List<SaleModel> GetUserStatistics(string barcode)
         {
             List<SaleModel> sales = new List<SaleModel>();
             string sql = "WHERE user ='" + barcode + "'";
@@ -143,12 +112,14 @@ namespace BurgerKing_kiosk.viewModel
 
                 foreach (SaleModel MenuSale in MenuSales)
                 {
+                    float Originalprice = MenuSale.price;
+                    float SalePercent = (float)MenuSale.sale / 100;
+                    float SalePrice = Originalprice * (1 - SalePercent);
+
                     sale.menu = menu;
                     sale.count += MenuSale.count;
-                    sale.price += (MenuSale.price * MenuSale.count);
+                    sale.price += (int)SalePrice * MenuSale.count;
                 }
-
-                Console.WriteLine("메뉴:" + menu + " 수량:" + sale.count + " 총 가격:" + sale.price);
 
                 sales.Add(sale);
             }

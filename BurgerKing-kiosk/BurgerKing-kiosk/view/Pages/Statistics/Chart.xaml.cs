@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BurgerKing_kiosk.model;
 using BurgerKing_kiosk.model.DB;
 using BurgerKing_kiosk.viewModel;
 using LiveCharts;
@@ -30,88 +31,57 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
         {
             InitializeComponent();
 
-            Func<ChartPoint, string> labelPoint = chartPoint =>
-             string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            //Func<ChartPoint, string> labelPoint = chartPoint =>
+            // string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            //Console.WriteLine(StatisticsVM.GetWholeSaleAmount("2020-11-11"));
+            List<String> Menus = new List<string>();
+            ChartValues<double> MenuCount = new ChartValues<double>();
+            ChartValues<double> MenuPrice = new ChartValues<double>();
 
-           /* for(int i = 1; i<= 9; i++)
-            {
-                Console.WriteLine("좌석번호: "+i+"카테고리: burger"+StatisticsVM.GetSeatCategorySaleCount("burger", i));
-                Console.WriteLine("좌석번호: " + i + "카테고리: side" + StatisticsVM.GetSeatCategorySaleCount("side", i));
-                Console.WriteLine("좌석번호: " + i + "카테고리: desert" + StatisticsVM.GetSeatCategorySaleCount("desert", i));
-            }*/
-            
+            List<SaleModel> Orders = StatisticsVM.GetMenuSalePrice("0");
 
-            PieChart1.Series = new SeriesCollection
-        {
-            new PieSeries
+            foreach (SaleModel Order in Orders)
             {
-                Title = "Burger",
-                Values = new ChartValues<double> {StatisticsVM.GetCategorySaleCount("burger")},
-                PushOut = 15,
-                DataLabels = true,
-                LabelPoint = labelPoint
-            },
-            new PieSeries
-            {
-                Title = "Desert",
-                Values = new ChartValues<double> {StatisticsVM.GetCategorySaleCount("desert")},
-                DataLabels = true,
-                LabelPoint = labelPoint
-            },
-            new PieSeries
-            {
-                Title = "Side",
-                Values = new ChartValues<double> {StatisticsVM.GetCategorySaleCount("side")},
-                DataLabels = true,
-                LabelPoint = labelPoint
+                Menus.Add(Order.menu);
+                MenuCount.Add(Order.count);
+                MenuPrice.Add(Order.price);
             }
-        };
 
-            PieChart2.Series = new SeriesCollection
-        {
-            new PieSeries
+
+            CountSeriesCollection = new SeriesCollection
             {
-                Title = "Burger",
-                Values = new ChartValues<double> {StatisticsVM.GetCategorySalePrice("burger")},
-                PushOut = 15,
-                DataLabels = true,
-                LabelPoint = labelPoint
-            },
-            new PieSeries
+                new ColumnSeries
+                {
+                    Title = "판매수",
+                    DataLabels = true,
+                    Values = MenuCount,
+                    LabelPoint = point => point.Y + "개"
+                },
+            };
+
+            PriceSeriesCollection = new SeriesCollection
             {
-                Title = "Desert",
-                Values = new ChartValues<double> {StatisticsVM.GetCategorySalePrice("desert")},
-                DataLabels = true,
-                LabelPoint = labelPoint
-            },
-            new PieSeries
-            {
-                Title = "Side",
-                Values = new ChartValues<double> {StatisticsVM.GetCategorySalePrice("side")},
-                DataLabels = true,
-                LabelPoint = labelPoint
-            }
-        };
+                new ColumnSeries
+                {
+                    Title = "판매 가격",
+                    DataLabels = true,
+                    Values = MenuPrice,
+                    LabelPoint = point => point.Y + "원",                    
+                },
+            };
 
+            Labels = Menus.ToArray();
+            CountFormatter = value => value + "개";
+            PriceFormatter = value => value.ToString("C");
 
-
+            DataContext = this;
         }
 
-        public Func<ChartPoint, string> PointLabel { get; set; }
-
-        private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
-        {
-            var chart = (LiveCharts.Wpf.PieChart)chartpoint.ChartView;
-
-            //clear selected slice.
-            foreach (PieSeries series in chart.Series)
-                series.PushOut = 0;
-
-            var selectedSeries = (PieSeries)chartpoint.SeriesView;
-            selectedSeries.PushOut = 8;
-        }
+        public string[] Labels { get; set; }
+        public SeriesCollection CountSeriesCollection { get; set; }
+        public SeriesCollection PriceSeriesCollection { get; set; }
+        public Func<double, string> CountFormatter { get; set; }
+        public Func<double, string> PriceFormatter { get; set; }
 
     }
 }

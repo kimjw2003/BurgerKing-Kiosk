@@ -130,6 +130,7 @@
     <Compile Include="model\OrderModel.cs" />
     <Compile Include="model\MenuModel.cs" />
     <Compile Include="model\SaleModel.cs" />
+    <Compile Include="model\StatisticsModel.cs" />
     <Compile Include="model\TableModel.cs" />
     <Compile Include="model\UserListModel.cs" />
     <Compile Include="model\UserModel.cs" />
@@ -169,6 +170,9 @@
     <Compile Include="view\Pages\Statistics\Apply_Discount.xaml.cs">
       <DependentUpon>Apply_Discount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\Pages\Statistics\Category_Chart.xaml.cs">
+      <DependentUpon>Category_Chart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\Pages\Statistics\Chart.xaml.cs">
       <DependentUpon>Chart.xaml</DependentUpon>
     </Compile>
@@ -177,6 +181,12 @@
     </Compile>
     <Compile Include="view\Pages\Statistics\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\Pages\Statistics\Seat_Chart.xaml.cs">
+      <DependentUpon>Seat_Chart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\Pages\Statistics\test.xaml.cs">
+      <DependentUpon>test.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Pages\Statistics\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
@@ -241,6 +251,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="view\Pages\Statistics\Category_Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\Pages\Statistics\Chart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +264,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\Pages\Statistics\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\Pages\Statistics\Seat_Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\Pages\Statistics\test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

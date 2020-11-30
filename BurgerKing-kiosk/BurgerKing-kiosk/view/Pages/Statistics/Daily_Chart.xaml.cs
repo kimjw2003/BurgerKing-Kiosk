@@ -28,20 +28,22 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
 
         List<String> timeLabel = new List<string>();
         ChartValues<double> Getvalues;
+        int Price = 0;
 
         public Daily_Chart()
         {
             InitializeComponent();
 
+            this.Loaded += Daily_Chart_Loaded;
+
             SeriesCollection = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "시간 별 매출액",
-                    //Values = Getvalues,
-                    //Values = new ChartValues<double> { 4, 6, 5, 2 ,4 },
                     PointGeometry = DefaultGeometries.Circle,
-                    PointGeometrySize = 10
+                    PointGeometrySize = 10,
+                    DataLabels = true,
+                    LineSmoothness = 0,
                 },
             };
 
@@ -51,6 +53,15 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             YFormatter = value => value.ToString("C");
 
             DataContext = this;
+
+            }
+
+        private void Daily_Chart_Loaded(object sender, RoutedEventArgs e)
+        {
+            Calendar.SelectedDate = DateTime.Now;
+
+
+
         }
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -66,12 +77,15 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             // ... See if a date is selected.
             if (calendar.SelectedDate.HasValue)
             {
+                Price = 0;
                 // ... Display SelectedDate in Title.
                 DateTime date = calendar.SelectedDate.Value;
-                Console.WriteLine(date.ToShortDateString());
-
                 GetPrice(date.ToShortDateString());
+                Date = date.ToShortDateString();
                 ShowChart();
+
+                DataContext = null;
+                DataContext = this;
             }
         }
 
@@ -94,8 +108,13 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             foreach (String time in timeLabel)
             {
                 Getvalues.Add( StatisticsVM.GetWholeSaleAmount(date,time));
-                Console.WriteLine(StatisticsVM.GetWholeSaleAmount(date, time));
+                Price += StatisticsVM.GetWholeSaleAmount(date, time);
             }
+
+            TotalPrice = Price.ToString() + "원";
         }
+
+        public string Date { get; set; }
+        public string TotalPrice { get; set; }
     }
 }
