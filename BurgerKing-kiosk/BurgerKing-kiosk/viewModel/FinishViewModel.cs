@@ -13,12 +13,15 @@ namespace BurgerKing_kiosk.viewModel
         FinishDB db = new FinishDB();
         public void SetOrderData()
         {
-            App.tableList[App.userData.seat - 1].OrderTime = DateTime.Now;
-            string day = App.tableList[App.userData.seat - 1].OrderTime.ToString("yyyy-MM-dd");
-            string time = App.tableList[App.userData.seat - 1].OrderTime.ToString("HH:mm:ss");
-            for (int i=0; i < OrderModel.GetInstance().Count; i++)
+            if (App.userData.seat != 0)
             {
-                db.SetOrderData(i, day, time);
+                App.tableList[App.userData.seat - 1].OrderTime = DateTime.Now;
+                string day = App.tableList[App.userData.seat - 1].OrderTime.ToString("yyyy-MM-dd");
+                string time = App.tableList[App.userData.seat - 1].OrderTime.ToString("HH:mm:ss");
+                for (int i = 0; i < OrderModel.GetInstance().Count; i++)
+                {
+                    db.SetOrderData(i, day, time);
+                }
             }
         }
         public void ClearData()
