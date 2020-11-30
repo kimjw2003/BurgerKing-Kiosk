@@ -154,7 +154,6 @@ namespace BurgerKing_kiosk.viewModel
             {
                 clientSocket.Close();
                 cbSocket.Close();
-                sModel.IsConnect = false;
             }
         }
         public bool CheckClient()
