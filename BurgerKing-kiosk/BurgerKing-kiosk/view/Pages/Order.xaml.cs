@@ -205,6 +205,7 @@ namespace BurgerKing_kiosk
                     }
                     int beforeTotalPrice = int.Parse(allPrice.Text);
                     allPrice.Text = beforeTotalPrice + selectedPrice + ""; //전체가격 작성
+                    App.totalPrice = int.Parse(allPrice.Text);
                 }
 
                 ordered_Menu_List.Items.Refresh();
