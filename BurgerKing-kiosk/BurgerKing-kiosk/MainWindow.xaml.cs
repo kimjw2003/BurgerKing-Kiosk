@@ -50,6 +50,7 @@ namespace BurgerKing_kiosk
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
+            json.Group = false;
             App.server.SendServer(json);
         }
 

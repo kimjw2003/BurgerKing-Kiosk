@@ -83,12 +83,21 @@ namespace BurgerKing_kiosk.viewModel
         public int GetWholeSaleAmount(string date, string time)
         {
             int TotalPrice = 0;
-            string sql = "WHERE day = '" + date + "' AND time LIKE '"+time+"%'";
+            string sql = "WHERE day = '" + date + "'";
+
+            if (time != null)
+            {
+                sql += "AND time LIKE '" + time + "%'";
+            }
             List<SaleModel> sales = db.SelectOrderList(sql);
 
             foreach (SaleModel sale in sales)
             {
-                TotalPrice += sale.price * sale.count;
+                float Originalprice = sale.price;
+                float SalePercent = (float)sale.sale / 100;
+                float SalePrice = Originalprice * (1 - SalePercent);
+
+                TotalPrice += (int)SalePrice * sale.count;
             }
 
             return TotalPrice;

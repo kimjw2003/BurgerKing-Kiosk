@@ -31,6 +31,7 @@ namespace BurgerKing_kiosk
             JsonModel json = new JsonModel();
             json.MSGType = 2;
             json.Id = "2102";
+            json.Group = false;
             json.OrderNumber = OrderNum.Text;
             json.Menus = App.userData.order;
             App.server.SendServer(json);
