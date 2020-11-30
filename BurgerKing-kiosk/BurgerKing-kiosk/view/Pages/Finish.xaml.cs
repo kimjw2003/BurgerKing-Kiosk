@@ -33,7 +33,7 @@ namespace BurgerKing_kiosk
             json.Id = "2102";
             json.OrderNumber = OrderNum.Text;
             json.Menus = App.userData.order;
-            //App.server.SendServer(json);
+            App.server.SendServer(json);
 
             viewModel.SetOrderData();
             viewModel.ClearData();

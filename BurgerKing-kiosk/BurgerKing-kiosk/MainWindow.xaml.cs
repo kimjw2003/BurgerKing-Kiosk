@@ -30,7 +30,8 @@ namespace BurgerKing_kiosk
             
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
-            //LoginServer();
+            App.server.ConnectionServer();
+            LoginServer();
             GetDB();
 
             this.Loaded += MainWindow_Loaded;
@@ -46,7 +47,6 @@ namespace BurgerKing_kiosk
 
         private void LoginServer()
         {
-            App.server.ConnectionServer();
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
