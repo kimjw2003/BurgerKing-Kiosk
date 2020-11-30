@@ -31,7 +31,7 @@ namespace BurgerKing_kiosk.viewModel
             {
                 clientSocket.BeginConnect(host, port, new AsyncCallback(ConnectCallback), clientSocket);
             }
-            catch (SocketException se)
+            catch (Exception e)
             {
                 //서버접속 실패
                 Console.WriteLine("서버 접속 실패하셨습니다.");
@@ -74,7 +74,7 @@ namespace BurgerKing_kiosk.viewModel
                     ReceiveServer();
                 }
             }
-            catch (SocketException se)
+            catch (Exception e)
             {
                 Console.WriteLine("전송오류");
             }
