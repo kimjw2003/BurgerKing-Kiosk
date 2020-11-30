@@ -26,6 +26,8 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
     {
         int pageCount = 0;
         List<MenuModel> allMenuList = new List<MenuModel>();
+        ApplySaleViewModel ApplyVM = new ApplySaleViewModel();
+
         public Apply_Discount()
         {
             InitializeComponent();
@@ -161,35 +163,67 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
                 lbFood.Items.Refresh();
             }
         }
-        private void order_order_Btn_Click(object sender, RoutedEventArgs e) //주문버튼이 눌러지면 실행
-        {
-
-            //if (ordered_Menu_List.Items.Count == 0)
-            //{
-            //    MessageBox.Show("메뉴가 선택되지 않았습니다.");
-            //    return;
-            //}
-           
-            //NavigationService.Navigate(new Uri("/view/Pages/Place.xaml", UriKind.Relative));
-
-
-        }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e) // 메뉴 리스트가 눌러지면 실행
         {
-            SelectMenuGrid.Visibility = Visibility;
+          
             Selected_Menu = (MenuModel)lbFood.SelectedItem;
+
+            if(Selected_Menu != null)
+            {
+                SelectMenuGrid.Visibility = Visibility;
+                PreSoldOut = Selected_Menu.soldOut;
+                PrePrice = Selected_Menu.price;
+                PreSale = Selected_Menu.sale;
+                PreSalePrice = Selected_Menu.salePrice;
+
+
+                DataContext = null;
+                DataContext = this;
+            }
+        }
+
+        private void Apply_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            Selected_Menu.salePrice = (int)PreSalePrice;
+            Selected_Menu.sale = (int)PreSale;
+            Selected_Menu.soldOut = PreSoldOut;
+
+            ApplyVM.SetMenuSetting(Selected_Menu);
+            lbFood.Items.Refresh();
 
             DataContext = null;
             DataContext = this;
 
-            //if (orderList != null) // 주문리스트가 널이 아니면 실행
-            //{
-            //    Selected_lbFood.ItemsSource = orderList;
+            MessageBox.Show("적용되었습니다");
+        }
 
-            //}
+        private void Up_Click(object sender, RoutedEventArgs e)
+        {
+            PreSale++;
+            PreSalePrice = PrePrice * (1 - (PreSale/100));
+
+            DataContext = null;
+            DataContext = this;
+        }
+
+        private void Down_Click(object sender, RoutedEventArgs e)
+        {
+            PreSale--;
+            PreSalePrice = PrePrice * (1 - (PreSale / 100));
+
+            DataContext = null;
+            DataContext = this;
         }
 
         public MenuModel Selected_Menu { get; set; }
+
+        public bool PreSoldOut { get; set; }
+
+        public float PrePrice { get; set; }
+        public float PreSale { get; set; }
+        public float PreSalePrice { get; set; }
+
+        
     }
 }

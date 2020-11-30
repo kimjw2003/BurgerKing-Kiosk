@@ -40,6 +40,7 @@ namespace BurgerKing_kiosk.view.Pages.Statistics
             {
                 new LineSeries
                 {
+                    Title = "시간대 별 매출액",
                     PointGeometry = DefaultGeometries.Circle,
                     PointGeometrySize = 10,
                     DataLabels = true,

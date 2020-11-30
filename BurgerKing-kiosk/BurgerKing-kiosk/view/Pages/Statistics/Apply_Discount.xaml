@@ -97,7 +97,7 @@
                                     <Image Source="{Binding picture}" Width="120" Height="110"/>
                                 </Grid>
                                 <TextBlock Text="{Binding name}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                                 <TextBlock Text="{Binding salePrice, StringFormat={} {0}원}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <TextBlock Text="{Binding salePrice, StringFormat={} {0}원}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                                 <TextBlock Text="{Binding sale, StringFormat={} {0}% 할인}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                             </StackPanel>
                         </DataTemplate>
@@ -148,49 +148,52 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" DataContext="{Binding Selected_Menu}" Name="SelectMenuGrid" Visibility="Hidden">
+            <Grid Grid.Row="0"  Name="SelectMenuGrid" Visibility="Hidden">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
-                    <StackPanel Width="500" Height="500">
+                <Grid Grid.Row="1" DataContext="{Binding Selected_Menu}" Name="MenuList">
+                    <StackPanel Width="500" Height="400">
                         <Image Source="{Binding picture}" Width="300" Height="200"/>
                         <TextBlock Text="{Binding name}"  FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <TextBlock Text="{Binding price, StringFormat={} {0}원}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     </StackPanel>
                 </Grid>
 
-                <Grid Grid.Row="1">
-                    <StackPanel>
-                        <CheckBox IsChecked="{Binding soldOut}" x:Name="LoginOption">품절</CheckBox>
-                        <TextBlock Text="{Binding sale, StringFormat={} 할인율: {0}}"/>
+                <Grid Grid.Row="3">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Viewbox Height="20" HorizontalAlignment="Left">
+                            <CheckBox IsChecked="{Binding PreSoldOut}" x:Name="LoginOption" FontWeight="Bold" Content="품절"/>
+                        </Viewbox>
+
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Margin="0 0 5 0" FontSize="15">할인률</TextBlock>
+                            <Button x:Name="Up" Content="+" Width="20" Height="20" Click="Up_Click"/>
+                            <TextBlock Margin="5 0" Text="{Binding PreSale}" FontSize="15"/>
+                            <Button x:Name="Down" Content="-"  Width="20" Height="20" Click="Down_Click"/>
+                        </StackPanel>
+
+                        <TextBlock Text="{Binding PreSalePrice, StringFormat={}할인 적용가: {0}원}" FontSize="15"/>
+
                     </StackPanel>
                     <StackPanel>
-                        
+
                     </StackPanel>
                 </Grid>
-                
-        </Grid>
-           
+
+            </Grid>
+
             <Grid Grid.Row="1">
                 <Grid Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="35*"/>
-                            <ColumnDefinition Width="431*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button 
-                        x:Name="order_cancle_Btn"
-                        Content="할인적용"
+                    <Button 
+                        x:Name="Apply_Btn"
+                        Content="설정 적용"
                         Foreground="white"
                         FontSize="30"
                         FontWeight="Bold"
@@ -200,27 +203,10 @@
                         BorderThickness="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch" 
-                            Margin= "130,0,0,35" Grid.Column="1"
-
+                        Click="Apply_Btn_Click"
                             />
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Button 
-                        x:Name="order_order_Btn"
-                        Content="품절적용"
-                        Foreground="white"
-                        FontSize="30"
-                        FontWeight="Bold"
-                        Height="50"
-                        Width="220"
-                        Background="#f1555a"
-                        BorderThickness="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                           Margin="0,0,170,35"
-                            />
-                    </Grid>
                 </Grid>
+
             </Grid>
         </Grid>
     </Grid>

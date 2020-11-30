@@ -12,9 +12,9 @@ namespace BurgerKing_kiosk.viewModel
     {
         ApplySaleDB db = new ApplySaleDB();
 
-        public void SetSalePercent(MenuModel instance)
+        public void SetMenuSetting (MenuModel menu)
         {
-           db.SetSalePercent(instance);
+            db.SetMenuSetting(menu);
         }
     }
 }
