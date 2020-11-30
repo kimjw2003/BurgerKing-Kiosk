@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurgerKing_kiosk"
         mc:Ignorable="d"
+        xmlns:converter="clr-namespace:BurgerKing_kiosk.view.Pages.Converter"
         xmlns:wookoa="clr-namespace:System;assembly=mscorlib"
         WindowState="Maximized"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <converter:FillConverter x:Key="FillConverter"/>
+        <converter:TextConverter x:Key="TextConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"/>
@@ -27,11 +32,30 @@
                     BorderBrush="DarkGray" BorderThickness="2" CornerRadius="10" 
                     Margin="10,5,10,5" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock
+                            x:Name="ChServer"
+                            FontSize="15"
+                            Text="{Binding IsConnect, Converter={StaticResource TextConverter}, UpdateSourceTrigger=PropertyChanged}"
+                            VerticalAlignment="Center"/>
+                        <Ellipse InkCanvas.Left="10"
+                                 InkCanvas.Top="10"
+                                 Fill="{Binding IsConnect, Converter={StaticResource FillConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                 Margin="5,0,10,0"
+                                 Width="15" Height="15"
+                                 x:Name="CheckServer"/>
+                        <Button x:Name="ServerSwitch"
+                                Height="20"
+                                Background="MintCream"
+                                BorderBrush="White"
+                                Click="ServerOn">
+                            <TextBlock Text="서버ON"
+                                       Foreground="DimGray"/>
+                        </Button>
                         <TextBlock 
                             x:Name="Time" 
                             HorizontalAlignment="Right" 
                             VerticalAlignment="Center"
-                            Padding="0,0,40,0" 
+                            Padding="20,0,40,0" 
                             FontSize="25"
                             LineHeight="Auto"/>
                         <Button 
