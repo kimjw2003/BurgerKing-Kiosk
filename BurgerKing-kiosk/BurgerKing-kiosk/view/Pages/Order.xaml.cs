@@ -235,6 +235,7 @@ namespace BurgerKing_kiosk
                     App.totalPrice = 0;
                     OrderModel.GetInstance().Clear();
                     ordered_Menu_List.Items.Refresh();
+                    App.totalPrice = 0;
                 }
                 else
                 {
