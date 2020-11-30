@@ -22,8 +22,6 @@ namespace BurgerKing_kiosk.viewModel
         public void UpdateTables(int id)
         {
             db.UpdateTable(id);
-            App.tableList = new List<TableModel>();
-            App.tableList = db.GetTable();
         }
     }
 }

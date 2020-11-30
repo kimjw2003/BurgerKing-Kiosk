@@ -35,7 +35,7 @@ namespace BurgerKing_kiosk
 
         public static List<TableModel> tableList = new List<TableModel>();
 
-        public static ServerVIewModel server = new ServerVIewModel();
+        public static ServerViewModel server = new ServerViewModel();
 
         public static String CurrentTime;
         public static TimeSpan ts;
@@ -64,7 +64,7 @@ namespace BurgerKing_kiosk
         {
             EnergizingTimeDB db = new EnergizingTimeDB();
             db.SetTime(ts);
-            server.CloseServer();
+            //server.CloseServer();
         }
     }
 }

@@ -11,8 +11,8 @@ namespace BurgerKing_kiosk.view.Pages.Converter
         TableViewModel viewModel = new TableViewModel();
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            DateTime time = (DateTime)value;
-            if (time.ToString() != default(DateTime).ToString())
+            int second = (int)value;
+            if (second >= 0 && second <=60)
             {
                 return Visibility.Visible;
             }

@@ -30,6 +30,7 @@ namespace BurgerKing_kiosk
             
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
+            App.server.ConnectionServer();
             LoginServer();
             GetDB();
 
@@ -46,7 +47,6 @@ namespace BurgerKing_kiosk
 
         private void LoginServer()
         {
-            App.server.ConnectionServer();
             JsonModel json = new JsonModel();
             json.MSGType = 0;
             json.Id = "2102";
@@ -103,12 +103,22 @@ namespace BurgerKing_kiosk
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = System.Windows.MessageBox.Show("주문을 취소하시겠습니까?", "취소", MessageBoxButton.OKCancel);
+            if (result != MessageBoxResult.OK)
+            {
+                return;
+            }
+
             while (frame_content.CanGoBack == true)
             {
                 frame_content.GoBack();
-                FinishViewModel viewModel = new FinishViewModel();
-                viewModel.ClearData();
             }
+            if (App.userData.seat != 0)
+            {
+                App.tableList[App.userData.seat - 1].IsUsed = false;
+            }
+            FinishViewModel viewModel = new FinishViewModel();
+            viewModel.ClearData();
         }
     }
 }

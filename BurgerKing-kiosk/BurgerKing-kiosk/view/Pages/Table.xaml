@@ -71,14 +71,14 @@
                                 <TextBlock TextAlignment="Left" FontSize="26"
                                        HorizontalAlignment="Left"  VerticalAlignment="Top"
                                        Text="{Binding id, StringFormat={}   NO. {0}}"/>
-                                <TextBlock Visibility="{Binding OrderTime, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                <TextBlock Visibility="{Binding RemainSeconds, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
                                     TextAlignment="Left" FontSize="20" Margin="0,30"
                                        HorizontalAlignment="Center"  VerticalAlignment="Center"
                                        Text="{Binding RemainSeconds,  StringFormat={}  {0}초 남았습니다.}"/>
-                                <TextBlock  Visibility="{Binding OrderTime, Converter={StaticResource VisibleConverter}}"
+                                <TextBlock  Visibility="{Binding RemainSeconds, Converter={StaticResource VisibleConverter}}"
                                     TextAlignment="Right" FontSize="22"
-                                       VerticalAlignment="Bottom" Margin="15,0"
-                                       Text="{Binding OrderTime, StringFormat={} 주문시간 : {0: HH:mm:ss}}"/>
+                                       VerticalAlignment="Bottom" Margin="10,0"
+                                       Text="{Binding OrderTime, StringFormat={} 주문시간 : {0: tt h:mm:ss}}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

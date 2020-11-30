@@ -13,7 +13,7 @@ namespace BurgerKing_kiosk.model.DB
     {
         private connectDB conDB = new connectDB();
 
-        public bool SetOrderData(int orderIdx)
+        public bool SetOrderData(int orderIdx, string day, string time)
         {
 
             MySqlConnection conn = conDB.OpenConnection();
@@ -23,8 +23,8 @@ namespace BurgerKing_kiosk.model.DB
                 conn.Open();
                 Console.WriteLine("DataBase연동 성공");
                 string sql = string.Format($"INSERT INTO  kiosk.order(`menu`, `category`, `user`, `day`, `price`, `seat`, `sale`, `payment_method`, `time`, `count`) VALUES (" +
-                    $"'{OrderModel.GetInstance()[orderIdx].Name}', '{OrderModel.GetInstance()[orderIdx].category}', '{App.userData.barcode}', '{DateTime.Today.ToString("yyyy-MM-dd")}', " +
-                    $"{OrderModel.GetInstance()[orderIdx].Price}, {App.userData.seat}, {OrderModel.GetInstance()[orderIdx].sale}, '{App.userData.payment}','{DateTime.Now.ToString("HH:mm:ss")}', " +
+                    $"'{OrderModel.GetInstance()[orderIdx].Name}', '{OrderModel.GetInstance()[orderIdx].category}', '{App.userData.barcode}', '{day}', " +
+                    $"{OrderModel.GetInstance()[orderIdx].Price}, {App.userData.seat}, {OrderModel.GetInstance()[orderIdx].sale}, '{App.userData.payment}','{time}', " +
                     $"{OrderModel.GetInstance()[orderIdx].Count});");
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
