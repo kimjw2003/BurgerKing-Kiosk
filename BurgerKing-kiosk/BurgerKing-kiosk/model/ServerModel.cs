@@ -30,7 +30,7 @@ namespace BurgerKing_kiosk.model
         private void TimerEvent()
         {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 10);
             timer.Tick += new EventHandler((object sender, EventArgs e) => {
                 IsConnect = App.server.CheckClient();
                 //Console.WriteLine(IsConnect);

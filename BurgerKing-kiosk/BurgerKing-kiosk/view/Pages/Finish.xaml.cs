@@ -38,22 +38,18 @@ namespace BurgerKing_kiosk
             viewModel.SetOrderData();
             viewModel.ClearData();
 
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 5);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (second == 5)
+            timer.Stop();
+            while (NavigationService.CanGoBack)
             {
-                timer.Stop();
-                while (NavigationService.CanGoBack)
-                {
-                    NavigationService.GoBack();
-                }
+                NavigationService.GoBack();
             }
-            second += 1;
         }
     }
 }
